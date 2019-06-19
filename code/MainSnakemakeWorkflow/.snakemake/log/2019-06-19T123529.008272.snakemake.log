@@ -1,0 +1,7 @@
+Building DAG of jobs...
+Executing subworkflow leafcutter_workflow.
+Building DAG of jobs...
+MissingInputException in line 1 of /project2/yangili1/bjf79/snaptron-analysis/code/SubSnakemakeWorkflow/rules/leafcutter.smk:
+Missing input files for rule prepare_juncfiles_for_clustering:
+../data/snakemake_data/TCGA_BRCA.LAML.SKCM.THYM.UCEC.UVM.BLCA.juncfile
+../data/snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed.flanked100K.bed

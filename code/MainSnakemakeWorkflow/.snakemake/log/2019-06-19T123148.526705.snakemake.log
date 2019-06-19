@@ -1,0 +1,4 @@
+WorkflowError in line 5 of /project2/yangili1/bjf79/snaptron-analysis/code/SubSnakemakeWorkflow/Snakefile:
+Config file config.yaml not found.
+  File "/project2/yangili1/bjf79/snaptron-analysis/code/MainSnakemakeWorkflow/Snakefile", line 1, in <module>
+  File "/project2/yangili1/bjf79/snaptron-analysis/code/SubSnakemakeWorkflow/Snakefile", line 5, in <module>

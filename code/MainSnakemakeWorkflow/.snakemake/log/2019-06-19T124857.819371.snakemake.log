@@ -1,0 +1,5 @@
+Building DAG of jobs...
+Executing subworkflow leafcutter_workflow_sf3b1_pancancer.
+WorkflowError in line 6 of /project2/yangili1/bjf79/snaptron-analysis/data/snakemake_data/Snakefile:
+Failed to open /project2/yangili1/bjf79/snaptron-analysis/data/snakemake_data/rules/common.smk.
+  File "/project2/yangili1/bjf79/snaptron-analysis/data/snakemake_data/Snakefile", line 6, in <module>

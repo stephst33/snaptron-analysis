@@ -1,0 +1,5 @@
+Building DAG of jobs...
+Subworkflow leafcutter_workflow: Nothing to be done.
+Executing main workflow.
+Nothing to be done.
+Complete log: /project2/yangili1/bjf79/snaptron-analysis/code/MainSnakemakeWorkflow/.snakemake/log/2019-06-19T122443.349132.snakemake.log

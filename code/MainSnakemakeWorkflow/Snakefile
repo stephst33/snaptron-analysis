@@ -1,0 +1,11 @@
+subworkflow leafcutter_workflow_sf3b1_pancancer:
+    workdir:
+        "../SubSnakemakeWorkflow"
+    snakefile:
+        "../../data/snakemake_data/Snakefile"
+    configfile:
+        "../SubSnakemakeWorkflow/config.yaml"
+
+rule all:
+    input:
+        leafcutter_workflow_sf3b1_pancancer("A.txt")

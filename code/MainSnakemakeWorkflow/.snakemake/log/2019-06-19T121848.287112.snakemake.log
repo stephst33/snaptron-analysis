@@ -1,0 +1,3 @@
+NameError in line 11 of /project2/yangili1/bjf79/snaptron-analysis/code/MainSnakemakeWorkflow/Snakefile:
+name 'Samples_TargetJunctions' is not defined
+  File "/project2/yangili1/bjf79/snaptron-analysis/code/MainSnakemakeWorkflow/Snakefile", line 11, in <module>

@@ -3,7 +3,7 @@
 
 
 configfile: "config.yaml"
-include: "rules/common.smk"
+include: "../../code/SubSnakemakeWorkflow/rules/common.smk"
 
 rule all:
     input:
@@ -24,7 +24,9 @@ rule all:
         # "junction_filelist/AllSamples",
         # "leafcutter_out/clustering/headtest/leafcutter_perind.counts.gz"
         # "leafcutter_out/clustering/AllSamples/leafcutter_perind.counts.gz"
+    output:
+        "A.txt"
 
-include: "rules/GetDataForLeafcutter.smk"
-include: "rules/leafcutter.smk"
-include: "rules/other.smk"
+include: "../../code/SubSnakemakeWorkflow/rules/GetDataForLeafcutter.smk"
+include: "../../code/SubSnakemakeWorkflow/rules/leafcutter.smk"
+include: "../../code/SubSnakemakeWorkflow/rules/other.smk"
