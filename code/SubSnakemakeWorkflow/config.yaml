@@ -16,7 +16,7 @@ scratch_prefix: "/scratch/midway2/bjf79/recurrent-splicing/"
 # samples may take very long or run into memory issues.
 # "R_project/DarmanDiffJunctions.LiftedToHg38.bed.flanked100K.bed" should work
 # for testing
-junction_intersect_bed: "../../data/snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed.flanked100K.bed"
+junction_intersect_bed: "../../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed.flanked100K.bed"
 
 # If true, some steps including leafclutter_cluster will be run on a
 # chromosome-by-chromosome basis and then merged for better parallelization
@@ -31,9 +31,13 @@ leafcutter_cluster_by_chrom: True
 # checking for you, as I would prefer avoiding making DAGS with tens of
 # thousands of files)
 # "R_project/Blood_sf3b1_contrast.juncfiles" should work for testing
-juncfiles: "../../data/snakemake_data/TCGA_BRCA.LAML.SKCM.THYM.UCEC.UVM.BLCA.juncfile"
+juncfiles: "../../data/other_snakemake_data/TCGA_BRCA.LAML.SKCM.THYM.UCEC.UVM.BLCA.juncfile"
 
 # groups file as documented in leafcutter documentation for differential
 # splicing analysis.
 # "R_project/Blood_sf3b1_contrast.groups.txt" should work for testing
 leafcutter_groupfile: "example_files/example2.groups.txt"
+
+# git_folder_out prefix to add to move small (<25MB) output files that I want to be included in the git repo associated with this analysis (most stuff in the snakemake workdir is included in gitignore). This can be useful for workflowr and updating site.
+git_folder_out: "test_git_out/"
+

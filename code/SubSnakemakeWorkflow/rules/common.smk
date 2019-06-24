@@ -44,3 +44,4 @@ else:
     numers_to_gather = expand(config["scratch_prefix"] + "leafcutter/clustering/{Samples_TargetJunctions}/{chromosome}/leafcutter_perind.counts.numers", Samples_TargetJunctions=Samples_TargetJunctions, chromosome="ChromosomalGenome")
     denoms_to_gather = expand(config["scratch_prefix"] + "leafcutter/clustering/{Samples_TargetJunctions}/{chromosome}/leafcutter_perind.counts.denoms", Samples_TargetJunctions=Samples_TargetJunctions, chromosome="ChromosomalGenome")
 
+Prefix = config["git_folder_out"]
