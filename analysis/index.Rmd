@@ -9,3 +9,9 @@ editor_options:
 ---
 
 Welcome to my research website.
+
+Here I will be using snaptron dataset (compilation of public RNA-seq datasets from GTEx, SRA2, and The Cancer Genome Atlas) to analyze SF3B1 mutations.
+
+- [PCA separates sf3b1-mut and sf3b1-wt in TCGA samples](../docs/TCGA_sf3b1_reproduce_seiller.html)
+- [PCA separates sf3b1-mut and sf3b1-wt in SRA2 blood/bone-marrow samples.]() 
+- [differential splicing analysis of all SRA2 blood/bone marrow samples]()
