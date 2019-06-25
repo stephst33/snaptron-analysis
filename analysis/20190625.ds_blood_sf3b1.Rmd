@@ -89,7 +89,7 @@ leafcutter.merged %>%
     theme_bw()
 ```
 
-That doesn't make too much sense, maybe delta-PSI is the better effect size metric to make a sensible volcano plot...
+Same plot but for delta-PSI instead of log-effect size...
 
 
 ```{r}
@@ -140,7 +140,7 @@ PCA and heatmap of differentially spliced introns
 ```{r}
 #Get top intron within each cluster (by delta-psi) then subset the top 1000 clusters by Pval. This is the top1000 introns that will be used to plot heatmap of PSI
 Top1000Introns <- leafcutter.merged %>%
-  mutate(abs.deltapsi = abs(deltapsi)) %>%
+  mutate(abs.deltapsi = abs(logef)) %>%
   group_by(cluster) %>%
   slice(which.max(abs.deltapsi)) %>%
   ungroup() %>%
