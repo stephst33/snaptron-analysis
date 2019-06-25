@@ -1,11 +1,30 @@
-subworkflow leafcutter_workflow_sf3b1_pancancer:
+subworkflow leafcutter_cluster_sf3b1_pancancer:
     workdir:
         "../SubSnakemakeWorkflow"
     snakefile:
-        "../../data/snakemake_data/Snakefile"
+        "../SubSnakemakeWorkflow/Snakefile.clustering.smk"
     configfile:
-        "../SubSnakemakeWorkflow/config.yaml"
+        "../../data/configfiles/config.sf3b1_tcga.yaml"
+
+subworkflow leafcutter_sf3b1_contrast_blood:
+    workdir:
+        "../SubSnakemakeWorkflow/"
+    snakefile:
+        "../SubSnakemakeWorkflow/Snakefile.ds.smk"
+    configfile:
+        "../../data/configfiles/config.sf3b1_blood_ds.yaml"
+
+subworkflow sf3b1_blood_cluster_darman_juncs:
+    workdir:
+        "../SubSnakemakeWorkflow/"
+    snakefile:
+        "../SubSnakemakeWorkflow/Snakefile.clustering.smk"
+    configfile:
+        "../../data/configfiles/config.sf3b1_blood_darman_cluster.yaml"
 
 rule all:
     input:
-        leafcutter_workflow_sf3b1_pancancer("A.txt")
+        leafcutter_cluster_sf3b1_pancancer("../../output/snakemake_out_sf3b1_TCGA/GatherFilesCopied.log"),
+        leafcutter_sf3b1_contrast_blood("../../output/snakemake_out_sf3b1_blood_ds/GatherFilesCopied.log"),
+        sf3b1_blood_cluster_darman_juncs("../../output/snakemake_out_sf3b1_blood_DarmanJuncs/GatherFilesCopied.log")
+
