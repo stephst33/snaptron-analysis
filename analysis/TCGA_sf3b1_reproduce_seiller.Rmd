@@ -1,0 +1,164 @@
+---
+title: "TCGA_sf3b1_reproduce_seiller"
+author: "Ben Fair"
+date: "6/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r libraries}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(readxl)
+library(ggrepel)
+library(tidyverse)
+library(gplots)
+library(knitr)
+library("RColorBrewer")
+```
+
+```{r}
+Numers <- '../output/snakemake_out_sf3b1_TCGA/CountTableNumerators.gz'
+Denoms <- '../output/snakemake_out_sf3b1_TCGA/CountTableDenominators.gz'
+
+NumeratorCountTable <- fread(paste0("gunzip -c ", Numers), sep=" ", header=TRUE, data.table=FALSE)
+DenominatorCountTable <- fread(paste0("gunzip -c ", Denoms), sep=" ", header=TRUE, data.table=FALSE)
+
+PSI_Table <- NumeratorCountTable[-1]/DenominatorCountTable[-1]
+row.names(PSI_Table) <- gsub(":clu_.+", "", NumeratorCountTable$chrom)
+
+#Replace NaNs from 0/0 operation
+PSI_Table[is.na(PSI_Table)] <- 0
+
+# DifferentialJunctionsList <- read.table('/Users/benfair/Downloads/Seiler_S3B1InBRCA_DifferentialJunctions.txt', header=F)
+DifferentialJunctionsList <- read.table('../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed', header=F)
+
+# Make new id, for easier use in later filtering. Note that coordinates may need to add 1
+DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$V1, DifferentialJunctionsList$V2 + 1, DifferentialJunctionsList$V3 + 1, sep=":")
+
+# PCA using PSI
+PCResults <- (PSI_Table) %>%
+  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %>%
+  t() %>%
+  prcomp(center=T, scale=T)
+PCResults.df <- as.data.frame(PCResults$x[,1:10]) %>% rownames_to_column()
+
+#Read in metadata for TCGA
+TCGAMetadata <- read.delim(gzfile('../output/snakemake_out_sf3b1_TCGA/SnaptronMetadata.TCGA.txt.gz'), row.names=1, na.strings = "NA", stringsAsFactors = T, header=T)
+
+# truncated TCGA barcodes are easier to match and merge with Seiller et al metadata
+TCGAMetadata$TruncatedTCGA <- gsub("-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]", "", TCGAMetadata$gdc_cases.samples.portions.analytes.submitter_id)
+TCGAMetadata$rail_id <- row.names(TCGAMetadata)
+TCGAMetadata$source <- "TCGA"
+
+MutationList <- data.frame(read_excel("../data/other_snakemake_data/SeillerEtAl_MutationList.xlsx"))
+MutationList$TruncatedTCGA <- gsub("-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]-\\w{4}-\\w{2}$", "", MutationList$Tumor_Sample_Barcode)
+
+# Add labels to help distinguish SF3B1 hotspot mutations from other SF3B1 mutations in plot
+# MutationList$Mutant_aa <- paste(MutationList$Hugo_Symbol, MutationList$Protein_position, MutationList$Amino_acids, sep=":")
+MutationList$Mutant_aa <- paste(MutationList$Protein_position, MutationList$Amino_acids, sep=":")
+
+MutationList$Mutant_aa[which(MutationList$Hugo_Symbol!="SF3B1")] <- ""
+```
+
+
+Ok so far I have read in the splice junction count tables created by leafcutter (a numerator and a denominator table, which when divided is a PSI-like metric of splicing). Furthermore, I have used TCGA barcodes to match the samples to their splicing factor mutation status as documented in a supplemental table from (Seiller et al 2018). 
+
+Now let's plot SF3B1 mutation positions grouped by cancer sub-type. I expect most cancers to show a hotspot around amino acids 600-750, but different cancer types will have different mutation frequencies.
+
+```{r}
+#Plot hotspots
+MutationList %>%
+  # filter(Cohort %in% c("LAML", "SKCM", "BRCA", "BLCA", "THYM", "UCEC", "UVM")) %>%
+  filter(Hugo_Symbol %in% c("SF3B1")) %>%
+  ggplot(aes(as.numeric(Protein_position))) +
+  geom_histogram(aes(fill=Cohort_simplified),position="dodge", bins=50) +
+  theme_bw()
+  # geom_density(aes(color=Cohort_simplified))
+```
+
+
+Ok good. Now let's plot all the samples in the same PC space based on the differentially spliced introns identified in Darman et al. Same as to what is observed in Seiller et al, I expect this PC space will distinguish SF3B1 mutant from wildtype, and the 902 hotspot will not separate in this PC space as it is a functionally distinct mutation.
+
+```{r}
+
+# MutationList$Cohort_simplified
+Metadata <- MutationList %>%
+  filter(Amino_acids != ".") %>%
+  distinct(TruncatedTCGA, .keep_all=TRUE) %>%
+  right_join(TCGAMetadata, by = "TruncatedTCGA", copy = FALSE)
+
+ToPlot <- PCResults.df %>%
+  mutate(rail_id=gsub(".project2.yangili1.snaptron.processed_to_bedfiles.TCGA.","", rowname)) %>%
+  left_join(Metadata, by="rail_id") %>%
+  mutate(CancerType=gsub("TCGA-","", gdc_cases.project.project_id))
+
+
+# gdc_cases.project.project_id
+ggplot(ToPlot, aes(x=PC1, y=PC2, color=CancerType, label=Mutant_aa)) +
+  geom_text(alpha=1, size=2.2) +
+  # geom_point(alpha=0.5) +
+  # geom_text_repel(size=2.2) +
+  theme_bw() +
+  theme(legend.position="none")
+```
+
+Ok good. there it seems that the first PC does distinguish mut from wt, and later PCs seem to be separating tumor/tissue type.
+
+It will also be nice to look at a heatmap of this feature space from which the PCA is based on... I will do this for only ~50 SF3B1 mutant samples (PC1<-15) and 150 SF3B1 wildtype samples (PC1>-15)... If I included all the samples it would be too dense a heatmap
+```{r}
+set.seed(0)
+Cases<-ToPlot %>%
+  filter(PC1 <= -15) %>%
+  filter(Hugo_Symbol=="SF3B1" | is.na(Hugo_Symbol)) %>%
+  dplyr::pull(rowname)
+
+Controls<-ToPlot %>%
+  filter(PC1 >= -15) %>%
+  filter(is.na(Hugo_Symbol)) %>%
+  sample_n(150) %>%
+  dplyr::pull(rowname)
+
+
+Heatmap <- PSI_Table %>%
+  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %>%
+  dplyr::select(c(Cases, Controls)) %>% as.matrix() %>%
+  t() %>% scale(scale=F) %>% t() %>% as.data.frame() %>% drop_na() %>% as.matrix()
+
+#
+# Heatmap <- t(scale(t(as.matrix(PSI_Table[1:10, c(Cases, Controls)]))))
+# Heatmap <- scale(as.matrix(PSI_Table[1:50,c(Cases, Controls)]))
+
+RNAExtractionDate <- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$CancerType, warn_missing = FALSE) )))
+RNAExtractionDate <- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$Hugo_Symbol, warn_missing = FALSE) )))
+ColLabel = labCol <- plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$Mutant_aa, warn_missing = FALSE)
+# heatmap.2(Heatmap, col=brewer.pal(11,"Spectral"), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="574 splice junctions", xlab="200 samples")
+heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="574 splice junctions", xlab="200 samples")
+```
+
+Interestingly there are some samples where the genotype doesn't match the phenotype.
+SF3B1. Could be incorrect genotype calls, or cases where the "hotspot" mutations are in hotspot region but not actually a phenotypic mutation.
+
+What are the mutations that are in the hotspot region (amino acids 600-750) but don't cluster with the mutant SF3B1 samples in PC1?
+```{r}
+#sf3b1 mut samples where PC1<-5
+ToPlot %>%
+  filter(Hugo_Symbol=="SF3B1" & as.numeric(Protein_position) >= 600 & as.numeric(Protein_position) <= 750) %>%
+  filter(PC1 <= -5) %>%
+  dplyr::select(Mutant_aa) %>%
+  group_by(Mutant_aa) %>% tally() %>% kable()
+
+#sf3b1 mut samples where PC1>-5
+ToPlot %>%
+  filter(Hugo_Symbol=="SF3B1" & as.numeric(Protein_position) >= 600 & as.numeric(Protein_position) <= 750) %>%
+  filter(PC1 >= -5) %>%
+  dplyr::select(Mutant_aa) %>%
+  group_by(Mutant_aa) %>% tally() %>% kable()
+```
+
+Ok it seems there are about 50 mutant samples that clearly cluster and are phenotypic for the same differentially spliced junctions identified in Darman et al. However there are 5 samples that have mutations between positions 600-750 that are not phenotypic. This is decent motivation for the premise of this project: namely that there is utility to targeted sequencing screening a patient's RNA since clearly some "hotspot" mutations are not of significance; genotyping alone is not perfect at separating molecular separating phenotypes.
