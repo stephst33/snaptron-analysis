@@ -19,7 +19,10 @@ library(ggrepel)
 library(tidyverse)
 library(gplots)
 library("RColorBrewer")
+library(knitr)
 ```
+
+
 
 ```{r}
 #read-count-table
@@ -130,18 +133,35 @@ ggplot(NotInDarman, aes(color="NotInDarman", y=-log10(sort(p)), x=-log10(1:lengt
   theme(legend.title=element_blank())
 ```
 
-Ok, now let's check that cryptic upstream 3'ss are enriched
-
-```{r}
-#read in annotated 3'ss
-
-```
 
 PCA and heatmap of differentially spliced introns
-```{r}
-#Filter for max(delta-psi) in top1000 intron clusters for PCA and heatmap
-Top1000Clusters
 
+```{r}
+#Get top intron within each cluster (by delta-psi) then subset the top 1000 clusters by Pval. This is the top1000 introns that will be used to plot heatmap of PSI
+Top1000Introns <- leafcutter.merged %>%
+  mutate(abs.deltapsi = abs(deltapsi)) %>%
+  group_by(cluster) %>%
+  slice(which.max(abs.deltapsi)) %>%
+  ungroup() %>%
+  top_n(-1000, p) %>% pull(intron)
+
+Groups <- read.table("../data/other_snakemake_data/Blood_sf3b1_contrast.groups.txt")
+
+
+#First make a heatmap of Darman et al junctions
+Heatmap <- PSI_Table[DarmanJunctionsList$junc_id,] %>%
+  t() %>% scale(scale=F) %>% t() %>%
+  as.data.frame() %>% drop_na() %>% as.matrix()
+
+HeatmapGroupLabels <- plyr::mapvalues(colnames(Heatmap), from=Groups$V1, to=Groups$V2, warn_missing = FALSE)
+
+heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", key.title="PSI-Zscore", ColSideColors=HeatmapGroupLabels)
+
+#Heatmap of top leafcutter identified introns
+Heatmap <- PSI_Table[Top1000Introns,] %>%
+  t() %>% scale(scale=F) %>% t() %>%
+  as.data.frame() %>% drop_na() %>% as.matrix()
+heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", key.title="PSI-Zscore", ColSideColors=HeatmapGroupLabels)
 ```
 
 
