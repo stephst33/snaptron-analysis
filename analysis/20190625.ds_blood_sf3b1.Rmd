@@ -77,7 +77,7 @@ leafcutter.merged %>%
 
 
 ```{r}
-#volcano plot of cluster-pvalues and largest within-cluster-delta-psi
+#volcano plot of cluster-pvalues and largest within-cluster-log effect size
 leafcutter.merged %>%
   mutate(abs.logef = abs(logef)) %>%
   group_by(cluster) %>%
@@ -85,6 +85,7 @@ leafcutter.merged %>%
   mutate(sig=p.adjust<0.05) %>%
   ggplot(aes(x=logef, y=-log10(p), color=sig)) +
     geom_point(alpha=0.05) +
+    scale_x_continuous(limits=c(-10,10)) +
     theme_bw()
 ```
 

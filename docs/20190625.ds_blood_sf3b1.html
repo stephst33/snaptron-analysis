@@ -527,10 +527,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree68cd7b55a303e78787217e285321fda9e548c758targetblank68cd7b5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/68cd7b55a303e78787217e285321fda9e548c758" target="_blank">68cd7b5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistreee10b2f8a2887f1ab7954752bf8045f87be011078targetblanke10b2f8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/e10b2f8a2887f1ab7954752bf8045f87be011078" target="_blank">e10b2f8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree68cd7b55a303e78787217e285321fda9e548c758targetblank68cd7b5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistreee10b2f8a2887f1ab7954752bf8045f87be011078targetblanke10b2f8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -539,12 +539,9 @@ Great! You are using Git for version control. Tracking code development and conn
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/figure/
 
 Unstaged changes:
-    Modified:   _workflowr.yml
     Modified:   analysis/20190625.ds_blood_sf3b1.Rmd
-    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -583,6 +580,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/analysis/20190625.ds_blood_sf3b1.Rmd" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+<td>
+update site
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/20190625.ds_blood_sf3b1.html" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+<td>
+update site
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -763,7 +794,44 @@ leafcutter.merged %&gt;%
     geom_histogram() +
     theme_bw()</code></pre>
 <p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>#volcano plot of cluster-pvalues and largest within-cluster-delta-psi
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-2-1.png" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>#volcano plot of cluster-pvalues and largest within-cluster-log effect size
 leafcutter.merged %&gt;%
   mutate(abs.logef = abs(logef)) %&gt;%
   group_by(cluster) %&gt;%
@@ -771,8 +839,46 @@ leafcutter.merged %&gt;%
   mutate(sig=p.adjust&lt;0.05) %&gt;%
   ggplot(aes(x=logef, y=-log10(p), color=sig)) +
     geom_point(alpha=0.05) +
+    scale_x_continuous(limits=c(-10,10)) +
     theme_bw()</code></pre>
 <p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-3-1.png" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>That doesn’t make too much sense, maybe delta-PSI is the better effect size metric to make a sensible volcano plot…</p>
 <pre class="r"><code># volcano plot of cluster-pvalues and largest within-cluster-delta-psi
 leafcutter.merged %&gt;%
@@ -784,6 +890,43 @@ leafcutter.merged %&gt;%
     geom_point(alpha=0.05) +
     theme_bw()</code></pre>
 <p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-4-1.png" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Now let’s check that the junctions identified in Darman et al are enriched for small P-values</p>
 <pre class="r"><code>DarmanJunctionsList &lt;- read.table(&#39;../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed&#39;, header=F)
 
@@ -810,6 +953,43 @@ ggplot(NotInDarman, aes(color=&quot;NotInDarman&quot;, y=-log10(sort(p)), x=-log
   theme(legend.position=&quot;bottom&quot;) +
   theme(legend.title=element_blank())</code></pre>
 <p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-5-1.png" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>PCA and heatmap of differentially spliced introns</p>
 <pre class="r"><code>#Get top intron within each cluster (by delta-psi) then subset the top 1000 clusters by Pval. This is the top1000 introns that will be used to plot heatmap of PSI
 Top1000Introns &lt;- leafcutter.merged %&gt;%
@@ -831,12 +1011,86 @@ HeatmapGroupLabels &lt;- plyr::mapvalues(colnames(Heatmap), from=Groups$V1, to=G
 
 heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, key.title=&quot;PSI-Zscore&quot;, ColSideColors=HeatmapGroupLabels)</code></pre>
 <p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-6-1.png" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>#Heatmap of top leafcutter identified introns
 Heatmap &lt;- PSI_Table[Top1000Introns,] %&gt;%
   t() %&gt;% scale(scale=F) %&gt;% t() %&gt;%
   as.data.frame() %&gt;% drop_na() %&gt;% as.matrix()
 heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, key.title=&quot;PSI-Zscore&quot;, ColSideColors=HeatmapGroupLabels)</code></pre>
 <p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-6-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-2">
+Past versions of unnamed-chunk-6-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-6-2.png" target="_blank">e10b2f8</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
