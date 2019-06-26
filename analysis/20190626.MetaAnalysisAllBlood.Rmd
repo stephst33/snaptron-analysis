@@ -1,0 +1,24 @@
+---
+title: "20190626_AllBloodDarmanJunctions"
+author: "Ben Fair"
+date: "6/26/2019"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+This analysis was a meta-analysis of all the blood or bone marrow samples I could find in snaptron splice-junction count tables. This amounts to ~6000 samples across TCGA, SRA2, and GTEx. The count table I will load is only the subset of junctions within 1000bp of a sf3b1 differentially spliced intron from Darman et al.
+
+```{r libraries}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(readxl)
+library(ggrepel)
+library(tidyverse)
+library(gplots)
+library(knitr)
+library("RColorBrewer")
+```

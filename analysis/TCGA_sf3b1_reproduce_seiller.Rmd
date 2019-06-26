@@ -104,8 +104,7 @@ ggplot(ToPlot, aes(x=PC1, y=PC2, color=CancerType, label=Mutant_aa)) +
   geom_text(alpha=1, size=2.2) +
   # geom_point(alpha=0.5) +
   # geom_text_repel(size=2.2) +
-  theme_bw() +
-  theme(legend.position="none")
+  theme_bw()
 ```
 
 Ok good. there it seems that the first PC does distinguish mut from wt, and later PCs seem to be separating tumor/tissue type.
