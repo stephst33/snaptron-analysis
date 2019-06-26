@@ -9,3 +9,19 @@ editor_options:
 ---
 
 Welcome to my research website.
+
+Here I will be using snaptron dataset (compilation of public RNA-seq datasets from GTEx, SRA2, and The Cancer Genome Atlas) to analyze SF3B1 mutations.
+
+Firstly, I will reproduce results from Seiller et al 2018 which used TCGA RNA-seq datasets from various cancer types that contain recurrent SF3B1 mutations. They noticed that priciple component analysis (based on PSI ratios of junctions identified as differentially spliced in Darman et al) separates sf3b1 mut from wildtype on the first PC.
+
+- That analysis [here](TCGA_sf3b1_reproduce_seiller.html)
+
+Then I used the same list of junctions to separate samples from mostly independent datasets in TCGA and SRA2 samples (I gathered all ~6400 samples in SRA2, GTEx, and TCGA which are either in blood or bone marrow, most of which are unlabelled with regards to SF3B1 mutant status and can be safely assumed to be SF3B1-wt).
+
+- That analysis [here]()
+
+From this list of samples, I saw separation in PC-space between known sf3b1-mut and sf3b1-wt, as well the many samples which are unlabelled could be classified into these two groups. From here I chose ~90 samples that clustered with the wt samples, and ~90 that clustered with mut and performed differential splicing analysis with leafcutter.
+
+- That analysis [here](20190625.ds_blood_sf3b1.html)
+
+I will use these differentially spliced junctions (in particular alternative, upstream 3'ss that are upregulated in sf3b1-mut) to design MPE-seq primers.

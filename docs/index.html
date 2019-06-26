@@ -318,7 +318,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -327,7 +327,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -336,13 +336,13 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-06-18
+<strong>Last updated:</strong> 2019-06-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
-<strong>Knit directory:</strong> <code>snaptron-analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>snaptron-analysis/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -355,53 +355,39 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<<<<<<< Updated upstream
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistreebb242cc24bdc7e7846dceb592179a49cd5bbe19dtargetblankbb242cca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/bb242cc24bdc7e7846dceb592179a49cd5bbe19d" target="_blank">bb242cc</a> </a>
-||||||| merged common ancestors
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree791d8466f5ca230060639b396c3ba07519c63699targetblank791d846a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/791d8466f5ca230060639b396c3ba07519c63699" target="_blank">791d846</a> </a>
-=======
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree47f7da15038de3ec0fdbec4fd1bbe1077de03409targetblank47f7da1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/47f7da15038de3ec0fdbec4fd1bbe1077de03409" target="_blank">47f7da1</a> </a>
->>>>>>> Stashed changes
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree68cd7b55a303e78787217e285321fda9e548c758targetblank68cd7b5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/68cd7b55a303e78787217e285321fda9e548c758" target="_blank">68cd7b5</a> </a>
 </p>
 </div>
-<<<<<<< Updated upstream
-<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistreebb242cc24bdc7e7846dceb592179a49cd5bbe19dtargetblankbb242cca" class="panel-collapse collapse">
-||||||| merged common ancestors
-<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree791d8466f5ca230060639b396c3ba07519c63699targetblank791d846a" class="panel-collapse collapse">
-=======
-<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree47f7da15038de3ec0fdbec4fd1bbe1077de03409targetblank47f7da1a" class="panel-collapse collapse">
->>>>>>> Stashed changes
+<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree68cd7b55a303e78787217e285321fda9e548c758targetblank68cd7b5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
-<<<<<<< Updated upstream
-working directory clean
-||||||| merged common ancestors
 Ignored files:
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  docs/figure/
 
 Unstaged changes:
+    Modified:   _workflowr.yml
+    Modified:   analysis/20190625.ds_blood_sf3b1.Rmd
     Modified:   analysis/index.Rmd
 
-=======
-Ignored files:
-    Ignored:    .Rproj.user/
-
->>>>>>> Stashed changes
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -441,77 +427,23 @@ Message
 <tbody>
 <tr>
 <td>
-<<<<<<< Updated upstream
-||||||| merged common ancestors
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/791d8466f5ca230060639b396c3ba07519c63699/docs/index.html" target="_blank">791d846</a>
+<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/68cd7b55a303e78787217e285321fda9e548c758/docs/index.html" target="_blank">68cd7b5</a>
 </td>
 <td>
 Benjmain Fair
 </td>
 <td>
-2019-06-24
+2019-06-25
 </td>
 <td>
-update site index
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/analysis/index.Rmd" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-<td>
-intialize site
+fixing conflicts
 </td>
 </tr>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/index.html" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-<td>
-intialize site
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/7f81c74c447a2a8ec3bf8cf6ff3a53574679cc47/docs/index.html" target="_blank">7f81c74</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-18
-</td>
-<td>
-initialize site
-</td>
-</tr>
-<tr>
-<td>
-=======
 Rmd
 </td>
 <td>
@@ -614,7 +546,6 @@ initialize site
 </tr>
 <tr>
 <td>
->>>>>>> Stashed changes
 Rmd
 </td>
 <td>
@@ -638,6 +569,20 @@ Start workflowr project.
 </div>
 </div>
 <p>Welcome to my research website.</p>
+<p>Here I will be using snaptron dataset (compilation of public RNA-seq datasets from GTEx, SRA2, and The Cancer Genome Atlas) to analyze SF3B1 mutations.</p>
+<p>Firstly, I will reproduce results from Seiller et al 2018 which used TCGA RNA-seq datasets from various cancer types that contain recurrent SF3B1 mutations. They noticed that priciple component analysis (based on PSI ratios of junctions identified as differentially spliced in Darman et al) separates sf3b1 mut from wildtype on the first PC.</p>
+<ul>
+<li>That analysis <a href="TCGA_sf3b1_reproduce_seiller.html">here</a></li>
+</ul>
+<p>Then I used the same list of junctions to separate samples from mostly independent datasets in TCGA and SRA2 samples (I gathered all ~6400 samples in SRA2, GTEx, and TCGA which are either in blood or bone marrow, most of which are unlabelled with regards to SF3B1 mutant status and can be safely assumed to be SF3B1-wt).</p>
+<ul>
+<li>That analysis <a href="">here</a></li>
+</ul>
+<p>From this list of samples, I saw separation in PC-space between known sf3b1-mut and sf3b1-wt, as well the many samples which are unlabelled could be classified into these two groups. From here I chose ~90 samples that clustered with the wt samples, and ~90 that clustered with mut and performed differential splicing analysis with leafcutter.</p>
+<ul>
+<li>That analysis <a href="20190625.ds_blood_sf3b1.html">here</a></li>
+</ul>
+<p>I will use these differentially spliced junctions (in particular alternative, upstream 3’ss that are upregulated in sf3b1-mut) to design MPE-seq primers.</p>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
