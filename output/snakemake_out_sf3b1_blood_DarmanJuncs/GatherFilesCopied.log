@@ -1,2 +1,2 @@
-Mon Jun 24 17:57:09 CDT 2019
+Tue Jun 25 23:52:11 CDT 2019
 ../../output/snakemake_out_sf3b1_blood_DarmanJuncs/CountTableNumerators.gz ../../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.SRA2.txt.gz ../../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.GTEX.txt.gz ../../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.TCGA.txt.gz logs/delete_temp_files/AML_CLL_BLOOD_MARROW_TCGA-AML_GTEX-CML-BLOOD.juncfiles_DarmanDiffJunctions.LiftedToHg38.bed.flanked1K.bed.log

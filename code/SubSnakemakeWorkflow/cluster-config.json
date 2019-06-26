@@ -6,10 +6,10 @@
   {"mem" : 8000, "parition":"broadwl"},
 
   "leafcutter_cluster_perchrom" : 
-  {"mem" : 42000, "parition":"broadwl"},
+  {"mem" : 24000, "parition":"broadwl"},
 
   "leafcutter_cluster" :
-  {"mem" : 42000, "partition":"broadwl"},
+  {"mem" : 24000, "partition":"broadwl"},
 
   "leafcutter_ds" :
   {"mem" : 16000, "partition":"broadwl", "tasks-per-node": 6}

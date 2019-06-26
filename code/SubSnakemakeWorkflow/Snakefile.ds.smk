@@ -10,7 +10,7 @@ rule all:
         Prefix + "CountTableNumerators.gz",
         expand(Prefix + "SnaptronMetadata.{snapdb}.txt.gz", snapdb=snaptron_samples.index),
         "logs/delete_temp_files/{Samples_TargetJunctions}.log".format(Samples_TargetJunctions=Samples_TargetJunctions),
-        "leafcutter/differential_splicing/{leafcutter_outprefix}_effect_sizes.txt".format(leafcutter_outprefix = leafcutter_ds_outprefix),
+        Prefix + "leafcutter.ds.effect_sizes.txt.gz",
     output:
         Prefix + "GatherFilesCopied.log"
     shell:

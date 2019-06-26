@@ -1,2 +1,2 @@
-Mon Jun 24 15:40:01 CDT 2019
+Tue Jun 25 23:46:19 CDT 2019
 ../../output/snakemake_out_sf3b1_TCGA/CountTableNumerators.gz ../../output/snakemake_out_sf3b1_TCGA/SnaptronMetadata.SRA2.txt.gz ../../output/snakemake_out_sf3b1_TCGA/SnaptronMetadata.GTEX.txt.gz ../../output/snakemake_out_sf3b1_TCGA/SnaptronMetadata.TCGA.txt.gz logs/delete_temp_files/TCGA_BRCA.LAML.SKCM.THYM.UCEC.UVM.BLCA.juncfile_DarmanDiffJunctions.LiftedToHg38.bed.flanked1K.bed.log

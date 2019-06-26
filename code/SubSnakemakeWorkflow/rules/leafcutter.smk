@@ -32,10 +32,11 @@ rule leafcutter_cluster:
     log:
         "logs/leafcutter_cluster/{Samples_TargetJunctions}/{{chromosome}}.log".format(Samples_TargetJunctions=Samples_TargetJunctions)
     params:
-        rundir = config["scratch_prefix"] + "leafcutter/clustering/{Samples_TargetJunctions}/{{chromosome}}/".format(Samples_TargetJunctions=Samples_TargetJunctions)
+        rundir = config["scratch_prefix"] + "leafcutter/clustering/{Samples_TargetJunctions}/{{chromosome}}/".format(Samples_TargetJunctions=Samples_TargetJunctions),
+        Extra = config["leafcutter_cluster_extra_params"]
     shell:
         """
-        leafcutter_cluster.py -j {input.leafcutter_juncfile} -r {params.rundir} &> {log}
+        leafcutter_cluster.py -j {input.leafcutter_juncfile} -r {params.rundir} {params.Extra} &> {log}
         """
 
 rule rearrange_leafcutter_cluster_counts:

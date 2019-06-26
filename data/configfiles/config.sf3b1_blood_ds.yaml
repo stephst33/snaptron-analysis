@@ -18,6 +18,8 @@ scratch_prefix: "/scratch/midway2/bjf79/recurrent-splicing/"
 # for testing
 junction_intersect_bed:
 
+leafcutter_cluster_extra_params: "-s True"
+
 # If true, some steps including leafclutter_cluster will be run on a
 # chromosome-by-chromosome basis and then merged for better parallelization
 # and memory limitations.
