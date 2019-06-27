@@ -1,7 +1,7 @@
 ---
-title: "20190626_ds_sf3b1_blood"
+title: "20190627_DiffSplicingBloodSf3b1_GTExOnly"
 author: "Ben Fair"
-date: "6/25/2019"
+date: "6/27/2019"
 output: html_document
 ---
 
@@ -28,8 +28,8 @@ library("RColorBrewer")
 ```{r}
 #read-count-table
 
-Numers <- '../output/snakemake_out_sf3b1_blood_ds/CountTableNumerators.gz'
-Denoms <- '../output/snakemake_out_sf3b1_blood_ds/CountTableDenominators.gz'
+Numers <- '../output/snakemake_out_sf3b1_GTEXblood_ds/CountTableNumerators.gz'
+Denoms <- '../output/snakemake_out_sf3b1_GTEXblood_ds/CountTableDenominators.gz'
 
 NumeratorCountTable <- fread(paste0("gunzip -c ", Numers), sep=" ", header=TRUE, data.table=FALSE)
 DenominatorCountTable <- fread(paste0("gunzip -c ", Denoms), sep=" ", header=TRUE, data.table=FALSE)
@@ -41,9 +41,9 @@ row.names(PSI_Table) <- gsub(":clu_.+", "", NumeratorCountTable$chrom)
 PSI_Table[is.na(PSI_Table)] <- 0
 
 #read-leafcutter differntial splicing results
-effect.sizes <- read.table(gzfile("../output/snakemake_out_sf3b1_blood_ds/leafcutter.ds.effect_sizes.txt.gz"), header=T)
+effect.sizes <- read.table(gzfile("../output/snakemake_out_sf3b1_GTEXblood_ds/leafcutter.ds.effect_sizes.txt.gz"), header=T)
 
-cluster.significance <- fread(paste0("gunzip -c ", "../output/snakemake_out_sf3b1_blood_ds/leafcutter.ds.cluster_sig.txt.gz"), sep="\t", header=TRUE, data.table=FALSE)
+cluster.significance <- fread(paste0("gunzip -c ", "../output/snakemake_out_sf3b1_GTEXblood_ds/leafcutter.ds.cluster_sig.txt.gz"), sep="\t", header=TRUE, data.table=FALSE)
 
 leafcutter.merged <- effect.sizes %>%
   mutate(cluster=gsub("(.+?:).+?:.+?:(clu.+?)", "\\1\\2", intron, perl=T)) %>%
@@ -64,7 +64,7 @@ leafcutter.merged %>%
 # and how many are significant (padjust<0.05, 0.01)
 leafcutter.merged %>%
   distinct(cluster, .keep_all = T) %>% 
-  filter(p.adjust<0.01) %>% dim()
+  filter(p.adjust<0.1) %>% dim()
 
 #histogram of pvalues
 leafcutter.merged %>%
@@ -147,7 +147,7 @@ Top1000Introns <- leafcutter.merged %>%
   ungroup() %>%
   top_n(-1000, p) %>% pull(intron)
 
-Groups <- read.table("../data/other_snakemake_data/Blood_sf3b1_contrast.groups.txt")
+Groups <- read.table("../data/other_snakemake_data/GTEX_Blood_sf3b1.groups")
 
 
 #First make a heatmap of Darman et al junctions
@@ -165,30 +165,3 @@ Heatmap <- PSI_Table[Top1000Introns,] %>%
   as.data.frame() %>% drop_na() %>% as.matrix()
 heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", key.title="PSI-Zscore", ColSideColors=HeatmapGroupLabels)
 ```
-
-Ok it seems the leafcutter identified introns don't segregate the samples cleanly into two sf3b1-related clusters (sf3b1-mut and sf3b1-wt) in the way that the Darman identified junctions do... This could be due to uncontrolled for confounders (study, tissue, batch, etc).
-
-To test that hypothesis, I'll try making the heatmap again, coloring the column labels by the study origin or tissue origin:
-
-```{r}
-SRA_metadata <- read.delim(gzfile("../output/snakemake_out_sf3b1_blood_ds/SnaptronMetadata.SRA2.txt.gz"))
-
-MetadataOfSamples <- data.frame(colnames(Heatmap)) %>%
-  mutate(rail_id=as.numeric(gsub("\\.project2\\.yangili1\\.snaptron\\.processed_to_bedfiles\\..+?\\.(.+)", "\\1", colnames(Heatmap), perl=T))) %>% 
-  left_join(SRA_metadata, by="rail_id")
-
-
-#color accoring to source (tissue of origin)
-HeatmapGroupLabels <- plyr::mapvalues(colnames(Heatmap), from=MetadataOfSamples$colnames.Heatmap., to=MetadataOfSamples$source_name, warn_missing = FALSE)
-
-Heatmap <- PSI_Table[Top1000Introns,] %>%
-  t() %>% scale(scale=F) %>% t() %>%
-  as.data.frame() %>% drop_na() %>% as.matrix()
-heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", key.title="PSI-Zscore", ColSideColors=HeatmapGroupLabels)
-```
-
-There is clearly some unaccounted for covariates that are driving part of the clustering. As a starting point, I should redo the differential splicing with a well-controlled set of samples from the same study.
-
-First I will look at PC space based on these set of junctions, and see if perhaps sf3b1mut-wt separates in any of the top PCs. Additionally, another exersize to do is to look within a single tissue type at the same set of junctions identified by this meta-tissue analysis.
-
-

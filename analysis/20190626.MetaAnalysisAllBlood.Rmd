@@ -20,5 +20,150 @@ library(ggrepel)
 library(tidyverse)
 library(gplots)
 library(knitr)
-library("RColorBrewer")
 ```
+
+```{r}
+gsub2 <- function(searchstring, replacestring, query){
+  # function like gsub but will return NA if no match
+  ind <- grep(searchstring,query,value = FALSE)
+  query <- gsub(searchstring, replacestring, query, perl=T)
+  query[-ind] <- NA
+  query
+}
+
+
+Numers <- '../output/snakemake_out_sf3b1_blood_DarmanJuncs/CountTableNumerators.gz'
+Denoms <- '../output/snakemake_out_sf3b1_blood_DarmanJuncs/CountTableDenominators.gz'
+
+NumeratorCountTable <- fread(paste0("gunzip -c ", Numers), sep=" ", header=TRUE, data.table=FALSE)
+DenominatorCountTable <- fread(paste0("gunzip -c ", Denoms), sep=" ", header=TRUE, data.table=FALSE)
+
+PSI_Table <- NumeratorCountTable[-1]/DenominatorCountTable[-1]
+row.names(PSI_Table) <- gsub(":clu_.+", "", NumeratorCountTable$chrom)
+colnames(PSI_Table) <- gsub(".+\\.(.+$)", "\\1", colnames(PSI_Table), perl=T)
+
+#Replace NaNs from 0/0 operation
+PSI_Table[is.na(PSI_Table)] <- 0
+
+# DifferentialJunctionsList <- read.table('/Users/benfair/Downloads/Seiler_S3B1InBRCA_DifferentialJunctions.txt', header=F)
+DifferentialJunctionsList <- read.table('../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed', header=F)
+
+# Make new id, for easier use in later filtering. Note that coordinates may need to add 1
+DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$V1, DifferentialJunctionsList$V2 + 1, DifferentialJunctionsList$V3 + 1, sep=":")
+
+# PCA using PSI
+PCResults <- (PSI_Table) %>%
+  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %>%
+  t() %>%
+  prcomp(center=T, scale=T) 
+
+
+#Read in metadata for SRA2
+SRA2Metadata <- fread('../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.SRA2.txt.gz', header=TRUE, sep='\t', na.strings = "NA", stringsAsFactors = F)
+SRA2Metadata$rail_id <- as.character(SRA2Metadata$rail_id)
+SRA2Metadata$source <- "SRA2"
+
+#Read in metadata for GTEX
+GTEXMetadata <- read.delim('../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.GTEX.txt.gz', header=TRUE, sep='\t', na.strings = "NA", stringsAsFactors = F)
+GTEXMetadata$rail_id <- as.character(GTEXMetadata$rail_id)
+GTEXMetadata$source <- "GTEX"
+
+#Read in metadata for TCGA
+TCGAMetadata <- read.delim('../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.TCGA.txt.gz', row.names=1, na.strings = "NA", stringsAsFactors = T, header=T)
+
+# truncated TCGA barcodes are easier to match and merge with Seiller et al metadata
+TCGAMetadata$TruncatedTCGA <- gsub("-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]", "", TCGAMetadata$gdc_cases.samples.portions.analytes.submitter_id)
+TCGAMetadata$rail_id <- row.names(TCGAMetadata)
+TCGAMetadata$source <- "TCGA"
+
+# Read in Mutations list metadata from Seiller et al and add to metadata
+MutationList <- data.frame(read_excel("../data/other_snakemake_data/SeillerEtAl_MutationList.xlsx"))
+MutationList$TruncatedTCGA <- gsub("-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]-\\w{4}-\\w{2}$", "", MutationList$Tumor_Sample_Barcode)
+
+# Add labels to help distinguish SF3B1 hotspot mutations from other SF3B1 mutations in plot
+MutationList$Mutant_aa <- paste(MutationList$Hugo_Symbol, MutationList$Protein_position, MutationList$Amino_acids, sep=":")
+MutationList$Mutant_aa[which(MutationList$Hugo_Symbol!="SF3B1")] <- NA
+
+
+Metadata <- MutationList %>%
+  filter(Amino_acids != ".") %>%
+  distinct(TruncatedTCGA, .keep_all=TRUE) %>%
+  right_join(TCGAMetadata, by = "TruncatedTCGA", copy = FALSE) %>% 
+  full_join(SRA2Metadata, by = c("junction_coverage", "junction_avg_coverage", "rail_id", "source")) %>%
+  full_join(GTEXMetadata, by = c("junction_coverage", "junction_avg_coverage", "rail_id", "source")) %>%
+  filter(rail_id!="1") %>% 
+  mutate(sf3b1status = gsub2('.+?\\"(sf3b1.+?:.+?)\\".+', "\\1", characteristics.y)) %>%
+  unite("Combined.sf3b1", sf3b1status, Mutant_aa)
+
+Metadata$Combined.sf3b1[which(Metadata$Combined.sf3b1=="NA_NA")] <- NA
+
+BloodContrast <- read.table("../data/other_snakemake_data/GTEX_Blood_sf3b1.groups", col.names = c("file", "groups"))
+BloodContrast$railid <- gsub(".+\\.(.+$)", "\\1", BloodContrast$file, perl=T)
+
+# Rename rows for easier merging later
+PCResults.df <- as.data.frame(PCResults$x)
+PCResults.df$rail_id <- sub("juncfiles\\..+?\\.", "", rownames(PCResults.df))
+ToPlot <- left_join(PCResults.df, Metadata, by = "rail_id")
+
+ggplot(ToPlot, aes(x=PC1, y=PC2, label=Combined.sf3b1, color=source)) + 
+  geom_point(alpha=1) + 
+  geom_text_repel(size=2, color="black") +
+  theme(legend.title = element_blank(), legend.text=element_text(size=6)) +
+  theme_bw()
+
+```
+
+
+
+Ok try to get matched wildtype and mutants from same studies and balanced for other factors
+
+```{r}
+StudiesWithMutants <- ToPlot %>%
+  filter(PC1<=-10 & PC2<=-20 & !is.na(study_ID)) %>%
+  select(study_ID) %>% distinct() %>% pull()
+
+ToPlot %>% filter(study_ID %in% StudiesWithMutants) %>%
+ggplot(aes(x=PC1, y=PC2, label=Combined.sf3b1)) + 
+  geom_point(alpha=1) + 
+  geom_text_repel(size=2, color="black") +
+  theme(legend.title = element_blank(), legend.text=element_text(size=6)) +
+  theme_bw()
+
+PoolToPickSamples <- ToPlot %>%
+  mutate(CovariateInfo=paste(study_ID, cell_type, tissue,	cell_line))
+
+Cases <- PoolToPickSamples %>%
+  filter(PC1<=-10 & PC2<=-20 & !is.na(study_ID)) %>% 
+  mutate(Status="Case") %>%
+  select(rail_id, CovariateInfo, Status)
+
+Controls <- PoolToPickSamples %>% filter(PC1<=-10 & PC2<=-10) %>%
+  filter(study_ID %in% StudiesWithMutants) %>%
+  sample_n(95) %>%
+  mutate(Status="Control") %>%
+  select(rail_id, CovariateInfo, Status)
+
+#Check that study is balanced with regards to balancing covariates across cases and controls
+rbind(Cases, Controls) %>%
+  ggplot(aes(x=CovariateInfo, color=Status)) +
+  geom_bar() +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size=3))
+  
+```
+
+Write out samples for new differential splicing contrast with leafcutter (groups file, junctions file)
+
+```{r}
+rbind(Cases, Controls) %>%
+  mutate(fullSampleName=paste0(".project2.yangili1.snaptron.processed_to_bedfiles.SRA2.", rail_id)) %>%
+  select(fullSampleName, Status) %>%
+  write.table("../data/other_snakemake_data/MostlyMarrowContrast.groups", sep='\t', quote=F, col.names = F, row.names = F)
+  
+rbind(Cases, Controls) %>%
+  mutate(fullSampleName=paste0("/project2/yangili1/snaptron/processed_to_bedfiles/SRA2/", rail_id, ".junc")) %>%
+  select(fullSampleName) %>%
+  write.table("../data/other_snakemake_data/MostlyMarrowContrast.juncfiles", sep='\t', quote=F, col.names = F, row.names = F)
+```
+
+

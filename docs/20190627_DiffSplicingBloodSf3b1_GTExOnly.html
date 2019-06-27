@@ -12,7 +12,7 @@
 <meta name="author" content="Ben Fair" />
 
 
-<title>TCGA_sf3b1_reproduce_seiller</title>
+<title>20190627_DiffSplicingBloodSf3b1_GTExOnly</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -409,16 +409,16 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">TCGA_sf3b1_reproduce_seiller</h1>
+<h1 class="title toc-ignore">20190627_DiffSplicingBloodSf3b1_GTExOnly</h1>
 <h4 class="author">Ben Fair</h4>
-<h4 class="date">6/24/2019</h4>
+<h4 class="date">6/27/2019</h4>
 
 </div>
 
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -427,7 +427,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -439,7 +439,7 @@ div.section {
 <strong>Last updated:</strong> 2019-06-27
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>snaptron-analysis/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -455,12 +455,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has staged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -542,7 +542,6 @@ Ignored files:
 
 Untracked files:
     Untracked:  docs/figure/20190626.MetaAnalysisAllBlood.Rmd/
-    Untracked:  docs/figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/
 
 Unstaged changes:
     Modified:   data/other_snakemake_data/MostlyMarrowContrast.groups
@@ -566,103 +565,9 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/cc5cddb4d613d57dad4372fab633cdfef51418da/analysis/TCGA_sf3b1_reproduce_seiller.Rmd" target="_blank">cc5cddb</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-26
-</td>
-<td>
-update
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/TCGA_sf3b1_reproduce_seiller.html" target="_blank">e10b2f8</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-25
-</td>
-<td>
-update site
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/analysis/TCGA_sf3b1_reproduce_seiller.Rmd" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-<td>
-intialize site
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/TCGA_sf3b1_reproduce_seiller.html" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-<td>
-intialize site
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
@@ -677,8 +582,10 @@ library(tidyverse)
 library(gplots)
 library(knitr)
 library(&quot;RColorBrewer&quot;)</code></pre>
-<pre class="r"><code>Numers &lt;- &#39;../output/snakemake_out_sf3b1_TCGA/CountTableNumerators.gz&#39;
-Denoms &lt;- &#39;../output/snakemake_out_sf3b1_TCGA/CountTableDenominators.gz&#39;
+<pre class="r"><code>#read-count-table
+
+Numers &lt;- &#39;../output/snakemake_out_sf3b1_GTEXblood_ds/CountTableNumerators.gz&#39;
+Denoms &lt;- &#39;../output/snakemake_out_sf3b1_GTEXblood_ds/CountTableDenominators.gz&#39;
 
 NumeratorCountTable &lt;- fread(paste0(&quot;gunzip -c &quot;, Numers), sep=&quot; &quot;, header=TRUE, data.table=FALSE)
 DenominatorCountTable &lt;- fread(paste0(&quot;gunzip -c &quot;, Denoms), sep=&quot; &quot;, header=TRUE, data.table=FALSE)
@@ -689,318 +596,213 @@ row.names(PSI_Table) &lt;- gsub(&quot;:clu_.+&quot;, &quot;&quot;, NumeratorCoun
 #Replace NaNs from 0/0 operation
 PSI_Table[is.na(PSI_Table)] &lt;- 0
 
-# DifferentialJunctionsList &lt;- read.table(&#39;/Users/benfair/Downloads/Seiler_S3B1InBRCA_DifferentialJunctions.txt&#39;, header=F)
-DifferentialJunctionsList &lt;- read.table(&#39;../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed&#39;, header=F)
+#read-leafcutter differntial splicing results
+effect.sizes &lt;- read.table(gzfile(&quot;../output/snakemake_out_sf3b1_GTEXblood_ds/leafcutter.ds.effect_sizes.txt.gz&quot;), header=T)
+
+cluster.significance &lt;- fread(paste0(&quot;gunzip -c &quot;, &quot;../output/snakemake_out_sf3b1_GTEXblood_ds/leafcutter.ds.cluster_sig.txt.gz&quot;), sep=&quot;\t&quot;, header=TRUE, data.table=FALSE)
+
+leafcutter.merged &lt;- effect.sizes %&gt;%
+  mutate(cluster=gsub(&quot;(.+?:).+?:.+?:(clu.+?)&quot;, &quot;\\1\\2&quot;, intron, perl=T)) %&gt;%
+  mutate(junc_id=gsub(&quot;(.+?:.+?:.+?):clu.+&quot;, &quot;\\1&quot;, intron, perl=T)) %&gt;%
+  left_join(cluster.significance, by=&quot;cluster&quot;)
+
+kable(head(leafcutter.merged))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">intron</th>
+<th align="right">logef</th>
+<th align="right">SF3B1.mut</th>
+<th align="right">SF3B1.wt</th>
+<th align="right">deltapsi</th>
+<th align="left">cluster</th>
+<th align="left">junc_id</th>
+<th align="left">status</th>
+<th align="right">loglr</th>
+<th align="right">df</th>
+<th align="right">p</th>
+<th align="right">p.adjust</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">chr1:2185365:2193639:clu_100_-</td>
+<td align="right">-0.2856022</td>
+<td align="right">0.0085594</td>
+<td align="right">0.0059107</td>
+<td align="right">-0.0026487</td>
+<td align="left">chr1:clu_100_-</td>
+<td align="left">chr1:2185365:2193639</td>
+<td align="left">Success</td>
+<td align="right">2.614702</td>
+<td align="right">7</td>
+<td align="right">0.6319904</td>
+<td align="right">0.8902852</td>
+</tr>
+<tr class="even">
+<td align="left">chr1:2185514:2186004:clu_100_-</td>
+<td align="right">0.5183319</td>
+<td align="right">0.0076270</td>
+<td align="right">0.0117677</td>
+<td align="right">0.0041407</td>
+<td align="left">chr1:clu_100_-</td>
+<td align="left">chr1:2185514:2186004</td>
+<td align="left">Success</td>
+<td align="right">2.614702</td>
+<td align="right">7</td>
+<td align="right">0.6319904</td>
+<td align="right">0.8902852</td>
+</tr>
+<tr class="odd">
+<td align="left">chr1:2185514:2186838:clu_100_-</td>
+<td align="right">0.1274484</td>
+<td align="right">0.0119486</td>
+<td align="right">0.0124709</td>
+<td align="right">0.0005222</td>
+<td align="left">chr1:clu_100_-</td>
+<td align="left">chr1:2185514:2186838</td>
+<td align="left">Success</td>
+<td align="right">2.614702</td>
+<td align="right">7</td>
+<td align="right">0.6319904</td>
+<td align="right">0.8902852</td>
+</tr>
+<tr class="even">
+<td align="left">chr1:2185514:2193639:clu_100_-</td>
+<td align="right">-0.1875492</td>
+<td align="right">0.0320045</td>
+<td align="right">0.0243774</td>
+<td align="right">-0.0076271</td>
+<td align="left">chr1:clu_100_-</td>
+<td align="left">chr1:2185514:2193639</td>
+<td align="left">Success</td>
+<td align="right">2.614702</td>
+<td align="right">7</td>
+<td align="right">0.6319904</td>
+<td align="right">0.8902852</td>
+</tr>
+<tr class="odd">
+<td align="left">chr1:2189782:2192845:clu_100_-</td>
+<td align="right">0.2596863</td>
+<td align="right">0.0759886</td>
+<td align="right">0.0905227</td>
+<td align="right">0.0145340</td>
+<td align="left">chr1:clu_100_-</td>
+<td align="left">chr1:2189782:2192845</td>
+<td align="left">Success</td>
+<td align="right">2.614702</td>
+<td align="right">7</td>
+<td align="right">0.6319904</td>
+<td align="right">0.8902852</td>
+</tr>
+<tr class="even">
+<td align="left">chr1:2189782:2193639:clu_100_-</td>
+<td align="right">0.1419074</td>
+<td align="right">0.7020649</td>
+<td align="right">0.7434218</td>
+<td align="right">0.0413569</td>
+<td align="left">chr1:clu_100_-</td>
+<td align="left">chr1:2189782:2193639</td>
+<td align="left">Success</td>
+<td align="right">2.614702</td>
+<td align="right">7</td>
+<td align="right">0.6319904</td>
+<td align="right">0.8902852</td>
+</tr>
+</tbody>
+</table>
+<p>Ok now let’s check that the leafcutter differential splicing results make sense. Some diagnositic plots:</p>
+<pre class="r"><code># how many clusters are there
+leafcutter.merged %&gt;%
+  distinct(cluster, .keep_all = T) %&gt;% dim()</code></pre>
+<pre><code>[1] 15604    12</code></pre>
+<pre class="r"><code># and how many are significant (padjust&lt;0.05, 0.01)
+leafcutter.merged %&gt;%
+  distinct(cluster, .keep_all = T) %&gt;% 
+  filter(p.adjust&lt;0.1) %&gt;% dim()</code></pre>
+<pre><code>[1]  2 12</code></pre>
+<pre class="r"><code>#histogram of pvalues
+leafcutter.merged %&gt;%
+  distinct(cluster, .keep_all = T) %&gt;% 
+  ggplot(aes(x=p)) +
+    geom_histogram() +
+    theme_bw()</code></pre>
+<p><img src="figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#volcano plot of cluster-pvalues and largest within-cluster-log effect size
+leafcutter.merged %&gt;%
+  mutate(abs.logef = abs(logef)) %&gt;%
+  group_by(cluster) %&gt;%
+  slice(which.max(abs.logef)) %&gt;%
+  mutate(sig=p.adjust&lt;0.05) %&gt;%
+  ggplot(aes(x=logef, y=-log10(p), color=sig)) +
+    geom_point(alpha=0.05) +
+    scale_x_continuous(limits=c(-10,10)) +
+    theme_bw()</code></pre>
+<p><img src="figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Same plot but for delta-PSI instead of log-effect size…</p>
+<pre class="r"><code># volcano plot of cluster-pvalues and largest within-cluster-delta-psi
+leafcutter.merged %&gt;%
+  mutate(abs.deltapsi = abs(deltapsi)) %&gt;%
+  group_by(cluster) %&gt;% 
+  slice(which.max(abs.deltapsi)) %&gt;% 
+  mutate(sig=p.adjust&lt;0.05) %&gt;%
+  ggplot(aes(x=deltapsi, y=-log10(p), color=sig)) +
+    geom_point(alpha=0.05) +
+    theme_bw()</code></pre>
+<p><img src="figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Now let’s check that the junctions identified in Darman et al are enriched for small P-values</p>
+<pre class="r"><code>DarmanJunctionsList &lt;- read.table(&#39;../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed&#39;, header=F)
 
 # Make new id, for easier use in later filtering. Note that coordinates may need to add 1
-DifferentialJunctionsList$junc_id &lt;- paste(DifferentialJunctionsList$V1, DifferentialJunctionsList$V2 + 1, DifferentialJunctionsList$V3 + 1, sep=&quot;:&quot;)
+DarmanJunctionsList$junc_id &lt;- paste(DarmanJunctionsList$V1, DarmanJunctionsList$V2 + 1, DarmanJunctionsList$V3 + 1, sep=&quot;:&quot;)
 
-# PCA using PSI
-PCResults &lt;- (PSI_Table) %&gt;%
-  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %&gt;%
-  t() %&gt;%
-  prcomp(center=T, scale=T)
-PCResults.df &lt;- as.data.frame(PCResults$x[,1:10]) %&gt;% rownames_to_column()
+NotInDarman&lt;-leafcutter.merged %&gt;% 
+  group_by(cluster) %&gt;%
+  filter(!any(junc_id %in% DarmanJunctionsList$junc_id)) %&gt;%
+  slice(which.min(p))
+InDarman&lt;-leafcutter.merged %&gt;% 
+  group_by(cluster) %&gt;%
+  filter(any(junc_id %in% DarmanJunctionsList$junc_id)) %&gt;%
+  slice(which.min(p))
 
-#Read in metadata for TCGA
-TCGAMetadata &lt;- read.delim(gzfile(&#39;../output/snakemake_out_sf3b1_TCGA/SnaptronMetadata.TCGA.txt.gz&#39;), row.names=1, na.strings = &quot;NA&quot;, stringsAsFactors = T, header=T)
+## QQ-plot of cluster P-vals, grouped by whether cluster contains in intron identified as differentially spliced in Daraman et al.
+ggplot(NotInDarman, aes(color=&quot;NotInDarman&quot;, y=-log10(sort(p)), x=-log10(1:length(p)/length(p)))) +
+  geom_point() +
+  geom_point(data=InDarman, aes(color=&quot;InDarman&quot;)) +
+  xlab(&quot;-log10(Theoretical-Pvalues)&quot;) +
+  ylab(&quot;-log10(Observed-Pvalues)&quot;) +
+  geom_abline() +
+  theme_bw() +
+  theme(legend.position=&quot;bottom&quot;) +
+  theme(legend.title=element_blank())</code></pre>
+<p><img src="figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>PCA and heatmap of differentially spliced introns</p>
+<pre class="r"><code>#Get top intron within each cluster (by delta-psi) then subset the top 1000 clusters by Pval. This is the top1000 introns that will be used to plot heatmap of PSI
+Top1000Introns &lt;- leafcutter.merged %&gt;%
+  mutate(abs.deltapsi = abs(logef)) %&gt;%
+  group_by(cluster) %&gt;%
+  slice(which.max(abs.deltapsi)) %&gt;%
+  ungroup() %&gt;%
+  top_n(-1000, p) %&gt;% pull(intron)
 
-# truncated TCGA barcodes are easier to match and merge with Seiller et al metadata
-TCGAMetadata$TruncatedTCGA &lt;- gsub(&quot;-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]&quot;, &quot;&quot;, TCGAMetadata$gdc_cases.samples.portions.analytes.submitter_id)
-TCGAMetadata$rail_id &lt;- row.names(TCGAMetadata)
-TCGAMetadata$source &lt;- &quot;TCGA&quot;
-
-MutationList &lt;- data.frame(read_excel(&quot;../data/other_snakemake_data/SeillerEtAl_MutationList.xlsx&quot;))
-MutationList$TruncatedTCGA &lt;- gsub(&quot;-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]-\\w{4}-\\w{2}$&quot;, &quot;&quot;, MutationList$Tumor_Sample_Barcode)
-
-# Add labels to help distinguish SF3B1 hotspot mutations from other SF3B1 mutations in plot
-# MutationList$Mutant_aa &lt;- paste(MutationList$Hugo_Symbol, MutationList$Protein_position, MutationList$Amino_acids, sep=&quot;:&quot;)
-MutationList$Mutant_aa &lt;- paste(MutationList$Protein_position, MutationList$Amino_acids, sep=&quot;:&quot;)
-
-MutationList$Mutant_aa[which(MutationList$Hugo_Symbol!=&quot;SF3B1&quot;)] &lt;- &quot;&quot;</code></pre>
-<p>Ok so far I have read in the splice junction count tables created by leafcutter (a numerator and a denominator table, which when divided is a PSI-like metric of splicing). Furthermore, I have used TCGA barcodes to match the samples to their splicing factor mutation status as documented in a supplemental table from (Seiller et al 2018).</p>
-<p>Now let’s plot SF3B1 mutation positions grouped by cancer sub-type. I expect most cancers to show a hotspot around amino acids 600-750, but different cancer types will have different mutation frequencies.</p>
-<pre class="r"><code>#Plot hotspots
-MutationList %&gt;%
-  # filter(Cohort %in% c(&quot;LAML&quot;, &quot;SKCM&quot;, &quot;BRCA&quot;, &quot;BLCA&quot;, &quot;THYM&quot;, &quot;UCEC&quot;, &quot;UVM&quot;)) %&gt;%
-  filter(Hugo_Symbol %in% c(&quot;SF3B1&quot;)) %&gt;%
-  ggplot(aes(as.numeric(Protein_position))) +
-  geom_histogram(aes(fill=Cohort_simplified),position=&quot;dodge&quot;, bins=50) +
-  theme_bw()</code></pre>
-<p><img src="figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
-Past versions of unnamed-chunk-2-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-2-1.png" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>  # geom_density(aes(color=Cohort_simplified))</code></pre>
-<p>Ok good. Now let’s plot all the samples in the same PC space based on the differentially spliced introns identified in Darman et al. Same as to what is observed in Seiller et al, I expect this PC space will distinguish SF3B1 mutant from wildtype, and the 902 hotspot will not separate in this PC space as it is a functionally distinct mutation.</p>
-<pre class="r"><code># MutationList$Cohort_simplified
-Metadata &lt;- MutationList %&gt;%
-  filter(Amino_acids != &quot;.&quot;) %&gt;%
-  distinct(TruncatedTCGA, .keep_all=TRUE) %&gt;%
-  right_join(TCGAMetadata, by = &quot;TruncatedTCGA&quot;, copy = FALSE)
-
-ToPlot &lt;- PCResults.df %&gt;%
-  mutate(rail_id=gsub(&quot;.project2.yangili1.snaptron.processed_to_bedfiles.TCGA.&quot;,&quot;&quot;, rowname)) %&gt;%
-  left_join(Metadata, by=&quot;rail_id&quot;) %&gt;%
-  mutate(CancerType=gsub(&quot;TCGA-&quot;,&quot;&quot;, gdc_cases.project.project_id))
+Groups &lt;- read.table(&quot;../data/other_snakemake_data/GTEX_Blood_sf3b1.groups&quot;)
 
 
-# gdc_cases.project.project_id
-ggplot(ToPlot, aes(x=PC1, y=PC2, color=CancerType, label=Mutant_aa)) +
-  geom_text(alpha=1, size=2.2) +
-  # geom_point(alpha=0.5) +
-  # geom_text_repel(size=2.2) +
-  theme_bw()</code></pre>
-<p><img src="figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-3-1.png" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Ok good. there it seems that the first PC does distinguish mut from wt, and later PCs seem to be separating tumor/tissue type.</p>
-<p>It will also be nice to look at a heatmap of this feature space from which the PCA is based on… I will do this for only ~50 SF3B1 mutant samples (PC1&lt;-15) and 150 SF3B1 wildtype samples (PC1&gt;-15)… If I included all the samples it would be too dense a heatmap</p>
-<pre class="r"><code>set.seed(0)
-Cases&lt;-ToPlot %&gt;%
-  filter(PC1 &lt;= -15) %&gt;%
-  filter(Hugo_Symbol==&quot;SF3B1&quot; | is.na(Hugo_Symbol)) %&gt;%
-  dplyr::pull(rowname)
+#First make a heatmap of Darman et al junctions
+Heatmap &lt;- PSI_Table[DarmanJunctionsList$junc_id,] %&gt;%
+  t() %&gt;% scale(scale=F) %&gt;% t() %&gt;%
+  as.data.frame() %&gt;% drop_na() %&gt;% as.matrix()
 
-Controls&lt;-ToPlot %&gt;%
-  filter(PC1 &gt;= -15) %&gt;%
-  filter(is.na(Hugo_Symbol)) %&gt;%
-  sample_n(150) %&gt;%
-  dplyr::pull(rowname)
+HeatmapGroupLabels &lt;- plyr::mapvalues(colnames(Heatmap), from=Groups$V1, to=Groups$V2, warn_missing = FALSE)
 
-
-Heatmap &lt;- PSI_Table %&gt;%
-  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %&gt;%
-  dplyr::select(c(Cases, Controls)) %&gt;% as.matrix() %&gt;%
-  t() %&gt;% scale(scale=F) %&gt;% t() %&gt;% as.data.frame() %&gt;% drop_na() %&gt;% as.matrix()
-
-#
-# Heatmap &lt;- t(scale(t(as.matrix(PSI_Table[1:10, c(Cases, Controls)]))))
-# Heatmap &lt;- scale(as.matrix(PSI_Table[1:50,c(Cases, Controls)]))
-
-RNAExtractionDate &lt;- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$CancerType, warn_missing = FALSE) )))
-RNAExtractionDate &lt;- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$Hugo_Symbol, warn_missing = FALSE) )))
-ColLabel = labCol &lt;- plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$Mutant_aa, warn_missing = FALSE)
-# heatmap.2(Heatmap, col=brewer.pal(11,&quot;Spectral&quot;), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title=&quot;PSI-Zscore&quot;, ylab=&quot;574 splice junctions&quot;, xlab=&quot;200 samples&quot;)
-heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title=&quot;PSI-Zscore&quot;, ylab=&quot;574 splice junctions&quot;, xlab=&quot;200 samples&quot;)</code></pre>
-<p><img src="figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
-Past versions of unnamed-chunk-4-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-4-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-4-1.png" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Interestingly there are some samples where the genotype doesn’t match the phenotype. SF3B1. Could be incorrect genotype calls, or cases where the “hotspot” mutations are in hotspot region but not actually a phenotypic mutation.</p>
-<p>What are the mutations that are in the hotspot region (amino acids 600-750) but don’t cluster with the mutant SF3B1 samples in PC1?</p>
-<pre class="r"><code>#sf3b1 mut samples where PC1&lt;-5
-ToPlot %&gt;%
-  filter(Hugo_Symbol==&quot;SF3B1&quot; &amp; as.numeric(Protein_position) &gt;= 600 &amp; as.numeric(Protein_position) &lt;= 750) %&gt;%
-  filter(PC1 &lt;= -5) %&gt;%
-  dplyr::select(Mutant_aa) %&gt;%
-  group_by(Mutant_aa) %&gt;% tally() %&gt;% kable()</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Mutant_aa</th>
-<th align="right">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">622:E/Q</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">625:R/C</td>
-<td align="right">8</td>
-</tr>
-<tr class="odd">
-<td align="left">625:R/H</td>
-<td align="right">13</td>
-</tr>
-<tr class="even">
-<td align="left">626:N/D</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">626:N/Y</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">633:A/V</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">662:H/R</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">663:T/P</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">666:K/E</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">666:K/N</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">666:K/T</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">699:Q/E</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">700:K/E</td>
-<td align="right">15</td>
-</tr>
-<tr class="even">
-<td align="left">740:G/E</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>#sf3b1 mut samples where PC1&gt;-5
-ToPlot %&gt;%
-  filter(Hugo_Symbol==&quot;SF3B1&quot; &amp; as.numeric(Protein_position) &gt;= 600 &amp; as.numeric(Protein_position) &lt;= 750) %&gt;%
-  filter(PC1 &gt;= -5) %&gt;%
-  dplyr::select(Mutant_aa) %&gt;%
-  group_by(Mutant_aa) %&gt;% tally() %&gt;% kable()</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Mutant_aa</th>
-<th align="right">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">669:Q/H</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">693:G/D</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">697:E/*</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">700:K/E</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">736:R/S</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-<p>Ok it seems there are about 50 mutant samples that clearly cluster and are phenotypic for the same differentially spliced junctions identified in Darman et al. However there are 5 samples that have mutations between positions 600-750 that are not phenotypic. This is decent motivation for the premise of this project: namely that there is utility to targeted sequencing screening a patient’s RNA since clearly some “hotspot” mutations are not of significance; genotyping alone is not perfect at separating molecular separating phenotypes.</p>
+heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, key.title=&quot;PSI-Zscore&quot;, ColSideColors=HeatmapGroupLabels)</code></pre>
+<p><img src="figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#Heatmap of top leafcutter identified introns
+Heatmap &lt;- PSI_Table[Top1000Introns,] %&gt;%
+  t() %&gt;% scale(scale=F) %&gt;% t() %&gt;%
+  as.data.frame() %&gt;% drop_na() %&gt;% as.matrix()
+heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, key.title=&quot;PSI-Zscore&quot;, ColSideColors=HeatmapGroupLabels)</code></pre>
+<p><img src="figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/unnamed-chunk-6-2.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1046,11 +848,10 @@ loaded via a namespace (and not attached):
 [34] digest_0.6.19      stringi_1.4.3      grid_3.5.1        
 [37] rprojroot_1.3-2    bitops_1.0-6       cli_1.1.0         
 [40] tools_3.5.1        magrittr_1.5       lazyeval_0.2.2    
-[43] crayon_1.3.4       whisker_0.3-2      pkgconfig_2.0.2   
-[46] xml2_1.2.0         lubridate_1.7.4    assertthat_0.2.1  
-[49] rmarkdown_1.13     httr_1.4.0         rstudioapi_0.10   
-[52] R6_2.4.0           nlme_3.1-140       git2r_0.25.2      
-[55] compiler_3.5.1    </code></pre>
+[43] crayon_1.3.4       pkgconfig_2.0.2    xml2_1.2.0        
+[46] lubridate_1.7.4    assertthat_0.2.1   rmarkdown_1.13    
+[49] httr_1.4.0         rstudioapi_0.10    R6_2.4.0          
+[52] nlme_3.1-140       git2r_0.25.2       compiler_3.5.1    </code></pre>
 </div>
 
 

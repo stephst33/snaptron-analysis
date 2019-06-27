@@ -436,7 +436,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-06-25
+<strong>Last updated:</strong> 2019-06-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -460,7 +460,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown file has staged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -527,10 +527,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree889a226f3488c21ca62380b17e137adc840d473btargetblank889a226a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/889a226f3488c21ca62380b17e137adc840d473b" target="_blank">889a226</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistreec1d21574374c3c920b954f85bf9c55886ccd4c0ctargetblankc1d2157a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/bfairkun/snaptron-analysis/tree/c1d21574374c3c920b954f85bf9c55886ccd4c0c" target="_blank">c1d2157</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistree889a226f3488c21ca62380b17e137adc840d473btargetblank889a226a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcombfairkunsnaptronanalysistreec1d21574374c3c920b954f85bf9c55886ccd4c0ctargetblankc1d2157a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -540,8 +540,12 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Unstaged changes:
+Staged changes:
     Modified:   analysis/20190625.ds_blood_sf3b1.Rmd
+    Modified:   analysis/20190626.MetaAnalysisAllBlood.Rmd
+    New:        analysis/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd
+    New:        data/other_snakemake_data/MostlyMarrowContrast.groups
+    New:        data/other_snakemake_data/MostlyMarrowContrast.juncfiles
 
 </code></pre>
 <p>
@@ -580,6 +584,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/cc5cddb4d613d57dad4372fab633cdfef51418da/analysis/20190625.ds_blood_sf3b1.Rmd" target="_blank">cc5cddb</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-26
+</td>
+<td>
+update
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/adfb875865127a8d3ededb9799d5b9fb87570c6b/analysis/20190625.ds_blood_sf3b1.Rmd" target="_blank">adfb875</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+<td>
+update site
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/adfb875865127a8d3ededb9799d5b9fb87570c6b/docs/20190625.ds_blood_sf3b1.html" target="_blank">adfb875</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+<td>
+update site
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -680,8 +735,8 @@ library(readxl)
 library(ggrepel)
 library(tidyverse)
 library(gplots)
-library(&quot;RColorBrewer&quot;)
-library(knitr)</code></pre>
+library(knitr)
+library(&quot;RColorBrewer&quot;)</code></pre>
 <pre class="r"><code>#read-count-table
 
 Numers &lt;- &#39;../output/snakemake_out_sf3b1_blood_ds/CountTableNumerators.gz&#39;
@@ -703,7 +758,7 @@ cluster.significance &lt;- fread(paste0(&quot;gunzip -c &quot;, &quot;../output/
 
 leafcutter.merged &lt;- effect.sizes %&gt;%
   mutate(cluster=gsub(&quot;(.+?:).+?:.+?:(clu.+?)&quot;, &quot;\\1\\2&quot;, intron, perl=T)) %&gt;%
-  mutate(junc_id=gsub(&quot;(.+?:.+?:.+?):clu.+?_NA&quot;, &quot;\\1&quot;, intron, perl=T)) %&gt;%
+  mutate(junc_id=gsub(&quot;(.+?:.+?:.+?):clu.+&quot;, &quot;\\1&quot;, intron, perl=T)) %&gt;%
   left_join(cluster.significance, by=&quot;cluster&quot;)
 
 kable(head(leafcutter.merged))</code></pre>
@@ -726,88 +781,88 @@ kable(head(leafcutter.merged))</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">chr1:739025:739803:clu_10_NA</td>
-<td align="right">0.4971890</td>
-<td align="right">0.0453119</td>
-<td align="right">0.0945497</td>
-<td align="right">0.0492378</td>
-<td align="left">chr1:clu_10_NA</td>
-<td align="left">chr1:739025:739803</td>
+<td align="left">chr1:746819:753663:clu_10_-</td>
+<td align="right">0.6658968</td>
+<td align="right">0.0259098</td>
+<td align="right">0.0709497</td>
+<td align="right">0.0450399</td>
+<td align="left">chr1:clu_10_-</td>
+<td align="left">chr1:746819:753663</td>
 <td align="left">Success</td>
-<td align="right">2.507722</td>
-<td align="right">2</td>
-<td align="right">0.0814536</td>
-<td align="right">0.1417704</td>
+<td align="right">7.061225</td>
+<td align="right">4</td>
+<td align="right">0.0069143</td>
+<td align="right">0.0191397</td>
 </tr>
 <tr class="even">
-<td align="left">chr1:739025:740129:clu_10_NA</td>
-<td align="right">-0.1976943</td>
-<td align="right">0.0731330</td>
-<td align="right">0.0761688</td>
-<td align="right">0.0030358</td>
-<td align="left">chr1:clu_10_NA</td>
-<td align="left">chr1:739025:740129</td>
+<td align="left">chr1:746819:756077:clu_10_-</td>
+<td align="right">0.3131720</td>
+<td align="right">0.0266784</td>
+<td align="right">0.0513405</td>
+<td align="right">0.0246620</td>
+<td align="left">chr1:clu_10_-</td>
+<td align="left">chr1:746819:756077</td>
 <td align="left">Success</td>
-<td align="right">2.507722</td>
-<td align="right">2</td>
-<td align="right">0.0814536</td>
-<td align="right">0.1417704</td>
+<td align="right">7.061225</td>
+<td align="right">4</td>
+<td align="right">0.0069143</td>
+<td align="right">0.0191397</td>
 </tr>
 <tr class="odd">
-<td align="left">chr1:740036:740129:clu_10_NA</td>
-<td align="right">-0.2994947</td>
-<td align="right">0.8815551</td>
-<td align="right">0.8292815</td>
-<td align="right">-0.0522736</td>
-<td align="left">chr1:clu_10_NA</td>
-<td align="left">chr1:740036:740129</td>
+<td align="left">chr1:749382:752448:clu_10_-</td>
+<td align="right">-0.0839604</td>
+<td align="right">0.0595289</td>
+<td align="right">0.0770114</td>
+<td align="right">0.0174825</td>
+<td align="left">chr1:clu_10_-</td>
+<td align="left">chr1:749382:752448</td>
 <td align="left">Success</td>
-<td align="right">2.507722</td>
-<td align="right">2</td>
-<td align="right">0.0814536</td>
-<td align="right">0.1417704</td>
+<td align="right">7.061225</td>
+<td align="right">4</td>
+<td align="right">0.0069143</td>
+<td align="right">0.0191397</td>
 </tr>
 <tr class="even">
-<td align="left">chr1:1400323:1405809:clu_100_NA</td>
-<td align="right">-0.4446059</td>
-<td align="right">0.0025753</td>
-<td align="right">0.0018058</td>
-<td align="right">-0.0007695</td>
-<td align="left">chr1:clu_100_NA</td>
-<td align="left">chr1:1400323:1405809</td>
+<td align="left">chr1:749382:753663:clu_10_-</td>
+<td align="right">-0.4667577</td>
+<td align="right">0.3846243</td>
+<td align="right">0.3393260</td>
+<td align="right">-0.0452982</td>
+<td align="left">chr1:clu_10_-</td>
+<td align="left">chr1:749382:753663</td>
 <td align="left">Success</td>
-<td align="right">20.100486</td>
-<td align="right">7</td>
-<td align="right">0.0000012</td>
-<td align="right">0.0000105</td>
+<td align="right">7.061225</td>
+<td align="right">4</td>
+<td align="right">0.0069143</td>
+<td align="right">0.0191397</td>
 </tr>
 <tr class="odd">
-<td align="left">chr1:1402251:1405809:clu_100_NA</td>
-<td align="right">-0.1148971</td>
-<td align="right">0.0069886</td>
-<td align="right">0.0068145</td>
-<td align="right">-0.0001741</td>
-<td align="left">chr1:clu_100_NA</td>
-<td align="left">chr1:1402251:1405809</td>
+<td align="left">chr1:749382:756077:clu_10_-</td>
+<td align="right">-0.4283507</td>
+<td align="right">0.5032586</td>
+<td align="right">0.4613724</td>
+<td align="right">-0.0418862</td>
+<td align="left">chr1:clu_10_-</td>
+<td align="left">chr1:749382:756077</td>
 <td align="left">Success</td>
-<td align="right">20.100486</td>
-<td align="right">7</td>
-<td align="right">0.0000012</td>
-<td align="right">0.0000105</td>
+<td align="right">7.061225</td>
+<td align="right">4</td>
+<td align="right">0.0069143</td>
+<td align="right">0.0191397</td>
 </tr>
 <tr class="even">
-<td align="left">chr1:1402257:1402359:clu_100_NA</td>
-<td align="right">0.1880075</td>
-<td align="right">0.0073418</td>
-<td align="right">0.0096916</td>
-<td align="right">0.0023498</td>
-<td align="left">chr1:clu_100_NA</td>
-<td align="left">chr1:1402257:1402359</td>
+<td align="left">chr1:58527336:58530130:clu_1000_-</td>
+<td align="right">-0.0769426</td>
+<td align="right">0.0070400</td>
+<td align="right">0.0052846</td>
+<td align="right">-0.0017554</td>
+<td align="left">chr1:clu_1000_-</td>
+<td align="left">chr1:58527336:58530130</td>
 <td align="left">Success</td>
-<td align="right">20.100486</td>
-<td align="right">7</td>
-<td align="right">0.0000012</td>
-<td align="right">0.0000105</td>
+<td align="right">13.375642</td>
+<td align="right">12</td>
+<td align="right">0.0083898</td>
+<td align="right">0.0224515</td>
 </tr>
 </tbody>
 </table>
@@ -815,12 +870,12 @@ kable(head(leafcutter.merged))</code></pre>
 <pre class="r"><code># how many clusters are there
 leafcutter.merged %&gt;%
   distinct(cluster, .keep_all = T) %&gt;% dim()</code></pre>
-<pre><code>[1] 44087    12</code></pre>
+<pre><code>[1] 44037    12</code></pre>
 <pre class="r"><code># and how many are significant (padjust&lt;0.05, 0.01)
 leafcutter.merged %&gt;%
   distinct(cluster, .keep_all = T) %&gt;% 
   filter(p.adjust&lt;0.01) %&gt;% dim()</code></pre>
-<pre><code>[1] 13921    12</code></pre>
+<pre><code>[1] 13926    12</code></pre>
 <pre class="r"><code>#histogram of pvalues
 leafcutter.merged %&gt;%
   distinct(cluster, .keep_all = T) %&gt;% 
@@ -924,7 +979,7 @@ Benjmain Fair
 </table>
 </div>
 </div>
-<p>That doesn’t make too much sense, maybe delta-PSI is the better effect size metric to make a sensible volcano plot…</p>
+<p>Same plot but for delta-PSI instead of log-effect size…</p>
 <pre class="r"><code># volcano plot of cluster-pvalues and largest within-cluster-delta-psi
 leafcutter.merged %&gt;%
   mutate(abs.deltapsi = abs(deltapsi)) %&gt;%
@@ -1123,6 +1178,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/adfb875865127a8d3ededb9799d5b9fb87570c6b/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-6-2.png" target="_blank">adfb875</a>
+</td>
+<td>
+Benjmain Fair
+</td>
+<td>
+2019-06-25
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/bfairkun/snaptron-analysis/blob/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-6-2.png" target="_blank">e10b2f8</a>
 </td>
 <td>
@@ -1136,6 +1202,25 @@ Benjmain Fair
 </table>
 </div>
 </div>
+<p>Ok it seems the leafcutter identified introns don’t segregate the samples cleanly into two sf3b1-related clusters (sf3b1-mut and sf3b1-wt) in the way that the Darman identified junctions do… This could be due to uncontrolled for confounders (study, tissue, batch, etc).</p>
+<p>To test that hypothesis, I’ll try making the heatmap again, coloring the column labels by the study origin or tissue origin:</p>
+<pre class="r"><code>SRA_metadata &lt;- read.delim(gzfile(&quot;../output/snakemake_out_sf3b1_blood_ds/SnaptronMetadata.SRA2.txt.gz&quot;))
+
+MetadataOfSamples &lt;- data.frame(colnames(Heatmap)) %&gt;%
+  mutate(rail_id=as.numeric(gsub(&quot;\\.project2\\.yangili1\\.snaptron\\.processed_to_bedfiles\\..+?\\.(.+)&quot;, &quot;\\1&quot;, colnames(Heatmap), perl=T))) %&gt;% 
+  left_join(SRA_metadata, by=&quot;rail_id&quot;)
+
+
+#color accoring to source (tissue of origin)
+HeatmapGroupLabels &lt;- plyr::mapvalues(colnames(Heatmap), from=MetadataOfSamples$colnames.Heatmap., to=MetadataOfSamples$source_name, warn_missing = FALSE)
+
+Heatmap &lt;- PSI_Table[Top1000Introns,] %&gt;%
+  t() %&gt;% scale(scale=F) %&gt;% t() %&gt;%
+  as.data.frame() %&gt;% drop_na() %&gt;% as.matrix()
+heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, key.title=&quot;PSI-Zscore&quot;, ColSideColors=HeatmapGroupLabels)</code></pre>
+<p><img src="figure/20190625.ds_blood_sf3b1.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>There is clearly some unaccounted for covariates that are driving part of the clustering. As a starting point, I should redo the differential splicing with a well-controlled set of samples from the same study.</p>
+<p>First I will look at PC space based on these set of junctions, and see if perhaps sf3b1mut-wt separates in any of the top PCs. Additionally, another exersize to do is to look within a single tissue type at the same set of junctions identified by this meta-tissue analysis.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1159,7 +1244,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] knitr_1.23         RColorBrewer_1.1-2 gplots_3.0.1.1    
+ [1] RColorBrewer_1.1-2 knitr_1.23         gplots_3.0.1.1    
  [4] forcats_0.4.0      stringr_1.4.0      purrr_0.3.2       
  [7] readr_1.3.1        tidyr_0.8.3        tibble_2.1.3      
 [10] tidyverse_1.2.1    ggrepel_0.8.1      readxl_1.3.1      

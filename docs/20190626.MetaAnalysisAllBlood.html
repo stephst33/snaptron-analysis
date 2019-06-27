@@ -12,7 +12,7 @@
 <meta name="author" content="Ben Fair" />
 
 
-<title>TCGA_sf3b1_reproduce_seiller</title>
+<title>20190626_AllBloodDarmanJunctions</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -409,16 +409,16 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">TCGA_sf3b1_reproduce_seiller</h1>
+<h1 class="title toc-ignore">20190626_AllBloodDarmanJunctions</h1>
 <h4 class="author">Ben Fair</h4>
-<h4 class="date">6/24/2019</h4>
+<h4 class="date">6/26/2019</h4>
 
 </div>
 
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -427,7 +427,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -439,7 +439,7 @@ div.section {
 <strong>Last updated:</strong> 2019-06-27
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>snaptron-analysis/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -455,12 +455,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has staged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -540,14 +540,6 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Untracked files:
-    Untracked:  docs/figure/20190626.MetaAnalysisAllBlood.Rmd/
-    Untracked:  docs/figure/20190627_DiffSplicingBloodSf3b1_GTExOnly.Rmd/
-
-Unstaged changes:
-    Modified:   data/other_snakemake_data/MostlyMarrowContrast.groups
-    Modified:   data/other_snakemake_data/MostlyMarrowContrast.juncfiles
-
 Staged changes:
     Modified:   analysis/20190625.ds_blood_sf3b1.Rmd
     Modified:   analysis/20190626.MetaAnalysisAllBlood.Rmd
@@ -597,7 +589,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/cc5cddb4d613d57dad4372fab633cdfef51418da/analysis/TCGA_sf3b1_reproduce_seiller.Rmd" target="_blank">cc5cddb</a>
+<a href="https://github.com/bfairkun/snaptron-analysis/blob/cc5cddb4d613d57dad4372fab633cdfef51418da/analysis/20190626.MetaAnalysisAllBlood.Rmd" target="_blank">cc5cddb</a>
 </td>
 <td>
 Benjmain Fair
@@ -609,57 +601,6 @@ Benjmain Fair
 update
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/e10b2f8a2887f1ab7954752bf8045f87be011078/docs/TCGA_sf3b1_reproduce_seiller.html" target="_blank">e10b2f8</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-25
-</td>
-<td>
-update site
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/analysis/TCGA_sf3b1_reproduce_seiller.Rmd" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-<td>
-intialize site
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/bfairkun/snaptron-analysis/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/TCGA_sf3b1_reproduce_seiller.html" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-<td>
-intialize site
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -667,6 +608,7 @@ intialize site
 </div>
 </div>
 </div>
+<p>This analysis was a meta-analysis of all the blood or bone marrow samples I could find in snaptron splice-junction count tables. This amounts to ~6000 samples across TCGA, SRA2, and GTEx. The count table I will load is only the subset of junctions within 1000bp of a sf3b1 differentially spliced intron from Darman et al.</p>
 <pre class="r"><code>library(data.table)
 library(dplyr)
 library(ggplot2)
@@ -675,16 +617,25 @@ library(readxl)
 library(ggrepel)
 library(tidyverse)
 library(gplots)
-library(knitr)
-library(&quot;RColorBrewer&quot;)</code></pre>
-<pre class="r"><code>Numers &lt;- &#39;../output/snakemake_out_sf3b1_TCGA/CountTableNumerators.gz&#39;
-Denoms &lt;- &#39;../output/snakemake_out_sf3b1_TCGA/CountTableDenominators.gz&#39;
+library(knitr)</code></pre>
+<pre class="r"><code>gsub2 &lt;- function(searchstring, replacestring, query){
+  # function like gsub but will return NA if no match
+  ind &lt;- grep(searchstring,query,value = FALSE)
+  query &lt;- gsub(searchstring, replacestring, query, perl=T)
+  query[-ind] &lt;- NA
+  query
+}
+
+
+Numers &lt;- &#39;../output/snakemake_out_sf3b1_blood_DarmanJuncs/CountTableNumerators.gz&#39;
+Denoms &lt;- &#39;../output/snakemake_out_sf3b1_blood_DarmanJuncs/CountTableDenominators.gz&#39;
 
 NumeratorCountTable &lt;- fread(paste0(&quot;gunzip -c &quot;, Numers), sep=&quot; &quot;, header=TRUE, data.table=FALSE)
 DenominatorCountTable &lt;- fread(paste0(&quot;gunzip -c &quot;, Denoms), sep=&quot; &quot;, header=TRUE, data.table=FALSE)
 
 PSI_Table &lt;- NumeratorCountTable[-1]/DenominatorCountTable[-1]
 row.names(PSI_Table) &lt;- gsub(&quot;:clu_.+&quot;, &quot;&quot;, NumeratorCountTable$chrom)
+colnames(PSI_Table) &lt;- gsub(&quot;.+\\.(.+$)&quot;, &quot;\\1&quot;, colnames(PSI_Table), perl=T)
 
 #Replace NaNs from 0/0 operation
 PSI_Table[is.na(PSI_Table)] &lt;- 0
@@ -699,308 +650,105 @@ DifferentialJunctionsList$junc_id &lt;- paste(DifferentialJunctionsList$V1, Diff
 PCResults &lt;- (PSI_Table) %&gt;%
   filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %&gt;%
   t() %&gt;%
-  prcomp(center=T, scale=T)
-PCResults.df &lt;- as.data.frame(PCResults$x[,1:10]) %&gt;% rownames_to_column()
+  prcomp(center=T, scale=T) 
+
+
+#Read in metadata for SRA2
+SRA2Metadata &lt;- fread(&#39;../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.SRA2.txt.gz&#39;, header=TRUE, sep=&#39;\t&#39;, na.strings = &quot;NA&quot;, stringsAsFactors = F)
+SRA2Metadata$rail_id &lt;- as.character(SRA2Metadata$rail_id)
+SRA2Metadata$source &lt;- &quot;SRA2&quot;
+
+#Read in metadata for GTEX
+GTEXMetadata &lt;- read.delim(&#39;../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.GTEX.txt.gz&#39;, header=TRUE, sep=&#39;\t&#39;, na.strings = &quot;NA&quot;, stringsAsFactors = F)
+GTEXMetadata$rail_id &lt;- as.character(GTEXMetadata$rail_id)
+GTEXMetadata$source &lt;- &quot;GTEX&quot;
 
 #Read in metadata for TCGA
-TCGAMetadata &lt;- read.delim(gzfile(&#39;../output/snakemake_out_sf3b1_TCGA/SnaptronMetadata.TCGA.txt.gz&#39;), row.names=1, na.strings = &quot;NA&quot;, stringsAsFactors = T, header=T)
+TCGAMetadata &lt;- read.delim(&#39;../output/snakemake_out_sf3b1_blood_DarmanJuncs/SnaptronMetadata.TCGA.txt.gz&#39;, row.names=1, na.strings = &quot;NA&quot;, stringsAsFactors = T, header=T)
 
 # truncated TCGA barcodes are easier to match and merge with Seiller et al metadata
 TCGAMetadata$TruncatedTCGA &lt;- gsub(&quot;-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]&quot;, &quot;&quot;, TCGAMetadata$gdc_cases.samples.portions.analytes.submitter_id)
 TCGAMetadata$rail_id &lt;- row.names(TCGAMetadata)
 TCGAMetadata$source &lt;- &quot;TCGA&quot;
 
+# Read in Mutations list metadata from Seiller et al and add to metadata
 MutationList &lt;- data.frame(read_excel(&quot;../data/other_snakemake_data/SeillerEtAl_MutationList.xlsx&quot;))
 MutationList$TruncatedTCGA &lt;- gsub(&quot;-[0-9]{2}[A-Z]-[0-9]{2}[A-Z]-\\w{4}-\\w{2}$&quot;, &quot;&quot;, MutationList$Tumor_Sample_Barcode)
 
 # Add labels to help distinguish SF3B1 hotspot mutations from other SF3B1 mutations in plot
-# MutationList$Mutant_aa &lt;- paste(MutationList$Hugo_Symbol, MutationList$Protein_position, MutationList$Amino_acids, sep=&quot;:&quot;)
-MutationList$Mutant_aa &lt;- paste(MutationList$Protein_position, MutationList$Amino_acids, sep=&quot;:&quot;)
+MutationList$Mutant_aa &lt;- paste(MutationList$Hugo_Symbol, MutationList$Protein_position, MutationList$Amino_acids, sep=&quot;:&quot;)
+MutationList$Mutant_aa[which(MutationList$Hugo_Symbol!=&quot;SF3B1&quot;)] &lt;- NA
 
-MutationList$Mutant_aa[which(MutationList$Hugo_Symbol!=&quot;SF3B1&quot;)] &lt;- &quot;&quot;</code></pre>
-<p>Ok so far I have read in the splice junction count tables created by leafcutter (a numerator and a denominator table, which when divided is a PSI-like metric of splicing). Furthermore, I have used TCGA barcodes to match the samples to their splicing factor mutation status as documented in a supplemental table from (Seiller et al 2018).</p>
-<p>Now let’s plot SF3B1 mutation positions grouped by cancer sub-type. I expect most cancers to show a hotspot around amino acids 600-750, but different cancer types will have different mutation frequencies.</p>
-<pre class="r"><code>#Plot hotspots
-MutationList %&gt;%
-  # filter(Cohort %in% c(&quot;LAML&quot;, &quot;SKCM&quot;, &quot;BRCA&quot;, &quot;BLCA&quot;, &quot;THYM&quot;, &quot;UCEC&quot;, &quot;UVM&quot;)) %&gt;%
-  filter(Hugo_Symbol %in% c(&quot;SF3B1&quot;)) %&gt;%
-  ggplot(aes(as.numeric(Protein_position))) +
-  geom_histogram(aes(fill=Cohort_simplified),position=&quot;dodge&quot;, bins=50) +
-  theme_bw()</code></pre>
-<p><img src="figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
-Past versions of unnamed-chunk-2-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-2-1.png" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>  # geom_density(aes(color=Cohort_simplified))</code></pre>
-<p>Ok good. Now let’s plot all the samples in the same PC space based on the differentially spliced introns identified in Darman et al. Same as to what is observed in Seiller et al, I expect this PC space will distinguish SF3B1 mutant from wildtype, and the 902 hotspot will not separate in this PC space as it is a functionally distinct mutation.</p>
-<pre class="r"><code># MutationList$Cohort_simplified
+
 Metadata &lt;- MutationList %&gt;%
   filter(Amino_acids != &quot;.&quot;) %&gt;%
   distinct(TruncatedTCGA, .keep_all=TRUE) %&gt;%
-  right_join(TCGAMetadata, by = &quot;TruncatedTCGA&quot;, copy = FALSE)
+  right_join(TCGAMetadata, by = &quot;TruncatedTCGA&quot;, copy = FALSE) %&gt;% 
+  full_join(SRA2Metadata, by = c(&quot;junction_coverage&quot;, &quot;junction_avg_coverage&quot;, &quot;rail_id&quot;, &quot;source&quot;)) %&gt;%
+  full_join(GTEXMetadata, by = c(&quot;junction_coverage&quot;, &quot;junction_avg_coverage&quot;, &quot;rail_id&quot;, &quot;source&quot;)) %&gt;%
+  filter(rail_id!=&quot;1&quot;) %&gt;% 
+  mutate(sf3b1status = gsub2(&#39;.+?\\&quot;(sf3b1.+?:.+?)\\&quot;.+&#39;, &quot;\\1&quot;, characteristics.y)) %&gt;%
+  unite(&quot;Combined.sf3b1&quot;, sf3b1status, Mutant_aa)
 
-ToPlot &lt;- PCResults.df %&gt;%
-  mutate(rail_id=gsub(&quot;.project2.yangili1.snaptron.processed_to_bedfiles.TCGA.&quot;,&quot;&quot;, rowname)) %&gt;%
-  left_join(Metadata, by=&quot;rail_id&quot;) %&gt;%
-  mutate(CancerType=gsub(&quot;TCGA-&quot;,&quot;&quot;, gdc_cases.project.project_id))
+Metadata$Combined.sf3b1[which(Metadata$Combined.sf3b1==&quot;NA_NA&quot;)] &lt;- NA
 
+BloodContrast &lt;- read.table(&quot;../data/other_snakemake_data/GTEX_Blood_sf3b1.groups&quot;, col.names = c(&quot;file&quot;, &quot;groups&quot;))
+BloodContrast$railid &lt;- gsub(&quot;.+\\.(.+$)&quot;, &quot;\\1&quot;, BloodContrast$file, perl=T)
 
-# gdc_cases.project.project_id
-ggplot(ToPlot, aes(x=PC1, y=PC2, color=CancerType, label=Mutant_aa)) +
-  geom_text(alpha=1, size=2.2) +
-  # geom_point(alpha=0.5) +
-  # geom_text_repel(size=2.2) +
+# Rename rows for easier merging later
+PCResults.df &lt;- as.data.frame(PCResults$x)
+PCResults.df$rail_id &lt;- sub(&quot;juncfiles\\..+?\\.&quot;, &quot;&quot;, rownames(PCResults.df))
+ToPlot &lt;- left_join(PCResults.df, Metadata, by = &quot;rail_id&quot;)
+
+ggplot(ToPlot, aes(x=PC1, y=PC2, label=Combined.sf3b1, color=source)) + 
+  geom_point(alpha=1) + 
+  geom_text_repel(size=2, color=&quot;black&quot;) +
+  theme(legend.title = element_blank(), legend.text=element_text(size=6)) +
   theme_bw()</code></pre>
-<p><img src="figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-3-1.png" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Ok good. there it seems that the first PC does distinguish mut from wt, and later PCs seem to be separating tumor/tissue type.</p>
-<p>It will also be nice to look at a heatmap of this feature space from which the PCA is based on… I will do this for only ~50 SF3B1 mutant samples (PC1&lt;-15) and 150 SF3B1 wildtype samples (PC1&gt;-15)… If I included all the samples it would be too dense a heatmap</p>
-<pre class="r"><code>set.seed(0)
-Cases&lt;-ToPlot %&gt;%
-  filter(PC1 &lt;= -15) %&gt;%
-  filter(Hugo_Symbol==&quot;SF3B1&quot; | is.na(Hugo_Symbol)) %&gt;%
-  dplyr::pull(rowname)
+<p><img src="figure/20190626.MetaAnalysisAllBlood.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Ok try to get matched wildtype and mutants from same studies and balanced for other factors</p>
+<pre class="r"><code>StudiesWithMutants &lt;- ToPlot %&gt;%
+  filter(PC1&lt;=-10 &amp; PC2&lt;=-20 &amp; !is.na(study_ID)) %&gt;%
+  select(study_ID) %&gt;% distinct() %&gt;% pull()
 
-Controls&lt;-ToPlot %&gt;%
-  filter(PC1 &gt;= -15) %&gt;%
-  filter(is.na(Hugo_Symbol)) %&gt;%
-  sample_n(150) %&gt;%
-  dplyr::pull(rowname)
+ToPlot %&gt;% filter(study_ID %in% StudiesWithMutants) %&gt;%
+ggplot(aes(x=PC1, y=PC2, label=Combined.sf3b1)) + 
+  geom_point(alpha=1) + 
+  geom_text_repel(size=2, color=&quot;black&quot;) +
+  theme(legend.title = element_blank(), legend.text=element_text(size=6)) +
+  theme_bw()</code></pre>
+<p><img src="figure/20190626.MetaAnalysisAllBlood.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>PoolToPickSamples &lt;- ToPlot %&gt;%
+  mutate(CovariateInfo=paste(study_ID, cell_type, tissue,   cell_line))
 
+Cases &lt;- PoolToPickSamples %&gt;%
+  filter(PC1&lt;=-10 &amp; PC2&lt;=-20 &amp; !is.na(study_ID)) %&gt;% 
+  mutate(Status=&quot;Case&quot;) %&gt;%
+  select(rail_id, CovariateInfo, Status)
 
-Heatmap &lt;- PSI_Table %&gt;%
-  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %&gt;%
-  dplyr::select(c(Cases, Controls)) %&gt;% as.matrix() %&gt;%
-  t() %&gt;% scale(scale=F) %&gt;% t() %&gt;% as.data.frame() %&gt;% drop_na() %&gt;% as.matrix()
+Controls &lt;- PoolToPickSamples %&gt;% filter(PC1&lt;=-10 &amp; PC2&lt;=-10) %&gt;%
+  filter(study_ID %in% StudiesWithMutants) %&gt;%
+  sample_n(95) %&gt;%
+  mutate(Status=&quot;Control&quot;) %&gt;%
+  select(rail_id, CovariateInfo, Status)
 
-#
-# Heatmap &lt;- t(scale(t(as.matrix(PSI_Table[1:10, c(Cases, Controls)]))))
-# Heatmap &lt;- scale(as.matrix(PSI_Table[1:50,c(Cases, Controls)]))
-
-RNAExtractionDate &lt;- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$CancerType, warn_missing = FALSE) )))
-RNAExtractionDate &lt;- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$Hugo_Symbol, warn_missing = FALSE) )))
-ColLabel = labCol &lt;- plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$Mutant_aa, warn_missing = FALSE)
-# heatmap.2(Heatmap, col=brewer.pal(11,&quot;Spectral&quot;), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title=&quot;PSI-Zscore&quot;, ylab=&quot;574 splice junctions&quot;, xlab=&quot;200 samples&quot;)
-heatmap.2(Heatmap, col=colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(n = 299), dendrogram=&quot;column&quot;, trace=&quot;none&quot;, labRow=&quot;&quot;, labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title=&quot;PSI-Zscore&quot;, ylab=&quot;574 splice junctions&quot;, xlab=&quot;200 samples&quot;)</code></pre>
-<p><img src="figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
-Past versions of unnamed-chunk-4-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-4-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/bfairkun/snaptron-analysis/blob/be6e80ea7448bdb7199e04d45e3c2e47784d18a0/docs/figure/TCGA_sf3b1_reproduce_seiller.Rmd/unnamed-chunk-4-1.png" target="_blank">be6e80e</a>
-</td>
-<td>
-Benjmain Fair
-</td>
-<td>
-2019-06-24
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Interestingly there are some samples where the genotype doesn’t match the phenotype. SF3B1. Could be incorrect genotype calls, or cases where the “hotspot” mutations are in hotspot region but not actually a phenotypic mutation.</p>
-<p>What are the mutations that are in the hotspot region (amino acids 600-750) but don’t cluster with the mutant SF3B1 samples in PC1?</p>
-<pre class="r"><code>#sf3b1 mut samples where PC1&lt;-5
-ToPlot %&gt;%
-  filter(Hugo_Symbol==&quot;SF3B1&quot; &amp; as.numeric(Protein_position) &gt;= 600 &amp; as.numeric(Protein_position) &lt;= 750) %&gt;%
-  filter(PC1 &lt;= -5) %&gt;%
-  dplyr::select(Mutant_aa) %&gt;%
-  group_by(Mutant_aa) %&gt;% tally() %&gt;% kable()</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Mutant_aa</th>
-<th align="right">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">622:E/Q</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">625:R/C</td>
-<td align="right">8</td>
-</tr>
-<tr class="odd">
-<td align="left">625:R/H</td>
-<td align="right">13</td>
-</tr>
-<tr class="even">
-<td align="left">626:N/D</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">626:N/Y</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">633:A/V</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">662:H/R</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">663:T/P</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">666:K/E</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">666:K/N</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">666:K/T</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">699:Q/E</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">700:K/E</td>
-<td align="right">15</td>
-</tr>
-<tr class="even">
-<td align="left">740:G/E</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>#sf3b1 mut samples where PC1&gt;-5
-ToPlot %&gt;%
-  filter(Hugo_Symbol==&quot;SF3B1&quot; &amp; as.numeric(Protein_position) &gt;= 600 &amp; as.numeric(Protein_position) &lt;= 750) %&gt;%
-  filter(PC1 &gt;= -5) %&gt;%
-  dplyr::select(Mutant_aa) %&gt;%
-  group_by(Mutant_aa) %&gt;% tally() %&gt;% kable()</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Mutant_aa</th>
-<th align="right">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">669:Q/H</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">693:G/D</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">697:E/*</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">700:K/E</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">736:R/S</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-<p>Ok it seems there are about 50 mutant samples that clearly cluster and are phenotypic for the same differentially spliced junctions identified in Darman et al. However there are 5 samples that have mutations between positions 600-750 that are not phenotypic. This is decent motivation for the premise of this project: namely that there is utility to targeted sequencing screening a patient’s RNA since clearly some “hotspot” mutations are not of significance; genotyping alone is not perfect at separating molecular separating phenotypes.</p>
+#Check that study is balanced with regards to balancing covariates across cases and controls
+rbind(Cases, Controls) %&gt;%
+  ggplot(aes(x=CovariateInfo, color=Status)) +
+  geom_bar() +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size=3))</code></pre>
+<p><img src="figure/20190626.MetaAnalysisAllBlood.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Write out samples for new differential splicing contrast with leafcutter (groups file, junctions file)</p>
+<pre class="r"><code>rbind(Cases, Controls) %&gt;%
+  mutate(fullSampleName=paste0(&quot;.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.&quot;, rail_id)) %&gt;%
+  select(fullSampleName, Status) %&gt;%
+  write.table(&quot;../data/other_snakemake_data/MostlyMarrowContrast.groups&quot;, sep=&#39;\t&#39;, quote=F, col.names = F, row.names = F)
+  
+rbind(Cases, Controls) %&gt;%
+  mutate(fullSampleName=paste0(&quot;/project2/yangili1/snaptron/processed_to_bedfiles/SRA2/&quot;, rail_id, &quot;.junc&quot;)) %&gt;%
+  select(fullSampleName) %&gt;%
+  write.table(&quot;../data/other_snakemake_data/MostlyMarrowContrast.juncfiles&quot;, sep=&#39;\t&#39;, quote=F, col.names = F, row.names = F)</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1024,33 +772,33 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] RColorBrewer_1.1-2 knitr_1.23         gplots_3.0.1.1    
- [4] forcats_0.4.0      stringr_1.4.0      purrr_0.3.2       
- [7] readr_1.3.1        tidyr_0.8.3        tibble_2.1.3      
-[10] tidyverse_1.2.1    ggrepel_0.8.1      readxl_1.3.1      
-[13] reshape2_1.4.3     ggplot2_3.1.1      dplyr_0.8.1       
-[16] data.table_1.12.2 
+ [1] knitr_1.23        gplots_3.0.1.1    forcats_0.4.0    
+ [4] stringr_1.4.0     purrr_0.3.2       readr_1.3.1      
+ [7] tidyr_0.8.3       tibble_2.1.3      tidyverse_1.2.1  
+[10] ggrepel_0.8.1     readxl_1.3.1      reshape2_1.4.3   
+[13] ggplot2_3.1.1     dplyr_0.8.1       data.table_1.12.2
 
 loaded via a namespace (and not attached):
  [1] gtools_3.8.1       tidyselect_0.2.5   xfun_0.7          
  [4] haven_2.1.0        lattice_0.20-38    colorspace_1.4-1  
  [7] generics_0.0.2     htmltools_0.3.6    yaml_2.2.0        
-[10] rlang_0.3.4        pillar_1.4.1       glue_1.3.1        
-[13] withr_2.1.2        modelr_0.1.4       plyr_1.8.4        
-[16] munsell_0.5.0      gtable_0.3.0       workflowr_1.4.0   
-[19] cellranger_1.1.0   rvest_0.3.4        caTools_1.17.1.2  
-[22] evaluate_0.14      labeling_0.3       highr_0.8         
-[25] broom_0.5.2        Rcpp_1.0.1         KernSmooth_2.23-15
-[28] scales_1.0.0       backports_1.1.4    gdata_2.18.0      
-[31] jsonlite_1.6       fs_1.3.1           hms_0.4.2         
-[34] digest_0.6.19      stringi_1.4.3      grid_3.5.1        
-[37] rprojroot_1.3-2    bitops_1.0-6       cli_1.1.0         
-[40] tools_3.5.1        magrittr_1.5       lazyeval_0.2.2    
-[43] crayon_1.3.4       whisker_0.3-2      pkgconfig_2.0.2   
-[46] xml2_1.2.0         lubridate_1.7.4    assertthat_0.2.1  
-[49] rmarkdown_1.13     httr_1.4.0         rstudioapi_0.10   
-[52] R6_2.4.0           nlme_3.1-140       git2r_0.25.2      
-[55] compiler_3.5.1    </code></pre>
+[10] rlang_0.3.4        R.oo_1.22.0        pillar_1.4.1      
+[13] R.utils_2.8.0      glue_1.3.1         withr_2.1.2       
+[16] bit64_0.9-7        modelr_0.1.4       plyr_1.8.4        
+[19] munsell_0.5.0      gtable_0.3.0       workflowr_1.4.0   
+[22] cellranger_1.1.0   R.methodsS3_1.7.1  rvest_0.3.4       
+[25] caTools_1.17.1.2   evaluate_0.14      labeling_0.3      
+[28] broom_0.5.2        Rcpp_1.0.1         KernSmooth_2.23-15
+[31] scales_1.0.0       backports_1.1.4    gdata_2.18.0      
+[34] jsonlite_1.6       bit_1.1-14         fs_1.3.1          
+[37] hms_0.4.2          digest_0.6.19      stringi_1.4.3     
+[40] grid_3.5.1         rprojroot_1.3-2    bitops_1.0-6      
+[43] cli_1.1.0          tools_3.5.1        magrittr_1.5      
+[46] lazyeval_0.2.2     crayon_1.3.4       whisker_0.3-2     
+[49] pkgconfig_2.0.2    xml2_1.2.0         lubridate_1.7.4   
+[52] assertthat_0.2.1   rmarkdown_1.13     httr_1.4.0        
+[55] rstudioapi_0.10    R6_2.4.0           nlme_3.1-140      
+[58] git2r_0.25.2       compiler_3.5.1    </code></pre>
 </div>
 
 
