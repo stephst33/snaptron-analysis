@@ -9,8 +9,9 @@ rule all:
     input:
         Prefix + "CountTableNumerators.gz",
         expand(Prefix + "SnaptronMetadata.{snapdb}.txt.gz", snapdb=snaptron_samples.index),
-        "logs/delete_temp_files/{Samples_TargetJunctions}.log".format(Samples_TargetJunctions=Samples_TargetJunctions),
+        # "logs/delete_temp_files/{Samples_TargetJunctions}.log".format(Samples_TargetJunctions=Samples_TargetJunctions),
         Prefix + "leafcutter.ds.effect_sizes.txt.gz",
+        "leafcutter/clustering/{Samples_TargetJunctions}/Merged/leafcutter_perind.counts.numers.gz".format(Samples_TargetJunctions = Samples_TargetJunctions),
     output:
         Prefix + "GatherFilesCopied.log"
     shell:
