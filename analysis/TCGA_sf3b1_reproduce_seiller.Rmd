@@ -158,6 +158,12 @@ ToPlot %>%
   filter(PC1 >= -5) %>%
   dplyr::select(Mutant_aa) %>%
   group_by(Mutant_aa) %>% tally() %>% kable()
+
+ToPlot %>%
+  filter(Hugo_Symbol=="SF3B1" & as.numeric(Protein_position) >= 600 & as.numeric(Protein_position) <= 750) %>%
+  filter(PC1 <= -5) %>%
+  dplyr::select(Mutant_aa) %>%
+  group_by(Mutant_aa) %>% tally()
 ```
 
 Ok it seems there are about 50 mutant samples that clearly cluster and are phenotypic for the same differentially spliced junctions identified in Darman et al. However there are 5 samples that have mutations between positions 600-750 that are not phenotypic. This is decent motivation for the premise of this project: namely that there is utility to targeted sequencing screening a patient's RNA since clearly some "hotspot" mutations are not of significance; genotyping alone is not perfect at separating molecular separating phenotypes.

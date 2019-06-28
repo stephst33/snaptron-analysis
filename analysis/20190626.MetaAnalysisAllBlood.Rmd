@@ -137,9 +137,9 @@ Cases <- PoolToPickSamples %>%
   mutate(Status="Case") %>%
   select(rail_id, CovariateInfo, Status)
 
-Controls <- PoolToPickSamples %>% filter(PC1<=-10 & PC2<=-10) %>%
+Controls <- PoolToPickSamples %>% filter(PC1>=10 & PC2>=-10) %>%
   filter(study_ID %in% StudiesWithMutants) %>%
-  sample_n(95) %>%
+  # sample_n(95) %>%
   mutate(Status="Control") %>%
   select(rail_id, CovariateInfo, Status)
 
