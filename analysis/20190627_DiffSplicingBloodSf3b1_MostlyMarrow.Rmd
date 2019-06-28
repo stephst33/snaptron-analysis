@@ -147,7 +147,7 @@ Top1000Introns <- leafcutter.merged %>%
   ungroup() %>%
   top_n(-1000, p) %>% pull(intron)
 
-Groups <- read.table("../data/other_snakemake_data/GTEX_Blood_sf3b1.groups")
+Groups <- read.table("../data/other_snakemake_data/MostlyMarrowContrast.groups")
 
 
 #First make a heatmap of Darman et al junctions
@@ -165,3 +165,32 @@ Heatmap <- PSI_Table[Top1000Introns,] %>%
   as.data.frame() %>% drop_na() %>% as.matrix()
 heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", key.title="PSI-Zscore", ColSideColors=HeatmapGroupLabels)
 ```
+
+What's up with the near-identical samples: check correlation matrix
+
+
+```{r}
+SRA_metadata <- read.delim(gzfile("../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.SRA2.txt.gz"))
+
+MetadataOfSamples <- data.frame(colnames(Heatmap)) %>%
+  mutate(rail_id=as.numeric(gsub("\\.project2\\.yangili1\\.snaptron\\.processed_to_bedfiles\\..+?\\.(.+)", "\\1", colnames(Heatmap), perl=T))) %>% 
+  left_join(SRA_metadata, by="rail_id")
+
+#color accoring to source (tissue of origin)
+HeatmapGroupLabels <- plyr::mapvalues(colnames(Heatmap), from=MetadataOfSamples$colnames.Heatmap., to=MetadataOfSamples$project, warn_missing = FALSE)
+
+Heatmap <- PSI_Table[Top1000Introns,] %>%
+  t() %>% scale(scale=F) %>% t() %>%
+  as.data.frame() %>% drop_na() %>% as.matrix()
+heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", key.title="PSI-Zscore", ColSideColors=HeatmapGroupLabels)
+
+ggplot(MetadataOfSamples, aes(x=project, y=log10(junction_count))) +
+  geom_boxplot(outlier.shape=NA) +
+  geom_jitter(position=position_jitter(width=.5, height=0))
+
+MetadataOfSamples %>%
+  filter(junction_count!=0) %>%
+  select(rail_id)
+
+```
+

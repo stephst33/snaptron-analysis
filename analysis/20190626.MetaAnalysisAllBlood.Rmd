@@ -120,7 +120,7 @@ Ok try to get matched wildtype and mutants from same studies and balanced for ot
 ```{r}
 StudiesWithMutants <- ToPlot %>%
   filter(PC1<=-10 & PC2<=-20 & !is.na(study_ID)) %>%
-  select(study_ID) %>% distinct() %>% pull()
+  select(study_ID) %>% distinct() %>% pull() %>% length()
 
 ToPlot %>% filter(study_ID %in% StudiesWithMutants) %>%
 ggplot(aes(x=PC1, y=PC2, label=Combined.sf3b1)) + 
@@ -130,11 +130,13 @@ ggplot(aes(x=PC1, y=PC2, label=Combined.sf3b1)) +
   theme_bw()
 
 PoolToPickSamples <- ToPlot %>%
-  mutate(CovariateInfo=paste(study_ID, cell_type, tissue,	cell_line))
+  mutate(CovariateInfo=paste(study_ID, cell_type, tissue,	cell_line)) %>%
+  filter(junction_coverage>0)
 
 Cases <- PoolToPickSamples %>%
   filter(PC1<=-10 & PC2<=-20 & !is.na(study_ID)) %>% 
   mutate(Status="Case") %>%
+  sample_n(21) %>%
   select(rail_id, CovariateInfo, Status)
 
 Controls <- PoolToPickSamples %>% filter(PC1>=10 & PC2>=-10) %>%
