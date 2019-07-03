@@ -8,7 +8,7 @@ samples: samples.tsv
 
 
 # prefix for large computation rules for temporary files (scratchdir)
-scratch_prefix: "/scratch/midway2/bjf79/recurrent-splicing/"
+scratch_prefix: "/scratch/midway2/slozano/snaptron-analysis/"
 
 # Bed file to filter junctions on for leafcutter clustering. This is useful
 # because clustering all junctions for all samples can be a hassle. If none is
