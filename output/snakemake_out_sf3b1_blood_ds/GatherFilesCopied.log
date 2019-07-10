@@ -1,0 +1,2 @@
+Wed Jul 10 14:14:38 CDT 2019
+../../output/snakemake_out_sf3b1_blood_ds/CountTableNumerators.gz ../../output/snakemake_out_sf3b1_blood_ds/SnaptronMetadata.SRA2.txt.gz ../../output/snakemake_out_sf3b1_blood_ds/SnaptronMetadata.GTEX.txt.gz ../../output/snakemake_out_sf3b1_blood_ds/SnaptronMetadata.TCGA.txt.gz ../../output/snakemake_out_sf3b1_blood_ds/leafcutter.ds.effect_sizes.txt.gz leafcutter/clustering/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz
