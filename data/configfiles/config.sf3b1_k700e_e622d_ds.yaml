@@ -42,3 +42,6 @@ leafcutter_groupfile: "../../data/other_snakemake_data/sf3b1_k700e_e622d_ds.grou
 
 # git_folder_out prefix to add to move small (<25MB) output files that I want to be included in the git repo associated with this analysis (most stuff i$
 git_folder_out: "../../output/snakemake_out_sf3b1_k700e_e622d_ds/"
+
+#optional parameters, like exon annotations.
+leafcutter_ds_optional_params: "-e ../../data/other_snakemake_data/gencode.v26.exons.txt.gz -i 3 -g 3"

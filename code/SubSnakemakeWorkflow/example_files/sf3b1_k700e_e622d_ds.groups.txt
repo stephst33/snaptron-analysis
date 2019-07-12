@@ -1,6 +1,0 @@
-.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.27168  A
-.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.32641  A
-.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.36181  A
-.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.3641 B
-.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.18119  B
-.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.34165  B

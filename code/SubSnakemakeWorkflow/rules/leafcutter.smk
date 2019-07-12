@@ -146,12 +146,11 @@ rule leafcutter_ds:
     threads: 4
     params:
         outputprefix = "-o leafcutter/differential_splicing/{leafcutter_outprefix}".format(leafcutter_outprefix = leafcutter_ds_outprefix),
-        exons = "-e R_project/gencode.v26.exons.txt.gz"
+        extra_params = config["leafcutter_ds_optional_params"]
     log:
         "logs/leafcutter_ds/{leafcutter_outprefix}.log".format(leafcutter_outprefix = leafcutter_ds_outprefix)
     shell:
         """
         mkdir -p leafcutter/differential_splicing/
-        leafcutter_ds.R -p {threads} {params.outputprefix} {params.exons} {input.numers_merged_for_leafcutter_analysis} {input.groupfile} &> {log}
+        leafcutter_ds.R -p {threads} {params.outputprefix} {params.extra_params} {input.numers_merged_for_leafcutter_analysis} {input.groupfile} &> {log}
         """
-

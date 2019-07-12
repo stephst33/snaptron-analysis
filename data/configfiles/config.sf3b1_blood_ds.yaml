@@ -42,3 +42,6 @@ leafcutter_groupfile: "../../data/other_snakemake_data/Blood_sf3b1_contrast.grou
 
 # git_folder_out prefix to add to move small (<25MB) output files that I want to be included in the git repo associated with this analysis (most stuff in the snakemake workdir is included in gitignore). This can be useful for workflowr and updating site.
 git_folder_out: "../../output/snakemake_out_sf3b1_blood_ds/"
+
+#optional parameters, like exon annotations.
+leafcutter_ds_optional_params: "-e ../../data/other_snakemake_data/gencode.v26.exons.txt.gz"
