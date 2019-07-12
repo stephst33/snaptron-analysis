@@ -1,0 +1,1593 @@
+Building DAG of jobs...
+Subworkflow leafcutter_cluster_sf3b1_pancancer: Nothing to be done.
+Subworkflow leafcutter_sf3b1_contrast_blood: Nothing to be done.
+Subworkflow sf3b1_blood_cluster_darman_juncs: Nothing to be done.
+Subworkflow sf3b1_blood_GTEX_ds: Nothing to be done.
+Executing subworkflow sf3b1_mostlymarrow_ds.
+Building DAG of jobs...
+Job counts:
+	count	jobs
+	1	MoveFullJunctionCountTableToGitRepo
+	1	MoveLeafcutterDsToGitRepo
+	1	all
+	24	leafcutter_cluster
+	1	leafcutter_ds
+	24	make_bed_file_for_each_chrom
+	24	make_numers_and_denoms
+	1	merge_numers_and_denoms
+	24	prepare_juncfiles_for_clustering
+	24	rearrange_leafcutter_cluster_counts
+	125
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr11.bed
+    jobid: 123
+    wildcards: chrom=chr11
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr11" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr11.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr2.bed
+    jobid: 121
+    wildcards: chrom=chr2
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr2" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr2.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chrX.bed
+    jobid: 115
+    wildcards: chrom=chrX
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chrX" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chrX.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr4.bed
+    jobid: 118
+    wildcards: chrom=chr4
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr4" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr4.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr14.bed
+    jobid: 130
+    wildcards: chrom=chr14
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr14" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr14.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr16.bed
+    jobid: 128
+    wildcards: chrom=chr16
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr16" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr16.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr9.bed
+    jobid: 110
+    wildcards: chrom=chr9
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr9" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr9.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr17.bed
+    jobid: 109
+    wildcards: chrom=chr17
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr17" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr17.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr20.bed
+    jobid: 124
+    wildcards: chrom=chr20
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr20" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr20.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr21.bed
+    jobid: 113
+    wildcards: chrom=chr21
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr21" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr21.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr10.bed
+    jobid: 131
+    wildcards: chrom=chr10
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr10" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr10.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr1.bed
+    jobid: 127
+    wildcards: chrom=chr1
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr1" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr1.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chrY.bed
+    jobid: 114
+    wildcards: chrom=chrY
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chrY" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chrY.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr5.bed
+    jobid: 112
+    wildcards: chrom=chr5
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr5" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr5.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr22.bed
+    jobid: 119
+    wildcards: chrom=chr22
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr22" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr22.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr19.bed
+    jobid: 122
+    wildcards: chrom=chr19
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr19" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr19.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr7.bed
+    jobid: 125
+    wildcards: chrom=chr7
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr7" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr7.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr3.bed
+    jobid: 117
+    wildcards: chrom=chr3
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr3" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr3.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr15.bed
+    jobid: 108
+    wildcards: chrom=chr15
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr15" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr15.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr6.bed
+    jobid: 129
+    wildcards: chrom=chr6
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr6" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr6.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr12.bed
+    jobid: 126
+    wildcards: chrom=chr12
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr12" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr12.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr8.bed
+    jobid: 111
+    wildcards: chrom=chr8
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr8" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr8.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr18.bed
+    jobid: 116
+    wildcards: chrom=chr18
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr18" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr18.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr13.bed
+    jobid: 120
+    wildcards: chrom=chr13
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr13" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr13.bed
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr1.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr1.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr1/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1.log
+    jobid: 102
+    wildcards: chromosome=chr1
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr1/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr1/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr1.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr1/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr1/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr1.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr17.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr17.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr17/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17.log
+    jobid: 84
+    wildcards: chromosome=chr17
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr17/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr17/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr17.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr17/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr17/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr17.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr9.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr9.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr9/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9.log
+    jobid: 85
+    wildcards: chromosome=chr9
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr9/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr9/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr9.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr9/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr9/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr9.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr20.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr20.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr20/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20.log
+    jobid: 99
+    wildcards: chromosome=chr20
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr20/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr20/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr20.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr20/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr20/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr20.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr21.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr21.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr21/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21.log
+    jobid: 88
+    wildcards: chromosome=chr21
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr21/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr21/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr21.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr21/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr21/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr21.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr14.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr14.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr14/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14.log
+    jobid: 105
+    wildcards: chromosome=chr14
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr14/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr14/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr14.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr14/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr14/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr14.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr16.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr16.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr16/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16.log
+    jobid: 103
+    wildcards: chromosome=chr16
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr16/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr16/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr16.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr16/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr16/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr16.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr11.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr11.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr11/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11.log
+    jobid: 98
+    wildcards: chromosome=chr11
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr11/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr11/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr11.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr11/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr11/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr11.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr2.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr2.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr2/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2.log
+    jobid: 96
+    wildcards: chromosome=chr2
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr2/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr2/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr2.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr2/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr2/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr2.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr4.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr4.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr4/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4.log
+    jobid: 93
+    wildcards: chromosome=chr4
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr4/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr4/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr4.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr4/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr4/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr4.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chrX.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrX.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrX/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX.log
+    jobid: 90
+    wildcards: chromosome=chrX
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrX/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrX/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chrX.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrX/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrX/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrX.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr12.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr12.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr12/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12.log
+    jobid: 101
+    wildcards: chromosome=chr12
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr12/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr12/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr12.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr12/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr12/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr12.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr8.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr8.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr8/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8.log
+    jobid: 86
+    wildcards: chromosome=chr8
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr8/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr8/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr8.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr8/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr8/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr8.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr10.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr10.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr10/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10.log
+    jobid: 106
+    wildcards: chromosome=chr10
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr10/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr10/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr10.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr10/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr10/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr10.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr13.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr13.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr13/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13.log
+    jobid: 95
+    wildcards: chromosome=chr13
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr13/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr13/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr13.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr13/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr13/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr13.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr18.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr18.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr18/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18.log
+    jobid: 91
+    wildcards: chromosome=chr18
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr18/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr18/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr18.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr18/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr18/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr18.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr7.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr7.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr7/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7.log
+    jobid: 100
+    wildcards: chromosome=chr7
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr7/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr7/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr7.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr7/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr7/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr7.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr3.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr3.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr3/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3.log
+    jobid: 92
+    wildcards: chromosome=chr3
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr3/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr3/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr3.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr3/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr3/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr3.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr15.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr15.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr15/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15.log
+    jobid: 83
+    wildcards: chromosome=chr15
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr15/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr15/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr15.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr15/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr15/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr15.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr6.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr6.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr6/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6.log
+    jobid: 104
+    wildcards: chromosome=chr6
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr6/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr6/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr6.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr6/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr6/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr6.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr19.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr19.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr19/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19.log
+    jobid: 97
+    wildcards: chromosome=chr19
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr19/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr19/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr19.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr19/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr19/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr19.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr5.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr5.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr5/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5.log
+    jobid: 87
+    wildcards: chromosome=chr5
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr5/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr5/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr5.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr5/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr5/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr5.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr22.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr22.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr22/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22.log
+    jobid: 94
+    wildcards: chromosome=chr22
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr22/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr22/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr22.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr22/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chr22/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr22.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chrY.bed, ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles
+    output: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrY.txt, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrY/touch
+    log: logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY.log
+    jobid: 89
+    wildcards: chromosome=chrY
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrY/
+        touch /scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrY/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chrY.bed" ,"/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrY/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/bjf79/recurrent-splicing/leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfiles/chrY/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/MostlyMarrowContrast.juncfiles > leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrY.txt
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrY.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY.log
+    jobid: 65
+    wildcards: chromosome=chrY
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrY.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr22.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22.log
+    jobid: 70
+    wildcards: chromosome=chr22
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr22.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr5.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5.log
+    jobid: 63
+    wildcards: chromosome=chr5
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr5.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr7.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7.log
+    jobid: 76
+    wildcards: chromosome=chr7
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr7.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr3.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3.log
+    jobid: 68
+    wildcards: chromosome=chr3
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr3.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr15.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15.log
+    jobid: 59
+    wildcards: chromosome=chr15
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr15.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr6.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6.log
+    jobid: 80
+    wildcards: chromosome=chr6
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr6.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr19.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19.log
+    jobid: 73
+    wildcards: chromosome=chr19
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr19.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr10.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10.log
+    jobid: 82
+    wildcards: chromosome=chr10
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr10.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr13.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13.log
+    jobid: 71
+    wildcards: chromosome=chr13
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr13.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr18.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18.log
+    jobid: 67
+    wildcards: chromosome=chr18
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr18.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr12.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12.log
+    jobid: 77
+    wildcards: chromosome=chr12
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr12.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr8.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8.log
+    jobid: 62
+    wildcards: chromosome=chr8
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr8.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr4.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4.log
+    jobid: 69
+    wildcards: chromosome=chr4
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr4.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrX.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX.log
+    jobid: 66
+    wildcards: chromosome=chrX
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chrX.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr11.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11.log
+    jobid: 74
+    wildcards: chromosome=chr11
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr11.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr2.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2.log
+    jobid: 72
+    wildcards: chromosome=chr2
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr2.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr16.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16.log
+    jobid: 79
+    wildcards: chromosome=chr16
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr16.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr14.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14.log
+    jobid: 81
+    wildcards: chromosome=chr14
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr14.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr20.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20.log
+    jobid: 75
+    wildcards: chromosome=chr20
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr20.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr21.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21.log
+    jobid: 64
+    wildcards: chromosome=chr21
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr21.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr17.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17.log
+    jobid: 60
+    wildcards: chromosome=chr17
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr17.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr9.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9.log
+    jobid: 61
+    wildcards: chromosome=chr9
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr9.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr1.txt
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1.log
+    jobid: 78
+    wildcards: chromosome=chr1
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/juncfile.chr1.txt -r /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/ -s True &> logs/leafcutter_cluster/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1.log
+    jobid: 54
+    wildcards: chromosome=chr1
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17.log
+    jobid: 36
+    wildcards: chromosome=chr17
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9.log
+    jobid: 37
+    wildcards: chromosome=chr9
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20.log
+    jobid: 51
+    wildcards: chromosome=chr20
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21.log
+    jobid: 40
+    wildcards: chromosome=chr21
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14.log
+    jobid: 57
+    wildcards: chromosome=chr14
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16.log
+    jobid: 55
+    wildcards: chromosome=chr16
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11.log
+    jobid: 50
+    wildcards: chromosome=chr11
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2.log
+    jobid: 48
+    wildcards: chromosome=chr2
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4.log
+    jobid: 45
+    wildcards: chromosome=chr4
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX.log
+    jobid: 42
+    wildcards: chromosome=chrX
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12.log
+    jobid: 53
+    wildcards: chromosome=chr12
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8.log
+    jobid: 38
+    wildcards: chromosome=chr8
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10.log
+    jobid: 58
+    wildcards: chromosome=chr10
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13.log
+    jobid: 47
+    wildcards: chromosome=chr13
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18.log
+    jobid: 43
+    wildcards: chromosome=chr18
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7.log
+    jobid: 52
+    wildcards: chromosome=chr7
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3.log
+    jobid: 44
+    wildcards: chromosome=chr3
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15.log
+    jobid: 35
+    wildcards: chromosome=chr15
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6.log
+    jobid: 56
+    wildcards: chromosome=chr6
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19.log
+    jobid: 49
+    wildcards: chromosome=chr19
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5.log
+    jobid: 39
+    wildcards: chromosome=chr5
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22.log
+    jobid: 46
+    wildcards: chromosome=chr22
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule rearrange_leafcutter_cluster_counts:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.rearranged.gz
+    log: logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY.log
+    jobid: 41
+    wildcards: chromosome=chrY
+
+
+        scripts/ReorderLeafcutterClusterColumns.py /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.rearranged.gz 2> logs/rearrange_leafcutter_cluster_counts/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.denoms
+    jobid: 28
+    wildcards: chromosome=chr1
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.denoms
+    jobid: 10
+    wildcards: chromosome=chr17
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.denoms
+    jobid: 11
+    wildcards: chromosome=chr9
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.denoms
+    jobid: 14
+    wildcards: chromosome=chr21
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.denoms
+    jobid: 25
+    wildcards: chromosome=chr20
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.denoms
+    jobid: 31
+    wildcards: chromosome=chr14
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.denoms
+    jobid: 29
+    wildcards: chromosome=chr16
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.denoms
+    jobid: 22
+    wildcards: chromosome=chr2
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.denoms
+    jobid: 24
+    wildcards: chromosome=chr11
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.denoms
+    jobid: 19
+    wildcards: chromosome=chr4
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.denoms
+    jobid: 16
+    wildcards: chromosome=chrX
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.denoms
+    jobid: 12
+    wildcards: chromosome=chr8
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.denoms
+    jobid: 27
+    wildcards: chromosome=chr12
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.denoms
+    jobid: 32
+    wildcards: chromosome=chr10
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.denoms
+    jobid: 21
+    wildcards: chromosome=chr13
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.denoms
+    jobid: 17
+    wildcards: chromosome=chr18
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.denoms
+    jobid: 9
+    wildcards: chromosome=chr15
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.denoms
+    jobid: 30
+    wildcards: chromosome=chr6
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.denoms
+    jobid: 26
+    wildcards: chromosome=chr7
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.denoms
+    jobid: 18
+    wildcards: chromosome=chr3
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.denoms
+    jobid: 23
+    wildcards: chromosome=chr19
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.denoms
+    jobid: 13
+    wildcards: chromosome=chr5
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.denoms
+    jobid: 20
+    wildcards: chromosome=chr22
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule make_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.rearranged.gz
+    output: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.denoms
+    jobid: 15
+    wildcards: chromosome=chrY
+
+
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\d+\///g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.denoms
+        zcat /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.rearranged.gz | perl -lne 'if ($.==1) {print} else {$_ =~ s/\/\d+//g; print}' > /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.numers
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule merge_numers_and_denoms:
+    input: /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.numers, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.denoms, /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.denoms
+    output: leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz, leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.denoms.gz, leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz
+    jobid: 4
+
+
+        awk 'NR==1 {print} FNR>1 {print}' /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.numers | gzip - > leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz
+        awk 'NR==1 {print} FNR>1 {print}' /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.denoms /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.denoms | gzip - > leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.denoms.gz
+        awk 'NR==1 {printf $2; for (i=3; i <= NF; i++) printf FS$i; print NL} FNR>1 {print}' /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.numers /scratch/midway2/bjf79/recurrent-splicing/leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.numers | gzip - > leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule leafcutter_ds:
+    input: leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz, ../../data/other_snakemake_data/MostlyMarrowContrast.groups
+    output: leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups_effect_sizes.txt, leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups_cluster_significance.txt
+    log: logs/leafcutter_ds/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups.log
+    jobid: 8
+
+
+        mkdir -p leafcutter/differential_splicing/
+        leafcutter_ds.R -p 1 -o leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups -e R_project/gencode.v26.exons.txt.gz leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz ../../data/other_snakemake_data/MostlyMarrowContrast.groups &> logs/leafcutter_ds/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups.log
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule MoveFullJunctionCountTableToGitRepo:
+    input: leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz, leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.denoms.gz
+    output: ../../output/snakemake_out_sf3b1_mostlymarrow/CountTableNumerators.gz, ../../output/snakemake_out_sf3b1_mostlymarrow/CountTableDenominators.gz
+    jobid: 3
+
+
+        cp leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz ../../output/snakemake_out_sf3b1_mostlymarrow/CountTableNumerators.gz
+        cp leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.denoms.gz ../../output/snakemake_out_sf3b1_mostlymarrow/CountTableDenominators.gz
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule MoveLeafcutterDsToGitRepo:
+    input: leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups_effect_sizes.txt, leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups_cluster_significance.txt
+    output: ../../output/snakemake_out_sf3b1_mostlymarrow/leafcutter.ds.effect_sizes.txt.gz, ../../output/snakemake_out_sf3b1_mostlymarrow/leafcutter.ds.cluster_sig.txt.gz
+    jobid: 2
+
+
+        cat leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups_effect_sizes.txt | gzip - > ../../output/snakemake_out_sf3b1_mostlymarrow/leafcutter.ds.effect_sizes.txt.gz
+        cat leafcutter/differential_splicing/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed_MostlyMarrowContrast.groups_cluster_significance.txt | gzip - > ../../output/snakemake_out_sf3b1_mostlymarrow/leafcutter.ds.cluster_sig.txt.gz
+        
+
+[Fri Jun 28 16:13:11 2019]
+rule all:
+    input: ../../output/snakemake_out_sf3b1_mostlymarrow/CountTableNumerators.gz, ../../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.SRA2.txt.gz, ../../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.GTEX.txt.gz, ../../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.TCGA.txt.gz, ../../output/snakemake_out_sf3b1_mostlymarrow/leafcutter.ds.effect_sizes.txt.gz, leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz
+    output: ../../output/snakemake_out_sf3b1_mostlymarrow/GatherFilesCopied.log
+    jobid: 0
+
+
+        echo `date` >> ../../output/snakemake_out_sf3b1_mostlymarrow/GatherFilesCopied.log
+        echo ../../output/snakemake_out_sf3b1_mostlymarrow/CountTableNumerators.gz ../../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.SRA2.txt.gz ../../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.GTEX.txt.gz ../../output/snakemake_out_sf3b1_mostlymarrow/SnaptronMetadata.TCGA.txt.gz ../../output/snakemake_out_sf3b1_mostlymarrow/leafcutter.ds.effect_sizes.txt.gz leafcutter/clustering/MostlyMarrowContrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz >> ../../output/snakemake_out_sf3b1_mostlymarrow/GatherFilesCopied.log
+        
+Job counts:
+	count	jobs
+	1	MoveFullJunctionCountTableToGitRepo
+	1	MoveLeafcutterDsToGitRepo
+	1	all
+	24	leafcutter_cluster
+	1	leafcutter_ds
+	24	make_bed_file_for_each_chrom
+	24	make_numers_and_denoms
+	1	merge_numers_and_denoms
+	24	prepare_juncfiles_for_clustering
+	24	rearrange_leafcutter_cluster_counts
+	125
+Executing main workflow.
+Job counts:
+	count	jobs
+	1	all
+	1
+
+[Fri Jun 28 16:13:11 2019]
+localrule all:
+    input: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/../../output/snakemake_out_sf3b1_mostlymarrow/GatherFilesCopied.log
+    jobid: 0
+
+Job counts:
+	count	jobs
+	1	all
+	1

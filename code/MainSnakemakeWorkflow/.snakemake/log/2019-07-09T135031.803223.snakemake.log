@@ -1,0 +1,39 @@
+Building DAG of jobs...
+Executing subworkflow leafcutter_cluster_sf3b1_pancancer.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/.snakemake/log/2019-07-09T135031.905973.snakemake.log
+Executing subworkflow leafcutter_sf3b1_contrast_blood.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 200
+Job counts:
+	count	jobs
+	1	MoveLeafcutterDsToGitRepo
+	1	all
+	1	leafcutter_ds
+	3
+
+[Tue Jul  9 13:50:47 2019]
+rule leafcutter_ds:
+    input: leafcutter/clustering/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz, ../../data/other_snakemake_data/Blood_sf3b1_contrast.groups.txt
+    output: leafcutter/differential_splicing/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt_effect_sizes.txt, leafcutter/differential_splicing/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt_cluster_significance.txt
+    log: logs/leafcutter_ds/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt.log
+    jobid: 9
+    threads: 4
+
+
+        mkdir -p leafcutter/differential_splicing/
+        leafcutter_ds.R -p 4 -o leafcutter/differential_splicing/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt -e R_project/gencode.v26.exons.txt.gz leafcutter/clustering/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz ../../data/other_snakemake_data/Blood_sf3b1_contrast.groups.txt &> logs/leafcutter_ds/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt.log
+        
+Submitted job 9 with external jobid 'Submitted batch job 61344350'.
+[Tue Jul  9 13:51:37 2019]
+Error in rule leafcutter_ds:
+    jobid: 9
+    output: leafcutter/differential_splicing/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt_effect_sizes.txt, leafcutter/differential_splicing/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt_cluster_significance.txt
+    log: logs/leafcutter_ds/Blood_sf3b1_contrast.juncfiles_ChromosomalGenome.bed_Blood_sf3b1_contrast.groups.txt.log
+    cluster_jobid: Submitted batch job 61344350
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/.snakemake/log/2019-07-09T135046.339120.snakemake.log

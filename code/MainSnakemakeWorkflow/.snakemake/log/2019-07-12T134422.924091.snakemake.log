@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Subworkflow leafcutter_cluster_sf3b1_pancancer: Nothing to be done.
+Subworkflow leafcutter_sf3b1_contrast_blood: Nothing to be done.
+Subworkflow sf3b1_blood_cluster_darman_juncs: Nothing to be done.
+Subworkflow sf3b1_blood_GTEX_ds: Nothing to be done.
+Subworkflow sf3b1_mostlymarrow_ds: Nothing to be done.
+Executing subworkflow sf3b1_k700e_e622d_ds.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 200
+Job counts:
+	count	jobs
+	1	MoveLeafcutterDsToGitRepo
+	1	all
+	1	leafcutter_ds
+	3
+
+[Fri Jul 12 13:44:26 2019]
+rule leafcutter_ds:
+    input: leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz, ../../data/other_snakemake_data/k700e_e622d.groups.txt
+    output: leafcutter/differential_splicing/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt_effect_sizes.txt, leafcutter/differential_splicing/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt_cluster_significance.txt
+    log: logs/leafcutter_ds/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt.log
+    jobid: 7
+    threads: 4
+
+
+        mkdir -p leafcutter/differential_splicing/
+        leafcutter_ds.R -p 4 -o leafcutter/differential_splicing/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt -e R_project/gencode.v26.exons.txt.gz leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/Merged/leafcutter_perind_numers.gz ../../data/other_snakemake_data/k700e_e622d.groups.txt &> logs/leafcutter_ds/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt.log
+        
+Submitted job 7 with external jobid 'Submitted batch job 61393773'.
+[Fri Jul 12 13:44:47 2019]
+Error in rule leafcutter_ds:
+    jobid: 7
+    output: leafcutter/differential_splicing/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt_effect_sizes.txt, leafcutter/differential_splicing/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt_cluster_significance.txt
+    log: logs/leafcutter_ds/k700e_e622d.juncfile_ChromosomalGenome.bed_k700e_e622d.groups.txt.log
+    cluster_jobid: Submitted batch job 61393773
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/.snakemake/log/2019-07-12T134423.046571.snakemake.log

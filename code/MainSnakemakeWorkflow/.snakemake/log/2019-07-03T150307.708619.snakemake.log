@@ -1,0 +1,308 @@
+Building DAG of jobs...
+Executing subworkflow leafcutter_cluster_sf3b1_pancancer.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 200
+Job counts:
+	count	jobs
+	1	MoveFullJunctionCountTableToGitRepo
+	1	all
+	1	delete_temp_files
+	24	leafcutter_cluster
+	24	make_bed_file_for_each_chrom
+	24	make_numers_and_denoms
+	1	merge_numers_and_denoms
+	24	prepare_juncfiles_for_clustering
+	24	rearrange_leafcutter_cluster_counts
+	124
+
+[Wed Jul  3 15:03:24 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr5.bed
+    jobid: 125
+    wildcards: chrom=chr5
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr5" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr5.bed
+        
+Submitted job 125 with external jobid 'Submitted batch job 61258996'.
+
+[Wed Jul  3 15:03:24 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chrY.bed
+    jobid: 119
+    wildcards: chrom=chrY
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chrY" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chrY.bed
+        
+Submitted job 119 with external jobid 'Submitted batch job 61258997'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr4.bed
+    jobid: 109
+    wildcards: chrom=chr4
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr4" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr4.bed
+        
+Submitted job 109 with external jobid 'Submitted batch job 61258998'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr18.bed
+    jobid: 117
+    wildcards: chrom=chr18
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr18" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr18.bed
+        
+Submitted job 117 with external jobid 'Submitted batch job 61258999'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr7.bed
+    jobid: 113
+    wildcards: chrom=chr7
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr7" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr7.bed
+        
+Submitted job 113 with external jobid 'Submitted batch job 61259000'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr17.bed
+    jobid: 112
+    wildcards: chrom=chr17
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr17" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr17.bed
+        
+Submitted job 112 with external jobid 'Submitted batch job 61259001'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr13.bed
+    jobid: 123
+    wildcards: chrom=chr13
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr13" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr13.bed
+        
+Submitted job 123 with external jobid 'Submitted batch job 61259002'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr8.bed
+    jobid: 116
+    wildcards: chrom=chr8
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr8" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr8.bed
+        
+Submitted job 116 with external jobid 'Submitted batch job 61259003'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr3.bed
+    jobid: 127
+    wildcards: chrom=chr3
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr3" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr3.bed
+        
+Submitted job 127 with external jobid 'Submitted batch job 61259004'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr15.bed
+    jobid: 121
+    wildcards: chrom=chr15
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr15" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr15.bed
+        
+Submitted job 121 with external jobid 'Submitted batch job 61259005'.
+
+[Wed Jul  3 15:03:25 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr1.bed
+    jobid: 122
+    wildcards: chrom=chr1
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr1" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr1.bed
+        
+Submitted job 122 with external jobid 'Submitted batch job 61259006'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr20.bed
+    jobid: 120
+    wildcards: chrom=chr20
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr20" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr20.bed
+        
+Submitted job 120 with external jobid 'Submitted batch job 61259007'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chrX.bed
+    jobid: 110
+    wildcards: chrom=chrX
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chrX" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chrX.bed
+        
+Submitted job 110 with external jobid 'Submitted batch job 61259008'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr11.bed
+    jobid: 114
+    wildcards: chrom=chr11
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr11" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr11.bed
+        
+Submitted job 114 with external jobid 'Submitted batch job 61259009'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr10.bed
+    jobid: 108
+    wildcards: chrom=chr10
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr10" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr10.bed
+        
+Submitted job 108 with external jobid 'Submitted batch job 61259010'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr6.bed
+    jobid: 115
+    wildcards: chrom=chr6
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr6" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr6.bed
+        
+Submitted job 115 with external jobid 'Submitted batch job 61259011'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr19.bed
+    jobid: 107
+    wildcards: chrom=chr19
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr19" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr19.bed
+        
+Submitted job 107 with external jobid 'Submitted batch job 61259012'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr14.bed
+    jobid: 124
+    wildcards: chrom=chr14
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr14" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr14.bed
+        
+Submitted job 124 with external jobid 'Submitted batch job 61259013'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr9.bed
+    jobid: 126
+    wildcards: chrom=chr9
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr9" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr9.bed
+        
+Submitted job 126 with external jobid 'Submitted batch job 61259014'.
+
+[Wed Jul  3 15:03:26 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr21.bed
+    jobid: 129
+    wildcards: chrom=chr21
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr21" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr21.bed
+        
+Submitted job 129 with external jobid 'Submitted batch job 61259015'.
+
+[Wed Jul  3 15:03:27 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr2.bed
+    jobid: 128
+    wildcards: chrom=chr2
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr2" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr2.bed
+        
+Submitted job 128 with external jobid 'Submitted batch job 61259016'.
+
+[Wed Jul  3 15:03:27 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr16.bed
+    jobid: 118
+    wildcards: chrom=chr16
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr16" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr16.bed
+        
+Submitted job 118 with external jobid 'Submitted batch job 61259017'.
+
+[Wed Jul  3 15:03:27 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr12.bed
+    jobid: 111
+    wildcards: chrom=chr12
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr12" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr12.bed
+        
+Submitted job 111 with external jobid 'Submitted batch job 61259018'.
+
+[Wed Jul  3 15:03:27 2019]
+rule make_bed_file_for_each_chrom:
+    input: MiscData/hg38.chrome.sizes
+    output: MiscData/bedfiles/chr22.bed
+    jobid: 106
+    wildcards: chrom=chr22
+
+
+        awk -F'\t' -v OFS='\t' '$1=="chr22" {print $1, 1, $2}' MiscData/hg38.chrome.sizes > MiscData/bedfiles/chr22.bed
+        
+Submitted job 106 with external jobid 'Submitted batch job 61259019'.
+[Wed Jul  3 15:04:10 2019]
+Finished job 125.
+1 of 124 steps (0.81%) done

@@ -1,0 +1,16 @@
+Building DAG of jobs...
+Executing subworkflow leafcutter_cluster_sf3b1_pancancer.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 200
+Job counts:
+	count	jobs
+	1	MoveFullJunctionCountTableToGitRepo
+	1	all
+	1	delete_temp_files
+	24	leafcutter_cluster
+	24	make_numers_and_denoms
+	1	merge_numers_and_denoms
+	24	prepare_juncfiles_for_clustering
+	24	rearrange_leafcutter_cluster_counts
+	100

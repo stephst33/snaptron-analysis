@@ -1,0 +1,893 @@
+Building DAG of jobs...
+Subworkflow leafcutter_cluster_sf3b1_pancancer: Nothing to be done.
+Subworkflow leafcutter_sf3b1_contrast_blood: Nothing to be done.
+Subworkflow sf3b1_blood_cluster_darman_juncs: Nothing to be done.
+Subworkflow sf3b1_blood_GTEX_ds: Nothing to be done.
+Subworkflow sf3b1_mostlymarrow_ds: Nothing to be done.
+Executing subworkflow sf3b1_k700e_e622d_ds.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 200
+Job counts:
+	count	jobs
+	1	MoveFullJunctionCountTableToGitRepo
+	1	MoveLeafcutterDsToGitRepo
+	3	MoveSnaptronSamplesInfoToGitRepo
+	1	all
+	24	leafcutter_cluster
+	1	leafcutter_ds
+	24	make_numers_and_denoms
+	1	merge_numers_and_denoms
+	24	prepare_juncfiles_for_clustering
+	24	rearrange_leafcutter_cluster_counts
+	104
+
+[Fri Jul 12 12:26:11 2019]
+rule MoveSnaptronSamplesInfoToGitRepo:
+    input: ../../data/other_snakemake_data/k700e_e622d.juncfile, /project2/yangili1/snaptron/TCGA_samples.tsv
+    output: ../../output/snakemake_out_sf3b1_k700e_e622d_ds/SnaptronMetadata.TCGA.txt.gz
+    jobid: 5
+    wildcards: snapdb=TCGA
+
+
+        awk -F'/' '{ split($NF,a,"."); print a[1] }' ../../data/other_snakemake_data/k700e_e622d.juncfile > temp.TCGA.txt
+        scripts/FilterSampleInfoByRailID.py /project2/yangili1/snaptron/TCGA_samples.tsv temp.TCGA.txt | gzip - > ../../output/snakemake_out_sf3b1_k700e_e622d_ds/SnaptronMetadata.TCGA.txt.gz
+        rm temp.TCGA.txt
+        
+Submitted job 5 with external jobid 'Submitted batch job 61393293'.
+
+[Fri Jul 12 12:26:20 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr5.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr5.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr5/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+    jobid: 88
+    wildcards: chromosome=chr5
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr5/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr5/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr5.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr5/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr5/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr5.txt
+        
+Submitted job 88 with external jobid 'Submitted batch job 61393294'.
+
+[Fri Jul 12 12:26:29 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr6.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr6.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr6/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+    jobid: 85
+    wildcards: chromosome=chr6
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr6/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr6/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr6.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr6/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr6/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr6.txt
+        
+Submitted job 85 with external jobid 'Submitted batch job 61393295'.
+[Fri Jul 12 12:26:37 2019]
+Finished job 5.
+1 of 104 steps (0.96%) done
+
+[Fri Jul 12 12:26:45 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr9.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr9.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr9/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+    jobid: 97
+    wildcards: chromosome=chr9
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr9/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr9/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr9.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr9/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr9/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr9.txt
+        
+Submitted job 97 with external jobid 'Submitted batch job 61393296'.
+
+[Fri Jul 12 12:26:50 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr4.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr4.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr4/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+    jobid: 87
+    wildcards: chromosome=chr4
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr4/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr4/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr4.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr4/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr4/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr4.txt
+        
+Submitted job 87 with external jobid 'Submitted batch job 61393298'.
+[Fri Jul 12 12:27:00 2019]
+Finished job 88.
+2 of 104 steps (2%) done
+
+[Fri Jul 12 12:27:00 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chrX.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrX.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrX/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+    jobid: 86
+    wildcards: chromosome=chrX
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrX/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrX/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chrX.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrX/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrX/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrX.txt
+        
+Submitted job 86 with external jobid 'Submitted batch job 61393299'.
+
+[Fri Jul 12 12:27:04 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr8.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr8.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr8/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+    jobid: 90
+    wildcards: chromosome=chr8
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr8/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr8/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr8.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr8/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr8/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr8.txt
+        
+Submitted job 90 with external jobid 'Submitted batch job 61393300'.
+[Fri Jul 12 12:27:15 2019]
+Finished job 87.
+3 of 104 steps (3%) done
+
+[Fri Jul 12 12:27:15 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr22.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr22.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr22/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+    jobid: 95
+    wildcards: chromosome=chr22
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr22/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr22/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr22.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr22/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr22/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr22.txt
+        
+[Fri Jul 12 12:27:15 2019]
+Finished job 85.
+4 of 104 steps (4%) done
+[Fri Jul 12 12:27:15 2019]
+Finished job 97.
+5 of 104 steps (5%) done
+Submitted job 95 with external jobid 'Submitted batch job 61393301'.
+
+[Fri Jul 12 12:27:15 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr15.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr15.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr15/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+    jobid: 104
+    wildcards: chromosome=chr15
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr15/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr15/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr15.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr15/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr15/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr15.txt
+        
+Submitted job 104 with external jobid 'Submitted batch job 61393302'.
+
+[Fri Jul 12 12:27:32 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chrY.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrY.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrY/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+    jobid: 91
+    wildcards: chromosome=chrY
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrY/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrY/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chrY.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrY/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chrY/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrY.txt
+        
+[Fri Jul 12 12:27:32 2019]
+Finished job 86.
+6 of 104 steps (6%) done
+Submitted job 91 with external jobid 'Submitted batch job 61393303'.
+
+[Fri Jul 12 12:27:37 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr12.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr12.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr12/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+    jobid: 94
+    wildcards: chromosome=chr12
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr12/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr12/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr12.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr12/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr12/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr12.txt
+        
+Submitted job 94 with external jobid 'Submitted batch job 61393304'.
+[Fri Jul 12 12:27:42 2019]
+Finished job 90.
+7 of 104 steps (7%) done
+
+[Fri Jul 12 12:27:42 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr18.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr18.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr18/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+    jobid: 100
+    wildcards: chromosome=chr18
+
+[Fri Jul 12 12:27:42 2019]
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr18/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr18/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr18.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr18/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr18/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr18.txt
+        
+Finished job 95.
+8 of 104 steps (8%) done
+Submitted job 100 with external jobid 'Submitted batch job 61393305'.
+
+[Fri Jul 12 12:27:52 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr21.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr21.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr21/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+    jobid: 93
+    wildcards: chromosome=chr21
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr21/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr21/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr21.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr21/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr21/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr21.txt
+        
+Submitted job 93 with external jobid 'Submitted batch job 61393306'.
+[Fri Jul 12 12:27:56 2019]
+
+Finished job 94.
+[Fri Jul 12 12:27:56 2019]
+9 of 104 steps (9%) done
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr14.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr14.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr14/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+    jobid: 84
+    wildcards: chromosome=chr14
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr14/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr14/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr14.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr14/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr14/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr14.txt
+        
+[Fri Jul 12 12:27:56 2019]
+Finished job 104.
+10 of 104 steps (10%) done
+[Fri Jul 12 12:27:56 2019]
+Finished job 91.
+11 of 104 steps (11%) done
+Submitted job 84 with external jobid 'Submitted batch job 61393307'.
+
+[Fri Jul 12 12:28:02 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr19.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr19.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr19/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+    jobid: 102
+    wildcards: chromosome=chr19
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr19/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr19/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr19.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr19/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr19/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr19.txt
+        
+Submitted job 102 with external jobid 'Submitted batch job 61393308'.
+
+[Fri Jul 12 12:28:14 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr13.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr13.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr13/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+    jobid: 106
+    wildcards: chromosome=chr13
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr13/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr13/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr13.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr13/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr13/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr13.txt
+        
+Submitted job 106 with external jobid 'Submitted batch job 61393309'.
+
+[Fri Jul 12 12:28:24 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr16.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr16.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr16/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+    jobid: 92
+    wildcards: chromosome=chr16
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr16/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr16/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr16.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr16/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr16/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr16.txt
+        
+Submitted job 92 with external jobid 'Submitted batch job 61393311'.
+[Fri Jul 12 12:28:33 2019]
+Finished job 93.
+12 of 104 steps (12%) done
+
+[Fri Jul 12 12:28:33 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr10.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr10.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr10/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+    jobid: 98
+    wildcards: chromosome=chr10
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr10/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr10/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr10.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr10/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr10/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr10.txt
+        
+[Fri Jul 12 12:28:34 2019]
+Finished job 100.
+13 of 104 steps (12%) done
+[Fri Jul 12 12:28:34 2019]
+Finished job 84.
+14 of 104 steps (13%) done
+[Fri Jul 12 12:28:34 2019]
+Finished job 102.
+15 of 104 steps (14%) done
+[Fri Jul 12 12:28:34 2019]
+Finished job 106.
+16 of 104 steps (15%) done
+Submitted job 98 with external jobid 'Submitted batch job 61393312'.
+
+[Fri Jul 12 12:28:34 2019]
+rule MoveSnaptronSamplesInfoToGitRepo:
+    input: ../../data/other_snakemake_data/k700e_e622d.juncfile, /project2/yangili1/snaptron/GTEX_samples.tsv
+    output: ../../output/snakemake_out_sf3b1_k700e_e622d_ds/SnaptronMetadata.GTEX.txt.gz
+    jobid: 3
+    wildcards: snapdb=GTEX
+
+
+        awk -F'/' '{ split($NF,a,"."); print a[1] }' ../../data/other_snakemake_data/k700e_e622d.juncfile > temp.GTEX.txt
+        scripts/FilterSampleInfoByRailID.py /project2/yangili1/snaptron/GTEX_samples.tsv temp.GTEX.txt | gzip - > ../../output/snakemake_out_sf3b1_k700e_e622d_ds/SnaptronMetadata.GTEX.txt.gz
+        rm temp.GTEX.txt
+        
+Submitted job 3 with external jobid 'Submitted batch job 61393313'.
+
+[Fri Jul 12 12:28:34 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr1.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr1.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr1/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+    jobid: 103
+    wildcards: chromosome=chr1
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr1/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr1/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr1.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr1/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr1/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr1.txt
+        
+Submitted job 103 with external jobid 'Submitted batch job 61393314'.
+
+[Fri Jul 12 12:28:44 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr17.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr17.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr17/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17.log
+    jobid: 99
+    wildcards: chromosome=chr17
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr17/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr17/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr17.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr17/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr17/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr17.txt
+        
+[Fri Jul 12 12:28:49 2019]
+Finished job 98.
+17 of 104 steps (16%) done
+[Fri Jul 12 12:28:50 2019]
+Finished job 3.
+18 of 104 steps (17%) done
+[Fri Jul 12 12:28:50 2019]
+Finished job 103.
+19 of 104 steps (18%) done
+Submitted job 99 with external jobid 'Submitted batch job 61393315'.
+
+[Fri Jul 12 12:28:50 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr11.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr11.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr11/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11.log
+    jobid: 101
+    wildcards: chromosome=chr11
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr11/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr11/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr11.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr11/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr11/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr11.txt
+        
+Submitted job 101 with external jobid 'Submitted batch job 61393316'.
+
+[Fri Jul 12 12:28:53 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr2.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr2.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr2/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2.log
+    jobid: 96
+    wildcards: chromosome=chr2
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr2/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr2/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr2.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr2/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr2/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr2.txt
+        
+Submitted job 96 with external jobid 'Submitted batch job 61393317'.
+[Fri Jul 12 12:29:00 2019]
+Finished job 92.
+20 of 104 steps (19%) done
+
+[Fri Jul 12 12:29:00 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr7.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr7.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr7/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7.log
+    jobid: 105
+    wildcards: chromosome=chr7
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr7/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr7/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr7.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr7/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr7/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr7.txt
+        
+Submitted job 105 with external jobid 'Submitted batch job 61393318'.
+
+[Fri Jul 12 12:29:01 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr3.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr3.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr3/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3.log
+    jobid: 89
+    wildcards: chromosome=chr3
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr3/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr3/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr3.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr3/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr3/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr3.txt
+        
+Submitted job 89 with external jobid 'Submitted batch job 61393319'.
+
+[Fri Jul 12 12:29:01 2019]
+rule prepare_juncfiles_for_clustering:
+    input: MiscData/bedfiles/ChromosomalGenome.bed, MiscData/bedfiles/chr20.bed, ../../data/other_snakemake_data/k700e_e622d.juncfile
+    output: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr20.txt, /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr20/touch
+    log: logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20.log
+    jobid: 83
+    wildcards: chromosome=chr20
+
+
+        # mkdir -p leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr20/
+        touch /scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr20/touch
+        awk -F'\t' -v OFS='\t' '{  print $1,  "MiscData/bedfiles/ChromosomalGenome.bed", "MiscData/bedfiles/chr20.bed" ,"/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr20/" gensub("/",".","g",$1)  }' ../../data/other_snakemake_data/k700e_e622d.juncfile | python scripts/BedtoolsIntserectBatch.py - 2> logs/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20.log
+        awk -F'\t' -v OFS='\t' '{ print   "/scratch/midway2/slozano/snaptron-analysis/leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfiles/chr20/" gensub("/",".","g",$1) }' ../../data/other_snakemake_data/k700e_e622d.juncfile > leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr20.txt
+        
+Submitted job 83 with external jobid 'Submitted batch job 61393320'.
+
+[Fri Jul 12 12:29:06 2019]
+rule MoveSnaptronSamplesInfoToGitRepo:
+    input: ../../data/other_snakemake_data/k700e_e622d.juncfile, /project2/yangili1/snaptron/SRA2_samples.tsv
+    output: ../../output/snakemake_out_sf3b1_k700e_e622d_ds/SnaptronMetadata.SRA2.txt.gz
+    jobid: 1
+    wildcards: snapdb=SRA2
+
+
+        awk -F'/' '{ split($NF,a,"."); print a[1] }' ../../data/other_snakemake_data/k700e_e622d.juncfile > temp.SRA2.txt
+        scripts/FilterSampleInfoByRailID.py /project2/yangili1/snaptron/SRA2_samples.tsv temp.SRA2.txt | gzip - > ../../output/snakemake_out_sf3b1_k700e_e622d_ds/SnaptronMetadata.SRA2.txt.gz
+        rm temp.SRA2.txt
+        
+Submitted job 1 with external jobid 'Submitted batch job 61393321'.
+
+[Fri Jul 12 12:29:06 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrY.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+    jobid: 67
+    wildcards: chromosome=chrY
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrY.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+        
+[Fri Jul 12 12:29:11 2019]
+Finished job 96.
+21 of 104 steps (20%) done
+[Fri Jul 12 12:29:11 2019]
+Finished job 99.
+22 of 104 steps (21%) done
+[Fri Jul 12 12:29:11 2019]
+Finished job 101.
+23 of 104 steps (22%) done
+Submitted job 67 with external jobid 'Submitted batch job 61393322'.
+
+[Fri Jul 12 12:29:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr15.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+    jobid: 80
+    wildcards: chromosome=chr15
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr15.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+        
+Submitted job 80 with external jobid 'Submitted batch job 61393323'.
+
+[Fri Jul 12 12:29:11 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr22.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+    jobid: 71
+    wildcards: chromosome=chr22
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr22.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+        
+Submitted job 71 with external jobid 'Submitted batch job 61393324'.
+
+[Fri Jul 12 12:29:15 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr18.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+    jobid: 76
+    wildcards: chromosome=chr18
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr18.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+        
+Submitted job 76 with external jobid 'Submitted batch job 61393325'.
+
+[Fri Jul 12 12:29:15 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr12.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+    jobid: 70
+    wildcards: chromosome=chr12
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr12.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+        
+Submitted job 70 with external jobid 'Submitted batch job 61393326'.
+
+[Fri Jul 12 12:29:15 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr14.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+    jobid: 60
+    wildcards: chromosome=chr14
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr14.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+        
+Submitted job 60 with external jobid 'Submitted batch job 61393327'.
+
+[Fri Jul 12 12:29:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr21.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+    jobid: 69
+    wildcards: chromosome=chr21
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr21.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+        
+Submitted job 69 with external jobid 'Submitted batch job 61393328'.
+
+[Fri Jul 12 12:29:22 2019]
+[Fri Jul 12 12:29:22 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr5.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+    jobid: 64
+    wildcards: chromosome=chr5
+Finished job 105.
+
+24 of 104 steps (23%) done
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr5.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+        
+[Fri Jul 12 12:29:22 2019]
+Finished job 89.
+25 of 104 steps (24%) done
+[Fri Jul 12 12:29:22 2019]
+Finished job 83.
+26 of 104 steps (25%) done
+[Fri Jul 12 12:29:22 2019]
+Finished job 1.
+27 of 104 steps (26%) done
+Submitted job 64 with external jobid 'Submitted batch job 61393329'.
+
+[Fri Jul 12 12:29:24 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr6.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+    jobid: 61
+    wildcards: chromosome=chr6
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr6.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+        
+Submitted job 61 with external jobid 'Submitted batch job 61393330'.
+
+[Fri Jul 12 12:29:25 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr4.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+    jobid: 63
+    wildcards: chromosome=chr4
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr4.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+        
+Submitted job 63 with external jobid 'Submitted batch job 61393331'.
+
+[Fri Jul 12 12:29:31 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr9.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+    jobid: 73
+    wildcards: chromosome=chr9
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr9.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+        
+Submitted job 73 with external jobid 'Submitted batch job 61393332'.
+
+[Fri Jul 12 12:29:31 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr8.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+    jobid: 66
+    wildcards: chromosome=chr8
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr8.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+        
+[Fri Jul 12 12:29:34 2019]
+Error in rule leafcutter_cluster:
+    jobid: 67
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+    cluster_jobid: Submitted batch job 61393322
+
+[Fri Jul 12 12:29:34 2019]
+Error in rule leafcutter_cluster:
+    jobid: 80
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+    cluster_jobid: Submitted batch job 61393323
+
+[Fri Jul 12 12:29:34 2019]
+Error in rule leafcutter_cluster:
+    jobid: 71
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+    cluster_jobid: Submitted batch job 61393324
+
+[Fri Jul 12 12:29:34 2019]
+Error in rule leafcutter_cluster:
+    jobid: 76
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+    cluster_jobid: Submitted batch job 61393325
+
+Submitted job 66 with external jobid 'Submitted batch job 61393333'.
+
+[Fri Jul 12 12:29:34 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrX.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+    jobid: 62
+    wildcards: chromosome=chrX
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrX.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+        
+Submitted job 62 with external jobid 'Submitted batch job 61393334'.
+
+[Fri Jul 12 12:29:36 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr19.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+    jobid: 78
+    wildcards: chromosome=chr19
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr19.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+        
+Submitted job 78 with external jobid 'Submitted batch job 61393335'.
+
+[Fri Jul 12 12:29:36 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr13.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+    jobid: 82
+    wildcards: chromosome=chr13
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr13.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+        
+Submitted job 82 with external jobid 'Submitted batch job 61393336'.
+
+[Fri Jul 12 12:29:36 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr1.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+    jobid: 79
+    wildcards: chromosome=chr1
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr1.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+        
+Submitted job 79 with external jobid 'Submitted batch job 61393337'.
+
+[Fri Jul 12 12:29:36 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr16.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+    jobid: 68
+    wildcards: chromosome=chr16
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr16.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+        
+Submitted job 68 with external jobid 'Submitted batch job 61393338'.
+
+[Fri Jul 12 12:29:36 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr10.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+    jobid: 74
+    wildcards: chromosome=chr10
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr10.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+        
+Submitted job 74 with external jobid 'Submitted batch job 61393339'.
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 66
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+    cluster_jobid: Submitted batch job 61393333
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 69
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+    cluster_jobid: Submitted batch job 61393328
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 70
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+    cluster_jobid: Submitted batch job 61393326
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 60
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+    cluster_jobid: Submitted batch job 61393327
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 64
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+    cluster_jobid: Submitted batch job 61393329
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 61
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+    cluster_jobid: Submitted batch job 61393330
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 63
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+    cluster_jobid: Submitted batch job 61393331
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 73
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+    cluster_jobid: Submitted batch job 61393332
+
+[Fri Jul 12 12:29:45 2019]
+Error in rule leafcutter_cluster:
+    jobid: 62
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+    cluster_jobid: Submitted batch job 61393334
+
+[Fri Jul 12 12:29:46 2019]
+Error in rule leafcutter_cluster:
+    jobid: 82
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+    cluster_jobid: Submitted batch job 61393336
+
+[Fri Jul 12 12:29:46 2019]
+Error in rule leafcutter_cluster:
+    jobid: 68
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+    cluster_jobid: Submitted batch job 61393338
+
+[Fri Jul 12 12:29:56 2019]
+Error in rule leafcutter_cluster:
+    jobid: 78
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+    cluster_jobid: Submitted batch job 61393335
+
+[Fri Jul 12 12:29:56 2019]
+Error in rule leafcutter_cluster:
+    jobid: 79
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+    cluster_jobid: Submitted batch job 61393337
+
+[Fri Jul 12 12:29:56 2019]
+Error in rule leafcutter_cluster:
+    jobid: 74
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+    cluster_jobid: Submitted batch job 61393339
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/.snakemake/log/2019-07-12T122556.438103.snakemake.log

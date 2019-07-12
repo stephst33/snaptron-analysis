@@ -1,0 +1,10 @@
+Building DAG of jobs...
+Executing subworkflow leafcutter_cluster_sf3b1_pancancer.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/.snakemake/log/2019-07-10T112227.377271.snakemake.log
+Executing subworkflow leafcutter_sf3b1_contrast_blood.
+Building DAG of jobs...
+Error: Directory cannot be locked. Please make sure that no other Snakemake process is trying to create the same files in the following directory:
+/project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow
+If you are sure that no other instances of snakemake are running on this directory, the remaining lock was likely caused by a kill signal or a power loss. It can be removed with the --unlock argument.

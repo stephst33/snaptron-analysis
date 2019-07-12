@@ -1,0 +1,504 @@
+Building DAG of jobs...
+Subworkflow leafcutter_cluster_sf3b1_pancancer: Nothing to be done.
+Subworkflow leafcutter_sf3b1_contrast_blood: Nothing to be done.
+Subworkflow sf3b1_blood_cluster_darman_juncs: Nothing to be done.
+Subworkflow sf3b1_blood_GTEX_ds: Nothing to be done.
+Subworkflow sf3b1_mostlymarrow_ds: Nothing to be done.
+Executing subworkflow sf3b1_k700e_e622d_ds.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 200
+Job counts:
+	count	jobs
+	1	MoveFullJunctionCountTableToGitRepo
+	1	MoveLeafcutterDsToGitRepo
+	1	all
+	24	leafcutter_cluster
+	1	leafcutter_ds
+	24	make_numers_and_denoms
+	1	merge_numers_and_denoms
+	24	rearrange_leafcutter_cluster_counts
+	77
+
+[Fri Jul 12 12:33:14 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrY.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+    jobid: 60
+    wildcards: chromosome=chrY
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrY.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+        
+Submitted job 60 with external jobid 'Submitted batch job 61393346'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr13.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+    jobid: 76
+    wildcards: chromosome=chr13
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr13.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+        
+Submitted job 76 with external jobid 'Submitted batch job 61393347'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr10.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+    jobid: 62
+    wildcards: chromosome=chr10
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr10.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+        
+Submitted job 62 with external jobid 'Submitted batch job 61393348'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr7.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7.log
+    jobid: 79
+    wildcards: chromosome=chr7
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr7.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7.log
+        
+Submitted job 79 with external jobid 'Submitted batch job 61393349'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr4.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+    jobid: 71
+    wildcards: chromosome=chr4
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr4.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+        
+Submitted job 71 with external jobid 'Submitted batch job 61393350'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr1.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+    jobid: 74
+    wildcards: chromosome=chr1
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr1.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+        
+Submitted job 74 with external jobid 'Submitted batch job 61393351'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrX.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+    jobid: 66
+    wildcards: chromosome=chrX
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chrX.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+        
+Submitted job 66 with external jobid 'Submitted batch job 61393352'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr9.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+    jobid: 78
+    wildcards: chromosome=chr9
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr9.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+        
+Submitted job 78 with external jobid 'Submitted batch job 61393353'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr12.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+    jobid: 69
+    wildcards: chromosome=chr12
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr12.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+        
+Submitted job 69 with external jobid 'Submitted batch job 61393354'.
+
+[Fri Jul 12 12:33:16 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr8.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+    jobid: 67
+    wildcards: chromosome=chr8
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr8.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+        
+Submitted job 67 with external jobid 'Submitted batch job 61393355'.
+
+[Fri Jul 12 12:33:17 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr5.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+    jobid: 63
+    wildcards: chromosome=chr5
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr5.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+        
+Submitted job 63 with external jobid 'Submitted batch job 61393356'.
+
+[Fri Jul 12 12:33:17 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr19.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+    jobid: 80
+    wildcards: chromosome=chr19
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr19.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+        
+Submitted job 80 with external jobid 'Submitted batch job 61393357'.
+
+[Fri Jul 12 12:33:17 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr18.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+    jobid: 59
+    wildcards: chromosome=chr18
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr18.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+        
+Submitted job 59 with external jobid 'Submitted batch job 61393358'.
+
+[Fri Jul 12 12:33:17 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr11.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11.log
+    jobid: 65
+    wildcards: chromosome=chr11
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr11.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11.log
+        
+Submitted job 65 with external jobid 'Submitted batch job 61393359'.
+
+[Fri Jul 12 12:33:19 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr17.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17.log
+    jobid: 72
+    wildcards: chromosome=chr17
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr17.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17.log
+        
+Submitted job 72 with external jobid 'Submitted batch job 61393360'.
+
+[Fri Jul 12 12:33:19 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr20.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20.log
+    jobid: 81
+    wildcards: chromosome=chr20
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr20.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20.log
+        
+Submitted job 81 with external jobid 'Submitted batch job 61393361'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr6.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+    jobid: 75
+    wildcards: chromosome=chr6
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr6.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+        
+Submitted job 75 with external jobid 'Submitted batch job 61393362'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr15.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+    jobid: 70
+    wildcards: chromosome=chr15
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr15.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+        
+Submitted job 70 with external jobid 'Submitted batch job 61393363'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr16.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+    jobid: 61
+    wildcards: chromosome=chr16
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr16.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+        
+Submitted job 61 with external jobid 'Submitted batch job 61393364'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr3.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3.log
+    jobid: 82
+    wildcards: chromosome=chr3
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr3.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3.log
+        
+Submitted job 82 with external jobid 'Submitted batch job 61393365'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr22.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+    jobid: 64
+    wildcards: chromosome=chr22
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr22.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+        
+Submitted job 64 with external jobid 'Submitted batch job 61393366'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr14.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+    jobid: 77
+    wildcards: chromosome=chr14
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr14.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+        
+Submitted job 77 with external jobid 'Submitted batch job 61393367'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr2.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2.log
+    jobid: 73
+    wildcards: chromosome=chr2
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr2.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2.log
+        
+Submitted job 73 with external jobid 'Submitted batch job 61393368'.
+
+[Fri Jul 12 12:33:20 2019]
+rule leafcutter_cluster:
+    input: leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr21.txt
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+    jobid: 68
+    wildcards: chromosome=chr21
+
+
+        leafcutter_cluster.py -j leafcutter/prepare_juncfiles_for_clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/juncfile.chr21.txt -r /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/ -s True &> logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+        
+[Fri Jul 12 12:33:25 2019]
+Error in rule leafcutter_cluster:
+    jobid: 62
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr10.log
+    cluster_jobid: Submitted batch job 61393348
+
+Submitted job 68 with external jobid 'Submitted batch job 61393369'.
+[Fri Jul 12 12:33:37 2019]
+Error in rule leafcutter_cluster:
+    jobid: 60
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrY.log
+    cluster_jobid: Submitted batch job 61393346
+
+[Fri Jul 12 12:33:54 2019]
+Error in rule leafcutter_cluster:
+    jobid: 76
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr13.log
+    cluster_jobid: Submitted batch job 61393347
+
+[Fri Jul 12 12:33:57 2019]
+Error in rule leafcutter_cluster:
+    jobid: 79
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr7.log
+    cluster_jobid: Submitted batch job 61393349
+
+[Fri Jul 12 12:33:57 2019]
+Error in rule leafcutter_cluster:
+    jobid: 71
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr4.log
+    cluster_jobid: Submitted batch job 61393350
+
+[Fri Jul 12 12:33:57 2019]
+Error in rule leafcutter_cluster:
+    jobid: 78
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr9.log
+    cluster_jobid: Submitted batch job 61393353
+
+[Fri Jul 12 12:33:57 2019]
+Error in rule leafcutter_cluster:
+    jobid: 63
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr5.log
+    cluster_jobid: Submitted batch job 61393356
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 80
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr19.log
+    cluster_jobid: Submitted batch job 61393357
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 59
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr18.log
+    cluster_jobid: Submitted batch job 61393358
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 65
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr11.log
+    cluster_jobid: Submitted batch job 61393359
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 72
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr17.log
+    cluster_jobid: Submitted batch job 61393360
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 81
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr20.log
+    cluster_jobid: Submitted batch job 61393361
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 75
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr6.log
+    cluster_jobid: Submitted batch job 61393362
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 70
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr15.log
+    cluster_jobid: Submitted batch job 61393363
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 61
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr16.log
+    cluster_jobid: Submitted batch job 61393364
+
+[Fri Jul 12 12:33:59 2019]
+Error in rule leafcutter_cluster:
+    jobid: 64
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr22.log
+    cluster_jobid: Submitted batch job 61393366
+
+[Fri Jul 12 12:34:00 2019]
+Error in rule leafcutter_cluster:
+    jobid: 77
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr14.log
+    cluster_jobid: Submitted batch job 61393367
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 68
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr21.log
+    cluster_jobid: Submitted batch job 61393369
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 74
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr1.log
+    cluster_jobid: Submitted batch job 61393351
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 66
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chrX.log
+    cluster_jobid: Submitted batch job 61393352
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 69
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr12.log
+    cluster_jobid: Submitted batch job 61393354
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 67
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr8.log
+    cluster_jobid: Submitted batch job 61393355
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 82
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr3.log
+    cluster_jobid: Submitted batch job 61393365
+
+[Fri Jul 12 12:34:10 2019]
+Error in rule leafcutter_cluster:
+    jobid: 73
+    output: /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2/leafcutter_perind.counts.gz, /scratch/midway2/slozano/snaptron-analysis/leafcutter/clustering/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2/leafcutter_perind_numers.counts.gz
+    log: logs/leafcutter_cluster/k700e_e622d.juncfile_ChromosomalGenome.bed/chr2.log
+    cluster_jobid: Submitted batch job 61393368
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /project2/yangili1/slozano/snaptron-analysis/code/SubSnakemakeWorkflow/.snakemake/log/2019-07-12T123310.399931.snakemake.log

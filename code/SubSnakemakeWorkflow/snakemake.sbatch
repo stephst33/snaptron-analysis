@@ -4,9 +4,9 @@
 # individual jobs from the compute node.
 
 #SBATCH --job-name=snakemake
-#SBATCH --output=/home/bjf79/slurm_stdout_logs/recurrent-splicing.txt
-#SBATCH --time=4-00:00:00
-#SBATCH --partition=gilad
+#SBATCH --output=output=/project2/yangili1/slozano/snapton-analysis/snaptron-analysis.txt
+#SBATCH --time=24:00:00
+#SBATCH --partition=broadwl
 #SBATCH --mem=4G
 #SBATCH --tasks-per-node=4
 

@@ -16,7 +16,7 @@ scratch_prefix: "/scratch/midway2/slozano/snaptron-analysis/"
 # samples may take very long or run into memory issues.
 # "R_project/DarmanDiffJunctions.LiftedToHg38.bed.flanked100K.bed" should work
 # for testing
-junction_intersect_bed: "../../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed.flanked1K.bed"
+junction_intersect_bed:
 
 leafcutter_cluster_extra_params: "-s True"
 
@@ -33,12 +33,12 @@ leafcutter_cluster_by_chrom: True
 # checking for you, as I would prefer avoiding making DAGS with tens of
 # thousands of files)
 # "R_project/Blood_sf3b1_contrast.juncfiles" should work for testing
-juncfiles: "example_files/k700e_e622d.juncfile"
+juncfiles: "../../data/other_snakemake_data/sf3b1_k700e_e622d_ds.juncfiles"
 
 # groups file as documented in leafcutter documentation for differential
 # splicing analysis.
 # "R_project/Blood_sf3b1_contrast.groups.txt" should work for testing
-leafcutter_groupfile: "example_files/k700e_e622d.groups.txt"
+leafcutter_groupfile: "../../data/other_snakemake_data/sf3b1_k700e_e622d_ds.groups.txt"
 
-# git_folder_out prefix to add to move small (<25MB) output files that I want to be included in the git repo associated with this analysis (most stuff in the snakemake workdir is included in gitignore). This can be useful for workflowr and updating site.
-git_folder_out: "test_git_out/"
+# git_folder_out prefix to add to move small (<25MB) output files that I want to be included in the git repo associated with this analysis (most stuff i$
+git_folder_out: "../../output/snakemake_out_sf3b1_k700e_e622d_ds/"
