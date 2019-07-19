@@ -1,0 +1,5 @@
+.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.38165	K700E
+.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.7066 K700E
+.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.38151	K700E
+.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.26120	WT
+.project2.yangili1.snaptron.processed_to_bedfiles.SRA2.1073	WT
