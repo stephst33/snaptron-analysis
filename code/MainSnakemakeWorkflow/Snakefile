@@ -46,6 +46,14 @@ subworkflow sf3b1_k700e_e622d_ds:
     configfile:
         "../../data/configfiles/config.sf3b1_k700e_e622d_ds.yaml"
 
+subworkflow sf3b1_nalm6_k700e_wt_ds:
+    workdir:
+        "../SubSnakemakeWorkflow/"
+    snakefile:
+        "../SubSnakemakeWorkflow/Snakefile.ds.smk"
+    configfile:
+        "../../data/configfiles/config.sf3b1_nalm6_k700e_wt_ds.yaml"
+
 rule all:
     input:
         #leafcutter_cluster_sf3b1_pancancer("../../output/snakemake_out_sf3b1_TCGA/GatherFilesCopied.log"),
@@ -53,4 +61,5 @@ rule all:
         #sf3b1_blood_cluster_darman_juncs("../../output/snakemake_out_sf3b1_blood_DarmanJuncs/GatherFilesCopied.log"),
         #sf3b1_blood_GTEX_ds("../../output/snakemake_out_sf3b1_GTEXblood_ds/GatherFilesCopied.log"),
         #sf3b1_mostlymarrow_ds("../../output/snakemake_out_sf3b1_mostlymarrow/GatherFilesCopied.log"),
-        sf3b1_k700e_e622d_ds("../../output/snakemake_out_sf3b1_k700e_e622d_ds/GatherFilesCopied.log")
+        #sf3b1_k700e_e622d_ds("../../output/snakemake_out_sf3b1_k700e_e622d_ds/GatherFilesCopied.log")
+        sf3b1_nalm6_k700e_wt_ds("../../output/snakemake_out_sf3b1_nalm6_k700e_wt_ds/GatherFilesCopied.log")
