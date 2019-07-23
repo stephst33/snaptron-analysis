@@ -1,0 +1,128 @@
+---
+title: "20190715_sf3b1_k700e_e622d_ds"
+author: "Stephanie Lozano"
+date: "7/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r libraries}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(readxl)
+library(ggrepel)
+library(tidyverse)
+library(gplots)
+library(knitr)
+library("RColorBrewer")
+```
+
+```{r}
+Numers <- '../output/snakemake_out_sf3b1_k700e_e622d_ds/CountTableNumerators.gz'
+Denoms <- '../output/snakemake_out_sf3b1_k700e_e622d_ds/CountTableDenominators.gz'
+
+NumeratorCountTable <- fread(paste0("gunzip -c ", Numers), sep=" ", header=TRUE, data.table=FALSE)
+DenominatorCountTable <- fread(paste0("gunzip -c ", Denoms), sep=" ", header=TRUE, data.table=FALSE)
+
+PSI_Table <- NumeratorCountTable[-1]/DenominatorCountTable[-1]
+row.names(PSI_Table) <- gsub(":clu_.+", "", NumeratorCountTable$chrom)
+
+#Replace NaNs from 0/0 operation
+PSI_Table[is.na(PSI_Table)] <- 0
+
+#Make Differential Junctions list from leafcutter ID'd junctions
+
+#Subset <- Read in cluster sig text file as data frame and filter for junctions with p value <0.05. (Assign chr:cluster_ID in its own column)
+
+#Get chromosome/junction coords for the selected samples 
+#Read in effect sizes text file, add chr:cluster_ID, filter for chr:cluster_IDs that match those specified in Subset data frame.
+
+DifferentialJunctionsList <- read.delim('../output/snakemake_out_sf3b1_k700e_e622d_ds/leafcutter.ds.effect_sizes.txt', header=T) %>%
+separate("intron", c("chrom", "junc_start", "junc_end", "cluster"), ":")
+
+
+# Make new id, for easier use in later filtering. Note that coordinates may need to add 1
+DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$chrom, DifferentialJunctionsList$junc_start, DifferentialJunctionsList$junc_end, sep=":")
+
+# PCA using PSI
+PCResults <- (PSI_Table) %>%
+  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %>%
+  t() %>%
+  prcomp(center=T, scale=T)
+
+PCResults.df <- as.data.frame(PCResults$x[,1:5]) %>% rownames_to_column()
+
+#Read in groups table
+Groups <- read.delim("../data/other_snakemake_data/sf3b1_k700e_e622d_ds.groups.txt", na.strings = "NA", stringsAsFactors = T, header=F)
+
+MutationList <- data.frame(read_excel("../data/other_snakemake_data/SeillerEtAl_MutationList.xlsx"))
+
+# Groups table with rail_ID column
+  
+
+Simplified_Groups<- Groups %>%
+  mutate(rail_id = sub(".project2.yangili1.snaptron.processed_to_bedfiles.SRA2.","", V1)) %>%
+  mutate(protein_position= ifelse(V2== "K700E", sub("K700E", "700", V2), sub("E622D", "622", V2)))
+
+
+
+#Merging Groups (rail_id and V2, or mutation) with PCResults.df into ToPlot
+
+ToPlot <- PCResults.df %>%
+  mutate(rail_id = sub(".project2.yangili1.snaptron.processed_to_bedfiles.SRA2.","", rowname)) %>% 
+left_join(Simplified_Groups, by= NULL)
+  
+# plot PCResults.df PC1 and PC2, with labels= V2)
+ggplot(ToPlot,aes(x=PC1, y=PC2, label=V2)) +
+  # geom_text(alpha=1, size=2.2) +
+  geom_point(alpha=0.5) +
+  geom_text_repel(size=2.2) +
+  theme_bw()
+
+```
+
+The below histogram was originally intended to compare the position of sf3b1 mutations in dif cancers. Since we are only comparing 2 sf3b1 mutations in this case, it's kind of a useless plot.
+
+```{r}
+#Plot hotspots
+Simplified_Groups %>%
+  # filter(Cohort %in% c("LAML", "SKCM", "BRCA", "BLCA", "THYM", "UCEC", "UVM")) %>%
+  # filter(rail_id %in% c("SF3B1")) %>%
+  ggplot(aes(as.numeric(protein_position))) +
+  geom_histogram(aes(fill=V2),position="dodge", bins=50) +
+  theme_bw()
+  # geom_density(aes(color=Cohort_simplified))
+```
+
+It will also be nice to look at a heatmap of this feature space from which the PCA is based on.
+```{r}
+set.seed(0)
+K700E<-ToPlot %>%
+  filter(V2 =="K700E") %>%
+  dplyr::pull(rowname)
+
+E622D<-ToPlot %>%
+  filter(V2 =="E622D") %>%
+  sample_n(3) %>%
+  dplyr::pull(rowname)
+
+
+Heatmap <- PSI_Table %>%
+  filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %>%
+  dplyr::select(c(K700E, E622D)) %>% as.matrix() %>%
+  t() %>% scale(scale=F) %>% t() %>% as.data.frame() %>% drop_na() %>% as.matrix()
+
+#
+# Heatmap <- t(scale(t(as.matrix(PSI_Table[1:10, c(Cases, Controls)]))))
+# Heatmap <- scale(as.matrix(PSI_Table[1:50,c(Cases, Controls)]))
+
+RNAExtractionDate <- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$V2, warn_missing = FALSE) )))
+RNAExtractionDate <- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$V2, warn_missing = FALSE) )))
+ColLabel = labCol <- plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$rail_id, warn_missing = FALSE)
+#heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="166 splice junctions", xlab="6 samples")
+```
