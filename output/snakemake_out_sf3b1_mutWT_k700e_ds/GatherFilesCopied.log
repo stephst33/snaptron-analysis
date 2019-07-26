@@ -1,0 +1,2 @@
+Thu Jul 25 15:58:30 CDT 2019
+../../output/snakemake_out_sf3b1_mutWT_k700e_ds/CountTableNumerators.gz ../../output/snakemake_out_sf3b1_mutWT_k700e_ds/SnaptronMetadata.SRA2.txt.gz ../../output/snakemake_out_sf3b1_mutWT_k700e_ds/SnaptronMetadata.GTEX.txt.gz ../../output/snakemake_out_sf3b1_mutWT_k700e_ds/SnaptronMetadata.TCGA.txt.gz ../../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz leafcutter/clustering/sf3b1_mutWT_ds.juncfiles_ChromosomalGenome.bed/Merged/leafcutter_perind.counts.numers.gz

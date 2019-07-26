@@ -1,5 +1,5 @@
 ---
-title: "20190726_sf3b1_mutWT_k700e_ds"
+title: "20190726_sf3b1_mutWT_e622d_ds"
 author: "Stephanie Lozano"
 date: "7/26/2019"
 output: html_document
@@ -43,14 +43,14 @@ PSI_Table[is.na(PSI_Table)] <- 0
 
 #Differential Junctions List - leafcutter ID'd junctions
 #Read in cluster sig text file as data frame and filter for junctions #with p value <0.1. 
-SigJcns <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.cluster_sig.txt.gz') %>%
+SigJcns <- read.delim('../output/snakemake_out_sf3b1_mutWT_e622d_ds/leafcutter.ds.cluster_sig.txt.gz') %>%
   filter(p.adjust <= 0.05, .preserve= TRUE) 
 
 
 #Get chromosome/junction coords for the selected samples 
 #Read in effect sizes text file, add chr:clu_ID_- in same format as "cluster" column in SigJcns, filter for chr:cluster_IDs that match those specified in SigJcns data frame.
 
-DifferentialJunctionsList <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
+DifferentialJunctionsList <- read.delim('../output/snakemake_out_sf3b1_mutWT_e622d_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
 separate("intron", c("chrom", "junc_start", "junc_end", "cluster"), ":") %>%
   mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>%
   filter(chr_clust %in% SigJcns$cluster, .preserve= T)
@@ -68,7 +68,7 @@ PCResults <- (PSI_Table) %>%
 PCResults.df <- as.data.frame(PCResults$x[,1:5]) %>% rownames_to_column()
 
 #Read in groups table
-Groups <- read.delim("../data/other_snakemake_data/sf3b1_mutWT_k700e_ds.groups.txt", na.strings = "NA", stringsAsFactors = T, header=F)
+Groups <- read.delim("../data/other_snakemake_data/sf3b1_mutWT_e622d_ds.groups.txt", na.strings = "NA", stringsAsFactors = T, header=F)
 
 MutationList <- data.frame(read_excel("../data/other_snakemake_data/SeillerEtAl_MutationList.xlsx"))
 
@@ -79,7 +79,7 @@ Simplified_Groups<- Groups %>%
 
 #create MDS data frame and use it to add disease_state to Simplified_Groups
 
-MDS<- as.data.frame(c("27168", "32641", "36181",  "28684", "14580"), row.names= NULL) 
+MDS<- as.data.frame(c("3641", "18119", "34165",  "28684", "14580"), row.names= NULL) 
 colnames(MDS) <- c("rail_id")
 
 
@@ -105,8 +105,8 @@ ggplot(ToPlot,aes(x=PC1, y=PC2, label=disease_state, color= V2)) +
 It will also be nice to look at a heatmap of this feature space from which the PCA is based on.
 ```{r}
 set.seed(0)
-K700E<-ToPlot %>%
-  filter(V2 =="K700E") %>%
+E622D<-ToPlot %>%
+  filter(V2 =="E622D") %>%
   dplyr::pull(rowname)
 
 WT<-ToPlot %>%
@@ -117,7 +117,7 @@ WT<-ToPlot %>%
 
 Heatmap <- PSI_Table %>%
   filter(rownames(.) %in% DifferentialJunctionsList$junc_id) %>%
-  dplyr::select(c(K700E, WT)) %>% as.matrix() %>%
+  dplyr::select(c(E622D, WT)) %>% as.matrix() %>%
   t() %>% scale(scale=F) %>% t() %>% as.data.frame() %>% drop_na() %>% as.matrix()
 
 #
@@ -128,5 +128,5 @@ Heatmap <- PSI_Table %>%
 RNAExtractionDate <- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$V2, warn_missing = FALSE) )))
 ColLabel = labCol <- plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$rail_id, warn_missing = FALSE)
 
-heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="13505 splice junctions", xlab="10 samples")
+heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="14274 splice junctions", xlab="10 samples")
 ```
