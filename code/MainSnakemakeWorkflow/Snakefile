@@ -69,6 +69,23 @@ subworkflow sf3b1_e622d_wt_ds:
         "../SubSnakemakeWorkflow/Snakefile.ds.smk"
     configfile:
         "../../data/configfiles/config.sf3b1_e622d_wt_ds.yaml"
+
+subworkflow sf3b1_mutWT_k700e_ds:
+    workdir:
+        "../SubSnakemakeWorkflow/"
+    snakefile:
+        "../SubSnakemakeWorkflow/Snakefile.ds.smk"
+    configfile:
+        "../../data/configfiles/config.sf3b1_mutWT_k700e_ds.yaml"
+
+subworkflow sf3b1_mutWT_e622d_ds:
+    workdir:
+        "../SubSnakemakeWorkflow/"
+    snakefile:
+        "../SubSnakemakeWorkflow/Snakefile_NoCounts.ds.smk"
+    configfile:
+        "../../data/configfiles/config.sf3b1_mutWT_e622d_ds.yaml"
+
 rule all:
     input:
         #leafcutter_cluster_sf3b1_pancancer("../../output/snakemake_out_sf3b1_TCGA/GatherFilesCopied.log"),
@@ -78,5 +95,7 @@ rule all:
         #sf3b1_mostlymarrow_ds("../../output/snakemake_out_sf3b1_mostlymarrow/GatherFilesCopied.log"),
         #sf3b1_k700e_e622d_ds("../../output/snakemake_out_sf3b1_k700e_e622d_ds/GatherFilesCopied.log"),
         #sf3b1_nalm6_k700e_wt_ds("../../output/snakemake_out_sf3b1_nalm6_k700e_wt_ds/GatherFilesCopied.log"),
-        sf3b1_k700e_wt_ds("../../output/snakemake_out_sf3b1_k700e_wt_ds/GatherFilesCopied.log"),
-        sf3b1_e622d_wt_ds("../../output/snakemake_out_sf3b1_e622d_wt_ds/GatherFilesCopied.log")
+        #sf3b1_k700e_wt_ds("../../output/snakemake_out_sf3b1_k700e_wt_ds/GatherFilesCopied.log"),
+        #sf3b1_e622d_wt_ds("../../output/snakemake_out_sf3b1_e622d_wt_ds/GatherFilesCopied.log"),
+        sf3b1_mutWT_k700e_ds("../../output/snakemake_out_sf3b1_mutWT_k700e_ds/GatherFilesCopied.log"),
+        sf3b1_mutWT_e622d_ds("../../output/snakemake_out_sf3b1_mutWT_e622d_ds/GatherFilesCopied.log")
