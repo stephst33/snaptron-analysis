@@ -70,11 +70,11 @@ separate("intron", c("chrom", "chromEnd", "chromStart", "cluster"), ":") %>%
 
 effect_sizes_bed <- select(effect_sizes, chrom, chromStart, chromEnd, name, score, strand)
 
-write.table(effect_sizes_bed,file="../code/SubSnakemakeWorkflow/MiscData/bedfiles/effect_sizes.bed.gz",quote=FALSE, row.names=FALSE,col.names=FALSE,sep="\t")
+write.table(effect_sizes_bed,file="../data/other_snakemake_data/effect_sizes.bed.gz",quote=FALSE, row.names=FALSE,col.names=FALSE,sep="\t")
 
 #Run effect_sizes.bed input file through ben's python script and get effect_sizes output file with splice type classifications column
 
-system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ../code/SubSnakemakeWorkflow/MiscData/bedfiles/effect_sizes.bed.gz -A data/other_snakemake_data/GencodeHg38_all_introns.bed.gz  -O effect_sizes_annotated.bed.gz")
+system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ..data/other_snakemake_data/effect_sizes.bed.gz -A ..data/other_snakemake_data/GencodeHg38_all_introns.bed.gz  -O ..data/other_snakemake_data/effect_sizes_annotated.bed.gz")
 
 #Read in cluster_sig file and subset based on which clusters are annotated as 3'ss in effect_sizes output
 
