@@ -22,7 +22,72 @@ library(knitr)
 library("RColorBrewer")
 ```
 
+To subset leafcutter-generated effect_sizes table for junctions ID'd in Darman et al.
+
 ```{r}
+
+#Differential Junctions List - filter for ds junctions listed in Darman et al
+#DifferentialJunctionsList <- #read.table('../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed', header=F)
+
+# Make new id, for easier use in later filtering. Note that coordinates may need to add 1 -Darman
+#DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$V1, #DifferentialJunctionsList$V2 + 1, DifferentialJunctionsList$V3 + 1, sep=":")
+
+```
+
+To subset the leafcutter-generated effect_sizes table for junctions that are identified as significant, based on the leafcutter-generated cluster_sig table.
+
+```{r}
+#Differential Junctions List - filter for leafcutter ID'd junctions
+
+#Read in cluster sig text file as data frame and filter for junctions with p value <0.1. 
+#SigJcns <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.cluster_sig.txt.gz') %>%
+  #filter(p.adjust <= 0.05, .preserve= TRUE) 
+
+#Read in effect sizes text file, add chr:clu_ID_- in same format as "cluster" column in SigJcns, filter for chr:cluster_IDs that match those specified in SigJcns data frame.
+
+#DifferentialJunctionsList <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
+#separate("intron", c("chrom", "chromStart", "chromEnd", "cluster"), ":") %>%
+  #mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>%
+  #filter(chr_clust %in% SigJcns$cluster, .preserve= T)
+
+# Make new id, for easier use in later filtering. Note that coordinates may need to add 1 - leafcutter ID'd jcns
+#DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$chrom, #DifferentialJunctionsList$chromStart, DifferentialJunctionsList$chromEnd, sep=":")
+
+```
+To subset the leafcutter effect_sizes table for junctions that 1) fall within 3'ss and 2) are significant based on q-values<= 0.05 (i.e hold off on filtering for significant junctions and first filter for junctions that fall within 3'ss)
+```{r}
+
+#Differential Junctions List- filter for junctions that fall within 3'ss and are significant based on q-values generated for newly subsetted group
+
+
+#Read in effect_sizes and reformat as bed file
+effect_sizes <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
+separate("intron", c("chrom", "chromEnd", "chromStart", "cluster"), ":") %>%
+  mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>% 
+  mutate(strand= str_sub(effect_sizes$cluster, start= -1)) %>%
+  mutate(name= ".") %>%
+  mutate(score= ".")
+
+effect_sizes_bed <- select(effect_sizes, chrom, chromStart, chromEnd, name, score, strand)
+
+write.table(effect_sizes_bed,file="../code/SubSnakemakeWorkflow/MiscData/bedfiles/effect_sizes.bed.gz",quote=FALSE, row.names=FALSE,col.names=FALSE,sep="\t")
+
+#Run effect_sizes.bed input file through ben's python script and get effect_sizes output file with splice type classifications column
+
+system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ../code/SubSnakemakeWorkflow/MiscData/bedfiles/effect_sizes.bed.gz -A data/other_snakemake_data/GencodeHg38_all_introns.bed.gz  -O effect_sizes_annotated.bed.gz")
+
+#Read in cluster_sig file and subset based on which clusters are annotated as 3'ss in effect_sizes output
+
+#Generate q-values based on this subset and create SigJcns subset out of samples w/ q-values <= 0.05
+
+#DifferentialJunctionsList<- Filter/subset newest effect_sizes file for junctions that match those in SigJcns
+#(Read in effect sizes text file, add chr:clu_ID_- in same format as "cluster" column in SigJcns, filter for chr:cluster_IDs that match those specified in SigJcns data frame)
+
+
+```
+Now we can move on to calculating PSI and generating plots
+```{r}
+#Calulating PSI
 Numers <- '../output/snakemake_out_sf3b1_mutWT_k700e_ds/CountTableNumerators.gz'
 Denoms <- '../output/snakemake_out_sf3b1_mutWT_k700e_ds/CountTableDenominators.gz'
 
@@ -34,30 +99,6 @@ row.names(PSI_Table) <- gsub(":clu_.+", "", NumeratorCountTable$chrom)
 
 #Replace NaNs from 0/0 operation
 PSI_Table[is.na(PSI_Table)] <- 0
-
-#Differential Junctions List - Darman
-#DifferentialJunctionsList <- #read.table('../data/other_snakemake_data/DarmanDiffJunctions.LiftedToHg38.bed', header=F)
-
-# Make new id, for easier use in later filtering. Note that coordinates may need to add 1 -Darman
-#DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$V1, #DifferentialJunctionsList$V2 + 1, DifferentialJunctionsList$V3 + 1, sep=":")
-
-#Differential Junctions List - leafcutter ID'd junctions
-#Read in cluster sig text file as data frame and filter for junctions #with p value <0.1. 
-SigJcns <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.cluster_sig.txt.gz') %>%
-  filter(p.adjust <= 0.05, .preserve= TRUE) 
-
-
-#Get chromosome/junction coords for the selected samples 
-#Read in effect sizes text file, add chr:clu_ID_- in same format as "cluster" column in SigJcns, filter for chr:cluster_IDs that match those specified in SigJcns data frame.
-
-DifferentialJunctionsList <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
-separate("intron", c("chrom", "junc_start", "junc_end", "cluster"), ":") %>%
-  mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>%
-  filter(chr_clust %in% SigJcns$cluster, .preserve= T)
-
-
-# Make new id, for easier use in later filtering. Note that coordinates may need to add 1 - leafcutter ID'd jcns
-DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$chrom, DifferentialJunctionsList$junc_start, DifferentialJunctionsList$junc_end, sep=":")
 
 # PCA using PSI
 PCResults <- (PSI_Table) %>%
