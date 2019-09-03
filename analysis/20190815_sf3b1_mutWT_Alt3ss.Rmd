@@ -269,6 +269,8 @@ Start by generating a bed file containing annotated 3'ss.
 ```{r}
 #read in all_introns.bed as a data frame, swap out missing values for ".", then write the data frame back to the same file 
 
+system("gunzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+
 all_introns <- read.delim("../data/other_snakemake_data/GencodeHg38_all_introns.bed", header= F, fill= T, sep= "\t")
 
 all_introns$V10[all_introns$V10==""] <- "."
@@ -282,6 +284,7 @@ write.table(all_introns, file= "../data/other_snakemake_data/GencodeHg38_all_int
 
 system("bedtools flank -i ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > 3SS_output.bed")
 
+system("gzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
 
 #bedtools closest requires that all input files are presorted data by 1) chromosome and then by 2) start position. Read in 3SS_output.bed as a data frame and sort it using dplyr::arrange(), then use write.table to write it back to its original file.
 
@@ -292,26 +295,42 @@ annotated_3ss$V2 <- as.numeric(annotated_3ss$V2)
 arrange(annotated_3ss, V1, V2) %>%
 write.table("3SS_output.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
 
+#Do the same thing for leafcutter id'd introns within Alt3ss1 and Alt3ss2. (use bedtools:flank to select 1 bp intervals, then sort by chrom and start position)
+
+Alt3ss1 %>% write.table("Alt3ss1.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+Alt3ss2 %>% write.table("Alt3ss2.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+
+
+system("bedtools flank -i Alt3ss1.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > Alt3ss1_output.bed")
+
+system("bedtools flank -i Alt3ss2.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > Alt3ss2_output.bed")
+
+leafcutter_3ss_1 <-  read.delim("Alt3ss1_output.bed", header= F, fill= T, sep= "\t")
+leafcutter_3ss_1$V2 <- as.numeric(leafcutter_3ss_1$V2)
+arrange(leafcutter_3ss_1, V1, V2) %>%
+write.table("Alt3ss1_output.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+leafcutter_3ss_2 <-  read.delim("Alt3ss2_output.bed", header= F, fill= T, sep= "\t")
+leafcutter_3ss_2$V2 <- as.numeric(leafcutter_3ss_2$V2)
+arrange(leafcutter_3ss_2, V1, V2) %>%
+write.table("Alt3ss2_output.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+```
+Now that we've set up all input files for bedtools:closest, we can actually run this function to get a bedfile that can be used to plot the histogram.
+```{r}
+
 #use bedtools:closest to find the closest annotated 3’ss coordinate (in 3ss_output.bed) to each leafcutter-id’d Alt3ss coordinate (listed in Alt3ss1 and Alt3ss2 data frames)
 
 
 #“the closest b that overlaps with a” where b is your annotated 1 bp interval and a is your leafcutter id’d intron interval. 
 #This needs to be done once per allele (Alt3ss1 and Alt3ss2) and will add 2 extra columns to Alt3ss: one listing the closest "B" (or annotated 3'ss) to that "A" (or leafcutter id'd 3'ss interval). and the other listing the distance (#bp) that the annotated 3'ss is from the interval. 
 
-#first, convert chromStart into numerics, sort Alt3ss data frames by chrom and chromStart, then save as files
-
-Alt3ss1$chromStart <- as.numeric(Alt3ss1$chromStart)
-Alt3ss2$chromStart <- as.numeric(Alt3ss2$chromStart)
-
-Alt3ss1 %>% arrange(chrom, chromStart) %>% write.table("Alt3ss1.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
-
-Alt3ss2 %>% arrange(chrom, chromStart) %>% write.table("Alt3ss2.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
 
 
-#then use bedtools:closest
-
-system("bedtools closest -a Alt3ss1.bed -b 3SS_output.bed -s -D ref > closest_output1.bed")
-system("bedtools closest -a Alt3ss2.bed -b 3SS_output.bed -s -D ref > closest_output2.bed")
+system("bedtools closest -a Alt3ss1_output.bed -b 3SS_output.bed -s -D ref > closest_output1.bed")
+system("bedtools closest -a Alt3ss2_output.bed -b 3SS_output.bed -s -D ref > closest_output2.bed")
 
 
 #Read in outputs of bedtools:closest as their own data frames
@@ -338,7 +357,8 @@ ToPlot <- bind_rows(K700E_ToPlot, E622D_ToPlot)
 #plot distances vs proportion of introns in histogram
 
 ggplot(ToPlot, aes(distance, proportion, color=allele, fill= allele)) +
-  geom_histogram(alpha=0.5, position= "dodge", stat="identity") +
+  geom_histogram(alpha=1, position= "dodge", stat="identity") + 
+  coord_cartesian(xlim = c(-20,20), ylim = c(0, 0.33)) +
   scale_color_brewer(palette="Accent") +
   scale_fill_brewer(palette="Accent") +
   theme_minimal()+theme_classic()+theme(legend.position="top") +
