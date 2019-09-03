@@ -62,26 +62,82 @@ To subset the leafcutter effect_sizes table for junctions that 1) fall within 3'
 
 #Read in effect_sizes and reformat as bed file
 effect_sizes <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
-separate("intron", c("chrom", "chromEnd", "chromStart", "cluster"), ":") %>%
+separate("intron", c("chrom", "chromStart", "chromEnd", "cluster"), ":") 
+
+effect_sizes_bed <- effect_sizes %>%
   mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>% 
   mutate(strand= str_sub(effect_sizes$cluster, start= -1)) %>%
   mutate(name= ".") %>%
-  mutate(score= ".")
-
-effect_sizes_bed <- select(effect_sizes, chrom, chromStart, chromEnd, name, score, strand)
+  mutate(score= ".") %>% 
+  transform(chromStart = as.numeric(chromStart)) %>%
+  transform(chromStart= chromStart - 1) %>%
+  transform(chromStart = as.character(chromStart)) %>%
+  select(chrom, chromStart, chromEnd, name, score, strand, chr_clust, logef)
+  
 
 write.table(effect_sizes_bed,file="../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed.gz",quote=FALSE, row.names=FALSE,col.names=FALSE,sep="\t")
 
+
+#Unzip files to be used in python script. Then, run effect_sizes.bed input file through ben's python script and get effect_sizes output file with splice type classifications column
+
+system("gunzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+system("gunzip ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed")
+
 #Run effect_sizes.bed input file through ben's python script and get effect_sizes output file with splice type classifications column
 
-system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed.gz -A ..data/other_snakemake_data/GencodeHg38_all_introns.bed.gz  -O ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes_annotated.bed.gz")
+system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed -A ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -O ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes_annotated.bed")
 
-#Read in cluster_sig file and subset based on which clusters are annotated as 3'ss in effect_sizes output
+system("gzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+system("gzip ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed")
+
+
+#Read in annotated_effect_sizes output, rename columns, add 1 back to chromStart values, and create Alt3ss data fram containing annotated_effect_sizes marked as Alt3ss
+annotated_effect_sizes <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes_annotated.bed', header=F) 
+
+system("gzip ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes_annotated.bed")
+
+names(annotated_effect_sizes) [1] <- "chrom"
+names(annotated_effect_sizes) [2] <- "chromStart"
+names(annotated_effect_sizes) [3] <- "chromEnd"
+names(annotated_effect_sizes) [4] <- "name"
+names(annotated_effect_sizes) [5] <- "score"
+names(annotated_effect_sizes) [6] <- "strand"
+names(annotated_effect_sizes) [7] <- "cluster"
+names(annotated_effect_sizes) [8] <- "logef"
+names(annotated_effect_sizes) [9] <- "AnnotatedSpliceSite"
+
+
+Alt3ss <- annotated_effect_sizes %>% filter(AnnotatedSpliceSite == "Alt3ss") %>%
+transform(chromStart = as.numeric(chromStart)) %>%
+transform(chromStart= chromStart + 1) %>%
+transform(chromStart = as.character(chromStart))
+
+#Read in cluster_sig file and subset based on which clusters are annotated as 3'ss in annotated_effect_sizes output
+
+cluster_sig <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.cluster_sig.txt.gz', header=T) %>%
+  filter(cluster %in% Alt3ss$cluster, .preserve= T)
+  
 
 #Generate q-values based on this subset and create SigJcns subset out of samples w/ q-values <= 0.05
 
-#DifferentialJunctionsList<- Filter/subset newest effect_sizes file for junctions that match those in SigJcns
-#(Read in effect sizes text file, add chr:clu_ID_- in same format as "cluster" column in SigJcns, filter for chr:cluster_IDs that match those specified in SigJcns data frame)
+  #use p.adjust column from Alt3'ss subset of cluster_sig as input for qvalue fcn. store output of qvalue into qobj data frame
+
+qobj<- qvalue(p = cluster_sig$p.adjust)
+cluster_sig$qval= qobj$qvalues
+
+#filter for SigClusters, or clusters w/ qvalue <= 0.05
+
+SigClusters <- cluster_sig %>%
+  filter(qval <= 0.05, .preserve= TRUE) 
+
+#DifferentialJunctionsList<- Filter/subset Alt3ss (which is annotated_effect_sizes subset that's annotated as 3'ss) for junctions that match those in SigClusters
+  #filter for Alt3ss$cluster that match SigClusters$cluster data frame
+
+DifferentialJunctionsList <- Alt3ss %>% filter(cluster %in% SigClusters$cluster, .preserve = TRUE)
+
+#add junc_id column containing chr:start:stop to later on match to rownames of PSI table.
+
+DifferentialJunctionsList$junc_id <- paste(DifferentialJunctionsList$chrom, DifferentialJunctionsList$chromStart, DifferentialJunctionsList$chromEnd, sep=":")
 
 
 ```
@@ -169,5 +225,5 @@ Heatmap <- PSI_Table %>%
 RNAExtractionDate <- as.character(unclass(factor(plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$V2, warn_missing = FALSE) )))
 ColLabel = labCol <- plyr::mapvalues(colnames(Heatmap), from=ToPlot$rowname, to=ToPlot$rail_id, warn_missing = FALSE)
 
-heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="13505 splice junctions", xlab="10 samples")
+heatmap.2(Heatmap, col=colorRampPalette(c("blue", "white", "red"))(n = 299), dendrogram="column", trace="none", labRow="", labCol=ColLabel, ColSideColors=RNAExtractionDate, key.title="PSI-Zscore", ylab="1295 splice junctions", xlab="10 samples")
 ```

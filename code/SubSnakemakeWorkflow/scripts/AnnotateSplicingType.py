@@ -29,7 +29,7 @@ else:
 if args.FileOut in ("stdout"):
     fhOut = sys.stdout
 else:
-    fhIn = open(args.FileOut, 'w')
+    fhOut = open(args.FileOut, 'w')
 
 fh_AnnotatedSpliceJunctionsBedFile= open(args.AnnotationsBed, 'rU')
 signal(SIGPIPE, SIG_DFL)
@@ -68,13 +68,19 @@ for line in fh_AnnotatedSpliceJunctionsBedFile:
     AnnotatedSpliceAcceptors.add(Acceptor)
     AnnotatedSplicePairs.add((Donor,Acceptor))
 
+
 for line in fhIn:
     l=line.strip('\n').split('\t')
     chrom, start, stop, name, score, strand = l[0:6]
     leftovers=l[6:]
-    Donor,Acceptor = GetSpliceDonorAndAcceptorCoordinates(chrom, start, stop, strand)
+    Donor,Acceptor= GetSpliceDonorAndAcceptorCoordinates(chrom, start, stop, strand)
 
-    if (Donor,Acceptor) in AnnotatedSplicePairs:
+    if "224404430" in AnnotatedSpliceDonors:
+        print("Donor")
+    elif "224404430" in AnnotatedSpliceAcceptors:
+        print("Acceptor")
+
+    if (Acceptor, Donor) in AnnotatedSplicePairs:
         AS_type = 'AnnotatedSpliceSite'
     elif Donor in AnnotatedSpliceDonors and Acceptor not in AnnotatedSpliceAcceptors:
         AS_type = 'Alt3ss'

@@ -1,0 +1,346 @@
+---
+title: "20190815_sf3b1_mutWT_Alt3ss"
+author: "Stephanie Lozano"
+date: "8/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r libraries}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(readxl)
+library(ggrepel)
+library(tidyverse)
+library(gplots)
+library(knitr)
+library("RColorBrewer")
+library(qvalue)
+```
+Goals: generate volcano plots (psi values) for each allele, then generate a histogram that shows distances of alt3'ss from the canonical splice site. 
+
+(distance on x axis, proportion of introns on y axis)
+One line for each genotype.
+
+How does this motivate future investigations? — ideally we’d see a subtle difference between the histograms for each allele, run tests to see if that difference is significant, then do experiments to validate significance.
+
+First, copy in data frames from 7/26 Rmarkdown in order to generate DifferentialJunctionsListK700E and DifferentialJunctionsListE622D:
+
+To subset the leafcutter effect_sizes table for junctions that 1) fall within 3'ss and 2) are significant based on q-values<= 0.05 (i.e hold off on filtering for significant junctions and first filter for junctions that fall within 3'ss)
+
+```{r}
+#Differential Junctions List- filter for junctions that fall within 3'ss and are significant based on q-values generated for newly subsetted group
+
+```
+
+K700E:
+
+```{r}
+
+#Read in effect_sizes and reformat as bed file
+effect_sizes1 <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
+separate("intron", c("chrom", "chromStart", "chromEnd", "cluster"), ":") 
+
+effect_sizes_bed1 <- effect_sizes1 %>%
+  mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>% 
+  mutate(strand= str_sub(effect_sizes1$cluster, start= -1)) %>%
+  mutate(name= ".") %>%
+  mutate(score= ".") %>% 
+  transform(chromStart = as.numeric(chromStart)) %>%
+  transform(chromStart= chromStart - 1) %>%
+  transform(chromStart = as.character(chromStart)) %>%
+  select(chrom, chromStart, chromEnd, name, score, strand, chr_clust, logef)
+
+
+write.table(effect_sizes_bed1,file="../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed",quote=FALSE, row.names=FALSE,col.names=FALSE,sep="\t")
+
+#Unzip files to be used in python script. Then, run effect_sizes.bed input file through ben's python script and get effect_sizes output file with splice type classifications column
+
+system("gunzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+system("gunzip ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed")
+
+system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed -A ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -O ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes_annotated.bed")
+
+system("gzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+system("gzip ../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes.bed")
+
+#Read in annotated_effect_sizes output, rename columns, add 1 back to chromStart values, and create Alt3ss data fram containing annotated_effect_sizes marked as Alt3ss
+annotated_effect_sizes1 <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/effect_sizes_annotated.bed', header=F) 
+
+names(annotated_effect_sizes1) [1] <- "chrom"
+names(annotated_effect_sizes1) [2] <- "chromStart"
+names(annotated_effect_sizes1) [3] <- "chromEnd"
+names(annotated_effect_sizes1) [4] <- "name"
+names(annotated_effect_sizes1) [5] <- "score"
+names(annotated_effect_sizes1) [6] <- "strand"
+names(annotated_effect_sizes1) [7] <- "cluster"
+names(annotated_effect_sizes1) [8] <- "logef"
+names(annotated_effect_sizes1) [9] <- "AnnotatedSpliceSite"
+
+
+Alt3ss1 <- annotated_effect_sizes1 %>% filter(AnnotatedSpliceSite == "Alt3ss") %>%
+transform(chromStart = as.numeric(chromStart)) %>%
+transform(chromStart= chromStart + 1) %>%
+transform(chromStart = as.character(chromStart))
+
+#Read in cluster_sig file and subset based on which clusters are annotated as 3'ss in annotated_effect_sizes output
+
+cluster_sig1 <- read.delim('../output/snakemake_out_sf3b1_mutWT_k700e_ds/leafcutter.ds.cluster_sig.txt.gz', header=T) %>%
+  filter(cluster %in% Alt3ss1$cluster, .preserve= T)
+  
+
+#Generate q-values based on this subset and create SigJcns subset out of samples w/ q-values <= 0.05
+
+  #use p.adjust column from Alt3'ss subset of cluster_sig as input for qvalue fcn. store output of qvalue into qobj data frame
+
+qobj1<- qvalue(p = cluster_sig1$p.adjust)
+cluster_sig1$qval= qobj1$qvalues
+
+#filter for SigClusters, or clusters w/ qvalue <= 0.05
+
+SigClusters1 <- cluster_sig1 %>%
+  filter(qval <= 0.05, .preserve= TRUE) 
+
+#DifferentialJunctionsList<- Filter/subset Alt3ss (which is annotated_effect_sizes subset that's annotated as 3'ss) for junctions that match those in SigClusters
+  #filter for Alt3ss$cluster that match SigClusters$cluster data frame
+
+DifferentialJunctionsListK700E <- Alt3ss1 %>% filter(cluster %in% SigClusters1$cluster, .preserve = TRUE)
+
+#add junc_id column containing chr:start:stop to later on match to rownames of PSI table.
+
+DifferentialJunctionsListK700E$junc_id <- paste(DifferentialJunctionsListK700E$chrom, DifferentialJunctionsListK700E$chromStart, DifferentialJunctionsListK700E$chromEnd, sep=":")
+
+```
+
+E622D:
+
+```{r}
+
+#Read in effect_sizes and reformat as bed file
+effect_sizes2 <- read.delim('../output/snakemake_out_sf3b1_mutWT_e622d_ds/leafcutter.ds.effect_sizes.txt.gz', header=T) %>%
+separate("intron", c("chrom", "chromStart", "chromEnd", "cluster"), ":") 
+
+effect_sizes_bed2 <- effect_sizes2 %>%
+  mutate(chr_clust= paste(chrom, cluster, sep = ":", collapse = NULL)) %>% 
+  mutate(strand= str_sub(effect_sizes2$cluster, start= -1)) %>%
+  mutate(name= ".") %>%
+  mutate(score= ".") %>% 
+  transform(chromStart = as.numeric(chromStart)) %>%
+  transform(chromStart = chromStart - 1) %>%
+  transform(chromStart = as.character(chromStart)) %>%
+  select(chrom, chromStart, chromEnd, name, score, strand, chr_clust, logef)
+
+
+write.table(effect_sizes_bed2,file="../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes.bed",quote=FALSE, row.names=FALSE,col.names=FALSE,sep="\t")
+
+#Unzip files to be used in python script. Then, run effect_sizes.bed input file through ben's python script and get effect_sizes output file with splice type classifications column
+
+system("gunzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+system("gunzip ../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes.bed")
+
+system("../code/SubSnakemakeWorkflow/scripts/AnnotateSplicingType.py -I ../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes.bed -A ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -O ../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes_annotated.bed")
+
+system("gzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
+system("gzip ../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes.bed")
+
+#Read in annotated_effect_sizes output, rename columns, add 1 back to chromStart values, and create Alt3ss data fram containing annotated_effect_sizes marked as Alt3ss
+annotated_effect_sizes2 <- read.delim('../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes_annotated.bed', header=F) 
+
+system("gzip ../output/snakemake_out_sf3b1_mutWT_e622d_ds/effect_sizes_annotated.bed")
+
+names(annotated_effect_sizes2) [1] <- "chrom"
+names(annotated_effect_sizes2) [2] <- "chromStart"
+names(annotated_effect_sizes2) [3] <- "chromEnd"
+names(annotated_effect_sizes2) [4] <- "name"
+names(annotated_effect_sizes2) [5] <- "score"
+names(annotated_effect_sizes2) [6] <- "strand"
+names(annotated_effect_sizes2) [7] <- "cluster"
+names(annotated_effect_sizes2) [8] <- "logef"
+names(annotated_effect_sizes2) [9] <- "AnnotatedSpliceSite"
+
+
+Alt3ss2 <- annotated_effect_sizes2 %>% filter(AnnotatedSpliceSite == "Alt3ss") %>%
+transform(chromStart = as.numeric(chromStart)) %>%
+transform(chromStart= chromStart + 1) %>%
+transform(chromStart = as.character(chromStart))
+
+#Read in cluster_sig file and subset based on which clusters are annotated as 3'ss in annotated_effect_sizes output
+
+cluster_sig2 <- read.delim('../output/snakemake_out_sf3b1_mutWT_e622d_ds/leafcutter.ds.cluster_sig.txt.gz', header=T) %>%
+  filter(cluster %in% Alt3ss2$cluster, .preserve= T)
+  
+
+#Generate q-values based on this subset and create SigJcns subset out of samples w/ q-values <= 0.05
+
+  #use p.adjust column from Alt3'ss subset of cluster_sig as input for qvalue fcn. store output of qvalue into qobj data frame
+
+qobj2<- qvalue(p = cluster_sig2$p.adjust)
+cluster_sig2$qval= qobj2$qvalues
+
+#filter for SigClusters, or clusters w/ qvalue <= 0.05
+
+SigClusters2 <- cluster_sig2 %>%
+  filter(qval <= 0.05, .preserve= TRUE) 
+
+#DifferentialJunctionsList<- Filter/subset Alt3ss (which is annotated_effect_sizes subset that's annotated as 3'ss) for junctions that match those in SigClusters
+  #filter for Alt3ss$cluster that match SigClusters$cluster data frame
+
+DifferentialJunctionsListE622D <- Alt3ss2 %>% filter(cluster %in% SigClusters2$cluster, .preserve = TRUE)
+
+#add junc_id column containing chr:start:stop to later on match to rownames of PSI table.
+
+DifferentialJunctionsListE622D$junc_id <- paste(DifferentialJunctionsListE622D$chrom, DifferentialJunctionsListE622D$chromStart, DifferentialJunctionsListE622D$chromEnd, sep=":")
+```
+
+Next, copy in code to calculate PSI.
+
+```{r}
+
+#Calulating PSI
+Numers <- '../output/snakemake_out_sf3b1_mutWT_k700e_ds/CountTableNumerators.gz'
+Denoms <- '../output/snakemake_out_sf3b1_mutWT_k700e_ds/CountTableDenominators.gz'
+
+NumeratorCountTable <- fread(paste0("gunzip -c ", Numers), sep=" ", header=TRUE, data.table=FALSE)
+DenominatorCountTable <- fread(paste0("gunzip -c ", Denoms), sep=" ", header=TRUE, data.table=FALSE)
+
+PSI_Table <- NumeratorCountTable[-1]/DenominatorCountTable[-1]
+row.names(PSI_Table) <- gsub(":clu_.+", "", NumeratorCountTable$chrom)
+
+#Replace NaNs from 0/0 operation
+PSI_Table[is.na(PSI_Table)] <- 0
+
+```
+
+Now, we'll
+
+1. use the psi values to generate volcano plots
+2. use the annotated introns bed files to generate the histogram
+
+
+Volcano Plots:
+
+first allele-
+
+```{r}
+
+#add logef from annotated_effect_sizes to cluster_sig
+
+cluster_sig1$logef <- annotated_effect_sizes1[match(cluster_sig1$cluster, annotated_effect_sizes1$cluster),"logef"] 
+
+cluster_sig2$logef <- annotated_effect_sizes2[match(cluster_sig2$cluster, annotated_effect_sizes2$cluster),"logef"] 
+
+#plot volcano plots
+
+cluster_sig1 %>%
+  mutate(abs.logef = abs(logef)) %>%
+  group_by(cluster) %>%
+  slice(which.max(abs.logef)) %>%
+  mutate(sig=qval<0.05) %>%
+  ggplot(aes(x=logef, y=-log10(qval), color=sig)) +
+    geom_point(alpha=0.05) +
+    scale_x_continuous(limits=c(-10,10)) +
+    theme_bw()
+```
+
+second allele-
+```{r}
+
+cluster_sig2 %>%
+  mutate(abs.logef = abs(logef)) %>%
+  group_by(cluster) %>%
+  slice(which.max(abs.logef)) %>%
+  mutate(sig=qval<0.05) %>%
+  ggplot(aes(x=logef, y=-log10(qval), color=sig)) +
+    geom_point(alpha=0.05) +
+    scale_x_continuous(limits=c(-10,10)) +
+    theme_bw()
+
+```
+
+Histogram:
+
+Start by generating a bed file containing annotated 3'ss. 
+
+```{r}
+#read in all_introns.bed as a data frame, swap out missing values for ".", then write the data frame back to the same file 
+
+all_introns <- read.delim("../data/other_snakemake_data/GencodeHg38_all_introns.bed", header= F, fill= T, sep= "\t")
+
+all_introns$V10[all_introns$V10==""] <- "."
+
+write.table(all_introns, file= "../data/other_snakemake_data/GencodeHg38_all_introns.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+
+#use bedtools:flank to filter 3'ss out of the annotated introns bed you've previously referenced.
+
+#(aka, select 1bp intervals from either the start coord or end coord of annotated introns depending on +/- strand, save the coordinates as bed file to later feed into bedtools:closest) 
+
+system("bedtools flank -i ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > 3SS_output.bed")
+
+
+#bedtools closest requires that all input files are presorted data by 1) chromosome and then by 2) start position. Read in 3SS_output.bed as a data frame and sort it using dplyr::arrange(), then use write.table to write it back to its original file.
+
+annotated_3ss <-  read.delim("3SS_output.bed", header= F, fill= T, sep= "\t")
+
+annotated_3ss$V2 <- as.numeric(annotated_3ss$V2)
+
+arrange(annotated_3ss, V1, V2) %>%
+write.table("3SS_output.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+#use bedtools:closest to find the closest annotated 3’ss coordinate (in 3ss_output.bed) to each leafcutter-id’d Alt3ss coordinate (listed in Alt3ss1 and Alt3ss2 data frames)
+
+
+#“the closest b that overlaps with a” where b is your annotated 1 bp interval and a is your leafcutter id’d intron interval. 
+#This needs to be done once per allele (Alt3ss1 and Alt3ss2) and will add 2 extra columns to Alt3ss: one listing the closest "B" (or annotated 3'ss) to that "A" (or leafcutter id'd 3'ss interval). and the other listing the distance (#bp) that the annotated 3'ss is from the interval. 
+
+#first, convert chromStart into numerics, sort Alt3ss data frames by chrom and chromStart, then save as files
+
+Alt3ss1$chromStart <- as.numeric(Alt3ss1$chromStart)
+Alt3ss2$chromStart <- as.numeric(Alt3ss2$chromStart)
+
+Alt3ss1 %>% arrange(chrom, chromStart) %>% write.table("Alt3ss1.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+Alt3ss2 %>% arrange(chrom, chromStart) %>% write.table("Alt3ss2.bed", append= FALSE, quote=FALSE, na= ".", row.names=FALSE,col.names=FALSE,sep="\t")
+
+
+#then use bedtools:closest
+
+system("bedtools closest -a Alt3ss1.bed -b 3SS_output.bed -s -D ref > closest_output1.bed")
+system("bedtools closest -a Alt3ss2.bed -b 3SS_output.bed -s -D ref > closest_output2.bed")
+
+
+#Read in outputs of bedtools:closest as their own data frames
+
+closest_output1 <- read.delim("closest_output1.bed", header= F, fill= T, sep= "\t")
+closest_output2 <- read.delim("closest_output2.bed", header= F, fill= T, sep= "\t")
+
+#make a new data frame for each allele listing 1) distances to closest annotated 3'ss 2) proportion of leafcutter id'd introns that are that distance away.
+
+K700E_ToPlot <- count(closest_output1,V20) %>%
+  mutate(proportion= n/nrow(closest_output1)) %>%
+  mutate(allele= "K700E")
+  colnames(K700E_ToPlot)[colnames(K700E_ToPlot)=="V20"] <- "distance"
+
+E622D_ToPlot <- count(closest_output2,V20) %>%
+  mutate(proportion= n/nrow(closest_output2)) %>%
+  mutate(allele= "E622D")
+  colnames(E622D_ToPlot)[colnames(E622D_ToPlot)=="V20"] <- "distance"
+  
+#Combine these into one ToPlot dataframe
+
+ToPlot <- bind_rows(K700E_ToPlot, E622D_ToPlot)
+  
+#plot distances vs proportion of introns in histogram
+
+ggplot(ToPlot, aes(distance, proportion, color=allele, fill= allele)) +
+  geom_histogram(alpha=0.5, position= "dodge", stat="identity") +
+  scale_color_brewer(palette="Accent") +
+  scale_fill_brewer(palette="Accent") +
+  theme_minimal()+theme_classic()+theme(legend.position="top") +
+  labs(title="Distance of Alt3'ss from Annotated3'ss",x="distance(bp)", y = "proportion of introns")
+```
