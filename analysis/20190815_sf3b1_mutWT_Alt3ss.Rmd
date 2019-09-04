@@ -282,7 +282,7 @@ write.table(all_introns, file= "../data/other_snakemake_data/GencodeHg38_all_int
 
 #(aka, select 1bp intervals from either the start coord or end coord of annotated introns depending on +/- strand, save the coordinates as bed file to later feed into bedtools:closest) 
 
-system("bedtools flank -i ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > 3SS_output.bed")
+system("bedtools flank -i ../data/other_snakemake_data/GencodeHg38_all_introns.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -r 1 -l 0 -s > 3SS_output.bed")
 
 system("gzip ../data/other_snakemake_data/GencodeHg38_all_introns.bed")
 
@@ -303,9 +303,9 @@ Alt3ss2 %>% write.table("Alt3ss2.bed", append= FALSE, quote=FALSE, na= ".", row.
 
 
 
-system("bedtools flank -i Alt3ss1.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > Alt3ss1_output.bed")
+system("bedtools flank -i Alt3ss1.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -r 1 -l 0 -s > Alt3ss1_output.bed")
 
-system("bedtools flank -i Alt3ss2.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -b 1 -s > Alt3ss2_output.bed")
+system("bedtools flank -i Alt3ss2.bed  -g ../code/SubSnakemakeWorkflow/MiscData/hg38.chrome.sizes -r 1 -l 0 -s > Alt3ss2_output.bed")
 
 leafcutter_3ss_1 <-  read.delim("Alt3ss1_output.bed", header= F, fill= T, sep= "\t")
 leafcutter_3ss_1$V2 <- as.numeric(leafcutter_3ss_1$V2)
